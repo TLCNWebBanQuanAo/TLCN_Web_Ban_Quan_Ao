@@ -34,6 +34,9 @@ public class Product {
     @OneToMany(mappedBy = "id.product")
     private Set<SaleOff_Detail> saleoff_details;
 
+    @OneToMany(mappedBy = "id.product")
+    private Set<Cart_Detail> cart_details;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Type type;
 }

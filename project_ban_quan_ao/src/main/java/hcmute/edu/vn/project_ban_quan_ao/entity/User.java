@@ -19,6 +19,8 @@ public class User {
     private String name;
     private Date dateOfBirth;
     private int gender;
+    private String accountName;
+    private String password;
     private String avartar;
     private String address;
     private int phone;
@@ -29,12 +31,12 @@ public class User {
     private String userUpdate;
     private Date dateUpdate;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Account account;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Role role;
 
     @OneToMany(mappedBy = "user")
     private Set<Bill> bills;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Cart> carts;
 }
