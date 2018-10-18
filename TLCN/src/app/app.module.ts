@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { RigisterComponent } from './rigister/rigister.component';
 import { AppRoutingModule } from './app--routing.module';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppRoutingModule } from './app--routing.module';
     FooterComponent,
     LoginComponent,
     MenuComponent,
-    RigisterComponent
+    RigisterComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
