@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="admin-service" />
         <module name="db-service" />
         <module name="eureka-service" />
         <module name="gateway-service" />
         <module name="microservices_web_ban_quan_ao" />
       </profile>
-      <profile name="Annotation profile for guest-service" enabled="true">
+      <profile name="Annotation profile for user-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -32,12 +33,14 @@
           <entry name="$MAVEN_REPOSITORY$/joda-time/joda-time/2.9/joda-time-2.9.jar" />
         </processorPath>
         <module name="guest-service" />
+        <module name="user-service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="guest-service" options="-Amapstruct.defaultComponentModel=spring" />
+      <module name="user-service" options="-Amapstruct.defaultComponentModel=spring" />
     </option>
   </component>
 </project>
