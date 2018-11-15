@@ -1,0 +1,18 @@
+package hcmute.edu.vn.userservice.api.v1.mapper;
+
+import hcmute.edu.vn.userservice.api.v1.dto.CartDetail_Dto;
+import hcmute.edu.vn.userservice.model.Cart_Detail;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.factory.Mappers;
+
+@Mapper
+public interface CartDetail_Mapper   {
+    CartDetail_Mapper INSTANCE = Mappers.getMapper(CartDetail_Mapper.class);
+    @Mappings({
+            @Mapping(source = "id.product.images", target ="images"),
+            @Mapping(source = "id.product.discrible", target = "discrible")
+    })
+    CartDetail_Dto CartDetailToCartDetailDto(Cart_Detail cart_detail);
+}

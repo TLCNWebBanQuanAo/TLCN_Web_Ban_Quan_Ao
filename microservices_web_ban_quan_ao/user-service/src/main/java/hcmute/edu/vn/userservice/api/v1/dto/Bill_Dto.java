@@ -1,0 +1,16 @@
+package hcmute.edu.vn.userservice.api.v1.dto;
+
+import lombok.Data;
+
+import java.util.Date;
+
+@Data
+public class Bill_Dto {
+    private int id;
+    private Double total;
+    private int status;
+    private String address;
+    private int phone;
+    private String userCreate;
+    private Date dateCreate;
+}
