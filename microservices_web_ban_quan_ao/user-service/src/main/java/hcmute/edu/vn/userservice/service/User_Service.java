@@ -4,7 +4,7 @@ import hcmute.edu.vn.userservice.model.User;
 
 public interface User_Service {
     User ChangePassword (User user);
-    User FindByAccountNameAndPassword ( String accountname, String password);
+    User FindByAccountNameAndPassword ( String accountName, String password);
     User ChangePersonalInformation (User user);
-    User FindByAccountName(String accountname);
+    User FindByAccountName(String accountName);
 }

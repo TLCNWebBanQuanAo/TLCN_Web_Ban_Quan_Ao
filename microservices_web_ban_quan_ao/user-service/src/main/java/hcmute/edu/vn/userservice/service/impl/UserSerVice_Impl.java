@@ -20,8 +20,8 @@ public class UserSerVice_Impl implements User_Service {
     }
 
     @Override
-    public User FindByAccountNameAndPassword (String accountname, String password){
-        Optional<User> user = user_repository.FindByAccountNameAndPassword(accountname, password);
+    public User FindByAccountNameAndPassword (String accountName, String password){
+        Optional<User> user = user_repository.findUserByAccountNameAndPassword(accountName, password);
         if (!user.isPresent())
             throw  new NotFoundException("Account does not exist!.");
         return user.get();
@@ -33,8 +33,8 @@ public class UserSerVice_Impl implements User_Service {
     }
 
     @Override
-    public User FindByAccountName(String accountname){
-        Optional<User> user = user_repository.FindByAccountName(accountname);
+    public User FindByAccountName(String accountName){
+        Optional<User> user = user_repository.findUserByAccountName(accountName);
         if (!user.isPresent())
             throw new NotFoundException("Account does not exist!.");
         return user.get();

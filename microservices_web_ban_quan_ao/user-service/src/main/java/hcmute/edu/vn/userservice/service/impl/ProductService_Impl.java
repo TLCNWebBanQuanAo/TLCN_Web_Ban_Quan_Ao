@@ -16,7 +16,7 @@ public class ProductService_Impl implements Product_Service {
 
     @Override
     public Product FindProductById(int id){
-        Optional<Product> product = product_repository.FindById(id);
+        Optional<Product> product = product_repository.findById(id);
         if(!product.isPresent())
             throw new NotFoundException("Product does not exist !");
         return product.get();

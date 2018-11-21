@@ -22,7 +22,7 @@ public class BillService_Impl implements Bill_Service {
 
      @Override
     public Bill FindBillById( int id){
-         Optional<Bill> bill = bill_repository.FindById(id);
+         Optional<Bill> bill = bill_repository.findById(id);
          if (!bill.isPresent())
              throw new NotFoundException("Bill does not exist!.");
          return bill.get();

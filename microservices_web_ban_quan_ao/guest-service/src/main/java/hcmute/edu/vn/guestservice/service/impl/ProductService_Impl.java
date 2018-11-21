@@ -5,10 +5,12 @@ import hcmute.edu.vn.guestservice.model.Product;
 import hcmute.edu.vn.guestservice.repository.Product_Repository;
 import hcmute.edu.vn.guestservice.service.Product_Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProductService_Impl implements Product_Service {
     @Autowired
     private Product_Repository product_repository;
