@@ -1,4 +1,4 @@
-package hcmute.edu.vn.project_ban_quan_ao.entity;
+package hcmute.edu.vn.dbservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

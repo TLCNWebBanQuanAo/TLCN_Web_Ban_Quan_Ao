@@ -1,4 +1,4 @@
-package hcmute.edu.vn.project_ban_quan_ao.entity;
+package hcmute.edu.vn.userservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class User {
     private int gender;
     private String accountName;
     private String password;
-    private String avartar;
+    private String avatar;
     private String address;
     private int phone;
     private String email;
@@ -37,6 +37,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Bill> bills;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Cart> carts;
+    @OneToOne( fetch = FetchType.LAZY)
+    private Cart cart;
 }

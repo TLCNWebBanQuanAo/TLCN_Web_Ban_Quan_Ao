@@ -1,4 +1,4 @@
-package hcmute.edu.vn.project_ban_quan_ao.entity;
+package hcmute.edu.vn.guestservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,35 +8,26 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity(name = "products")
+@Entity(name = "bills")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String name;
-    private Double price;
+    private Double total;
     private int status;
-    private int quanlity;
-    private int size;
-    private String discrible;
-    private String images;
+    private String address;
+    private int phone;
     private String userCreate;
     private Date dateCreate;
     private String userUpdate;
     private Date dateUpdate;
 
-    @OneToMany(mappedBy = "id.product")
+    @OneToMany(mappedBy = "id.bill")
     private Set<Bill_Detail> bill_details;
 
-    @OneToMany(mappedBy = "id.product")
-    private Set<SaleOff_Detail> saleoff_details;
-
-    @OneToMany(mappedBy = "id.product")
-    private Set<Cart_Detail> cart_details;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    private Type type;
+    private User user;
 }
