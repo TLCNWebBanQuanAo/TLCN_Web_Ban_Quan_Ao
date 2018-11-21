@@ -14,6 +14,7 @@
   <link href="./assets/css_js/css/bootstrap.css" rel='stylesheet' type='text/css' />
   <link href="./assets/css_js/css/style.css" rel='stylesheet' type='text/css' />
   <link href="./assets/css_js/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="./assets/css_js/css/etalage.css">
 </head>
 <body>
   <app-root></app-root>
@@ -22,5 +23,69 @@
   <script type="text/javascript" src="./assets/css_js/js/jquery-1.11.1.min.js"></script>
   <script type="text/javascript" src="./assets/css_js/js/megamenu.js"></script>
   <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+  <script src="./assets/css_js/js/jquery.etalage.min.js"></script>
+  <script src="./assets/css_js/js/jquery.easydropdown.js"></script>
+  <script>
+    jQuery(document).ready(function($){
+
+      $('#etalage').etalage({
+        thumb_image_width: 300,
+        thumb_image_height: 400,
+        source_image_width: 900,
+        source_image_height: 1200,
+        show_hint: true,
+        click_callback: function(image_anchor, instance_id){
+          alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+        }
+      });
+
+    });
+  </script>
+<!--initiate accordion-->
+<script type="text/javascript">
+$(function() {
+
+    var menu_ul = $('.menu_drop > li > ul'),
+           menu_a  = $('.menu_drop > li > a');
+    
+    menu_ul.hide();
+
+    menu_a.click(function(e) {
+        e.preventDefault();
+        if(!$(this).hasClass('active')) {
+            menu_a.removeClass('active');
+            menu_ul.filter(':visible').slideUp('normal');
+            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+        } else {
+            $(this).removeClass('active');
+            $(this).next().stop(true,true).slideUp('normal');
+        }
+    });
+
+});
+</script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" id="sourcecode">
+  $(function()
+  {
+    $('.scroll-pane').jScrollPane();
+  });
+</script>
+			 <script>$(document).ready(function(c) {
+        $('.close2').on('click', function(c){
+            $('.cart-header2').fadeOut('slow', function(c){
+          $('.cart-header2').remove();
+        });
+        });	  
+        });
+     </script>
+     	<script>$(document).ready(function(c) {
+        $('.close1').on('click', function(c){
+          $('.cart-header').fadeOut('slow', function(c){
+            $('.cart-header').remove();
+          });
+          });	  
+        });
+       </script>
 </body>
 </html>

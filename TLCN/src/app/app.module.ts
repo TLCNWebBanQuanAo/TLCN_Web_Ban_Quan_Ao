@@ -9,6 +9,9 @@ import { MenuComponent } from './menu/menu.component';
 import { RigisterComponent } from './rigister/rigister.component';
 import { AppRoutingModule } from './app--routing.module';
 import { HomepageComponent } from './homepage/homepage.component';
+import { SingleComponent } from './single/single.component';
+import { AllItemComponent } from './all-item/all-item.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HomepageComponent } from './homepage/homepage.component';
     LoginComponent,
     MenuComponent,
     RigisterComponent,
-    HomepageComponent
+    HomepageComponent,
+    SingleComponent,
+    AllItemComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
