@@ -1,9 +1,9 @@
-package hcmute.edu.vn.guestservice.model;
+package hcmute.edu.vn.adminservice.model;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;

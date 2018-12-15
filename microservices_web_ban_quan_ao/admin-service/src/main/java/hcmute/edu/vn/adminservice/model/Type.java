@@ -1,4 +1,4 @@
-package hcmute.edu.vn.guestservice.model;
+package hcmute.edu.vn.adminservice.model;
 
 
 import lombok.AllArgsConstructor;
