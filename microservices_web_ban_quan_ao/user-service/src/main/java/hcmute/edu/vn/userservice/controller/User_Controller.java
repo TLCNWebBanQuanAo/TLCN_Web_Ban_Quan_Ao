@@ -4,25 +4,26 @@ import hcmute.edu.vn.userservice.api.v1.DataReturnList;
 import hcmute.edu.vn.userservice.api.v1.DataReturnRecord;
 import hcmute.edu.vn.userservice.api.v1.dto.Bill_Dto;
 import hcmute.edu.vn.userservice.api.v1.dto.CartDetail_Dto;
+import hcmute.edu.vn.userservice.api.v1.dto.Product_Dto;
 import hcmute.edu.vn.userservice.api.v1.dto.User_Dto;
 import hcmute.edu.vn.userservice.api.v1.mapper.Bill_Mapper;
 import hcmute.edu.vn.userservice.api.v1.mapper.CartDetail_Mapper;
+import hcmute.edu.vn.userservice.api.v1.mapper.Product_Mapper;
 import hcmute.edu.vn.userservice.api.v1.mapper.User_Mapper;
-import hcmute.edu.vn.userservice.model.Bill;
-import hcmute.edu.vn.userservice.model.Cart;
-import hcmute.edu.vn.userservice.model.User;
-import hcmute.edu.vn.userservice.service.Bill_Service;
-import hcmute.edu.vn.userservice.service.CartDetail_Service;
-import hcmute.edu.vn.userservice.service.User_Service;
+import hcmute.edu.vn.userservice.model.*;
+import hcmute.edu.vn.userservice.repository.Product_Repository;
+import hcmute.edu.vn.userservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/user/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class User_Controller {
     @Autowired
     private User_Service user_service;
@@ -41,6 +42,15 @@ public class User_Controller {
 
     @Autowired
     private CartDetail_Mapper cartDetail_mapper;
+
+    @Autowired
+    private Product_Service product_service;
+
+    @Autowired
+    private Product_Mapper product_mapper;
+
+    @Autowired
+    private BillDetail_Service billDetail_service;
 
 
     @PostMapping("/changepassword/{accountname}/{oldpassword}/{newpassword}")
@@ -77,7 +87,7 @@ public class User_Controller {
     }
 
     @GetMapping("/{accountname}")
-    public DataReturnRecord<User_Dto> getUser(@PathVariable String accountname){
+    public DataReturnRecord<User_Dto> GetUser(@PathVariable String accountname){
         DataReturnRecord<User_Dto> dataReturnRecord = new DataReturnRecord<>();
 
         User user = user_service.FindByAccountName(accountname);
@@ -123,5 +133,95 @@ public class User_Controller {
         dataReturnList.setMessage("Get all product in cart");
         return dataReturnList;
     }
+
+    @PostMapping("/addproductincart/{accountname}/{productid}/{quantity}")
+    public DataReturnRecord<CartDetail_Dto> AddProductInCart (@PathVariable String accountname,
+                                                              @PathVariable int productid, @PathVariable int quantity){
+        DataReturnRecord<CartDetail_Dto> dataReturnRecord = new DataReturnRecord<>();
+
+        Cart cart = user_service.FindByAccountName(accountname).getCart();
+        Product product = product_service.FindProductById(productid);
+
+        Cart_Product_Id cart_product_id = new Cart_Product_Id();
+        cart_product_id.setCart(cart);
+        cart_product_id.setProduct(product);
+
+        Cart_Detail cart_detail = new Cart_Detail();
+        cart_detail.setId(cart_product_id);
+        cart_detail.setQuantity(quantity);
+
+        dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
+        dataReturnRecord.setMessage("Add products successful.");
+        return dataReturnRecord;
+    }
+
+    @DeleteMapping("/deleteproductincart/{accountname}/{productid}")
+    public DataReturnRecord<Product_Dto> DeleteProductInCart(@PathVariable String accountname, @PathVariable int productid){
+        DataReturnRecord<Product_Dto> dataReturnRecord = new DataReturnRecord<>();
+
+        Cart cart = user_service.FindByAccountName(accountname).getCart();
+        Product product = product_service.FindProductById(productid);
+
+        Cart_Product_Id cart_product_id = new Cart_Product_Id(cart,product);
+
+        Cart_Detail cart_detail = new Cart_Detail();
+        cart_detail.setId(cart_product_id);
+
+        cartDetail_service.DeleteProductInCart(cart_detail);
+
+        dataReturnRecord.setMessage("Delete Product Successfully.");
+        dataReturnRecord.setData(product_mapper.ProductToProductDto(product));
+
+        return dataReturnRecord;
+    }
+
+    @DeleteMapping("/deleteallproductincart/{accountname}")
+    public boolean DeleteAllProductInCart(@PathVariable String accountname){
+        Cart cart = user_service.FindByAccountName(accountname).getCart();
+        return cartDetail_service.DeleteAllProductInCart(cart.getId());
+    }
+
+    @PostMapping("/payment/{accountname}")
+    public boolean Payment (@PathVariable String accountname){
+        User user = user_service.FindByAccountName(accountname);
+
+        Date date = new Date();
+        String address;
+
+        Bill bill = new Bill();
+        bill.setTotal(Double.valueOf(0));
+        bill.setAddress("");
+        bill.setPhone(Integer.valueOf(0));
+        bill.setStatus(Integer.valueOf(0));
+        bill.setDateCreate(date);
+        bill.setDateUpdate(date);
+        bill.setUserCreate(accountname);
+        bill.setUserUpdate(accountname);
+        bill.setUser(user);
+
+        Bill addbill = bill_service.AddBill(bill);
+        System.out.println(addbill.getId());
+        Cart cart = user.getCart();
+        List<Cart_Detail> cart_details = cartDetail_service.RetrieveAllProductInCart(cart.getId());
+
+        List<Bill_Detail> bill_details = new ArrayList<>();
+
+        for (Cart_Detail cart_detail: cart_details) {
+            Bill_Product_Id bill_product_id = new Bill_Product_Id();
+            bill_product_id.setBill(addbill);
+            bill_product_id.setProduct(cart_detail.getId().getProduct());
+
+            Bill_Detail bill_detail = new Bill_Detail();
+            bill_detail.setId(bill_product_id);
+            bill_detail.setPrice(cart_detail.getId().getProduct().getPrice());
+            bill_detail.setQuantity(cart_detail.getQuantity());
+
+            bill_details.add(billDetail_service.AddBillProduct(bill_detail));
+        }
+
+        return cartDetail_service.DeleteAllProductInCart(cart.getId());
+    }
+
+
 
 }

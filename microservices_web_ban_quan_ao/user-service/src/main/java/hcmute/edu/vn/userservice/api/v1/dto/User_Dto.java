@@ -12,6 +12,7 @@ public class User_Dto {
     private String accountName;
     private String password;
     private String avatar;
+    private int role_id;
     private String address;
     private int phone;
     private String email;
