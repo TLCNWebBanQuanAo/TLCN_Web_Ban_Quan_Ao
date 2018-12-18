@@ -31,6 +31,7 @@ import{HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import { AdminFramesComponent } from './admin-frames/admin-frames.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
     AdEdituserComponent,
     MemuAdminComponent,
     AdminMenuComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    AdminFramesComponent
   ],
   imports: [
     BrowserModule,

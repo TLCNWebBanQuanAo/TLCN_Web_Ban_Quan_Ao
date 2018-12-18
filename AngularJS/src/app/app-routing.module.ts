@@ -18,7 +18,9 @@ import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.componen
 import { AdEdittypeComponent } from './ad-edittype/ad-edittype.component';
 import { AdEditsaleComponent } from './ad-editsale/ad-editsale.component';
 import { AdEdituserComponent } from './ad-edituser/ad-edituser.component';
-import{UserprofileComponent} from './userprofile/userprofile.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { AdminFramesComponent } from './admin-frames/admin-frames.component';
+import { fromEventPattern } from 'rxjs';
 
 const router: Routes=[
   {path: 'login', component: LoginComponent},
@@ -39,6 +41,7 @@ const router: Routes=[
   {path: 'ad-editproduct',component:AdEditproductComponent},
   {path: 'ad-edituser',component:AdEdituserComponent},
   {path: 'userprofile', component:UserprofileComponent},
+  {path: 'frames', component:AdminFramesComponent},
   {path: '', redirectTo:'/homepage',pathMatch: 'full'}
 ];
 @NgModule({
