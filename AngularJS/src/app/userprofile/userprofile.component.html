@@ -1,11 +1,14 @@
 <app-header></app-header>
 <app-menu></app-menu>
 <div class="col-xs-3 " style="margin-bottom: 20px; margin-top: 30px;">
-  <img class="avatar" src="../../assets/images/10.jpg">
+  <img class="avatar" [src]="image" alt="">
+  <form [formGroup]="formImage" method="POST" (ngSubmit)="onSaveImage()"
+  novalidate>
   <label class="hinhanh" id="#bb"> Select Img
-      <input type="file" id="File"   size="60" >
+      <input type="file" (change)="onChangedImage($event)" #fileInput id="File"   size="60" >
       </label> 
-      <a class="up">Up</a>
+      <button class="up" type="submit">Up</button>
+      </form>
   </div>
   <div class="col-xs-9">
       <div class="container" style="width: 100%; margin-bottom: 20px;">

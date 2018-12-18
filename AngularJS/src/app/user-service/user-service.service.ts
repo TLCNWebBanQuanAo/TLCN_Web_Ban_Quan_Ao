@@ -19,4 +19,8 @@ export class UserServiceService {
   suathongtinnguoidung(user: User): Observable<any>{
     return this.http.post(`${this.context}api/v1/user/changepersonalinformation`,user);
   }
+  changeAvatar(user:User):Observable<any>{
+    return this.http.post(`${this.context}api/v1/user/changeavatar`, user);
+  }
 }
+

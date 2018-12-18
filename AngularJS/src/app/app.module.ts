@@ -28,7 +28,7 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { GuestServiceService } from './guest-service/guest-service.service';
 import { UserServiceService } from './user-service/user-service.service';
 import{HttpClientModule} from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 
@@ -63,11 +63,13 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
     
   ],
   providers: [
-    GuestServiceService
+    GuestServiceService,
+    UserServiceService
   ],
   bootstrap: [AppComponent]
 })

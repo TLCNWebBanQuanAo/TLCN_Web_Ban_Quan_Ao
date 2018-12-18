@@ -52,6 +52,15 @@ public class User_Controller {
     @Autowired
     private BillDetail_Service billDetail_service;
 
+    @PostMapping("/changeavatar")
+    public DataReturnRecord<User_Dto> changeavatar(@RequestBody User user){
+        DataReturnRecord<User_Dto> dataReturnRecord = new DataReturnRecord<>();
+        User usertemp= user_service.FindByAccountName(user.getAccountName());
+        usertemp.setAvatar(user.getAvatar());
+        dataReturnRecord.setData(user_mapper.UserToUserDto(user_service.ChangePassword(usertemp)));
+        dataReturnRecord.setMessage("Change Avatar successfully !!!");
+        return dataReturnRecord;
+    }
 
     @PostMapping("/changepassword/{accountname}/{oldpassword}/{newpassword}")
     public DataReturnRecord<User_Dto> ChangePassWord(@PathVariable String accountname,
@@ -74,6 +83,8 @@ public class User_Controller {
 
         user1.setUserUpdate(user1.getAccountName());
         user1.setDateUpdate(date);
+        user1.setPassword(user.getPassword());
+        user1.setAddress(user.getAddress());
         user1.setName(user.getName());
         user1.setEmail(user.getEmail());
         user1.setPhone(user.getPhone());
