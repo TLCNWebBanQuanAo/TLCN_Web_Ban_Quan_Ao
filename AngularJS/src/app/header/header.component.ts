@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
+import { User } from '../../models/user';
+import { UserServiceService } from '../user-service/user-service.service';
+import * as moment from 'moment';
+import { Route, Router } from '@angular/router'
+import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +12,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  user: User;
+  constructor() {
+    this.user = new User;
+   }
 
   ngOnInit() {
+    this.user.accountName = localStorage.getItem("accountName");
+    console.log(this.user.accountName);
   }
 
 }

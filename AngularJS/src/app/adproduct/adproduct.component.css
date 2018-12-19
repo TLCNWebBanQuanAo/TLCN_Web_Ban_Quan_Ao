@@ -30,8 +30,24 @@
     margin-right: 5px;  
     float: right;
     margin-top: 10px;
+    color: white;
   }
   .add:hover{
   background-color: grey;
   color: black;
   }
+  table{
+    width:100%;
+}
+#example_filter{
+    float:right;
+}
+#example_paginate{
+    float:right;
+}
+label {
+    display: inline-flex;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+   
+}

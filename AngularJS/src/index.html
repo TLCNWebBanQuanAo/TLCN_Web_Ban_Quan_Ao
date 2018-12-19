@@ -15,6 +15,7 @@
   <link href="./assets/css_js/css/style.css" rel='stylesheet' type='text/css' />
   <link href="./assets/css_js/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
   <link rel="stylesheet" href="./assets/css_js/css/etalage.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
   <app-root></app-root>
@@ -25,6 +26,10 @@
   <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
   <script src="./assets/css_js/js/jquery.etalage.min.js"></script>
   <script src="./assets/css_js/js/jquery.easydropdown.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <script>
     jQuery(document).ready(function($){
 
@@ -40,6 +45,28 @@
       });
 
     });
+  </script>
+  <script>
+  $(document).ready(function() {
+    $('#example').DataTable(
+        
+         {     
+
+      "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5
+       } 
+        );
+} );
+
+
+function checkAll(bx) {
+  var cbs = document.getElementsByTagName('input');
+  for(var i=0; i < cbs.length; i++) {
+    if(cbs[i].type == 'checkbox') {
+      cbs[i].checked = bx.checked;
+    }
+  }
+}
   </script>
 <!--initiate accordion-->
 <script type="text/javascript">
