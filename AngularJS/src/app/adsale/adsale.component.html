@@ -1,92 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-
-</style>
-</head>
-<body>
-  <app-admin-menu></app-admin-menu>
-<a class="add" routerLink='/ad-addtype'>Add New</a>
-<table id="customers">
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-    <td><a routerLink='/ad-edittype'>Edit</a></td>
-    <td>Delete</td>
-  </tr>
-  <tr>
-    <td>Berglunds snabbköp</td>
-    <td>Christina Berglund</td>
-    <td>Sweden</td>
-    <td>Edit</td>
-    <td>Delete</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-    <td>Edit</td>
-    <td>Delete</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-    <td>Edit</td>
-    <td>Delete</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-    <td>Edit</td>
-    <td>Delete</td>
-  </tr>
-  <tr>
-    <td>Königlich Essen</td>
-    <td>Philip Cramer</td>
-    <td>Germany</td>
-    <td>Edit</td>
-    <td>Delete</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-    <td>Edit</td>
-    <td>Delete</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-    <td>Edit</td>
-    <td>Delete</td>
-  </tr>
-  <tr>
-    <td>North/South</td>
-    <td>Simon Crowther</td>
-    <td>UK</td>
-    <td>Edit</td>
-    <td>Delete</td>
-  </tr>
-  <tr>
-    <td>Paris spécialités</td>
-    <td>Marie Bertrand</td>
-    <td>France</td>
-    <td>Edit</td>
-    <td>Delete</td>
-  </tr>
-</table>
-
-</body>
-</html>
+<app-memu-admin></app-memu-admin>
+<div style="margin-left: 40px; margin-right: 40px;">
+  <div class="app-content content">
+    <div class="content-wrapper" style="min-height: 710px">
+      <div class="content-body">
+        <section id="file-export">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <form action="#" method="post">
+                  <div class="card-header">
+                    <h4 class="card-title">Quản lý sản phẩm Sale</h4>
+                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements" style="float: right;">
+                      <a class="btn btn-primary btn-sm" href=""><i class="ft-plus white"></i> Thêm tin tức</a>
+                      <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure?')"
+                        name="delete" value="delete" style="margin-left: 5px;">
+                        <i class="ft-minus white"></i> Xóa
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card-content collapse show" style="margin-top: 3%;">
+                    <div class="card-body card-dashboard">
+                      <table class="table table-striped table-bordered">
+                        <thead>
+                          <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Company</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let client of clients">
+                            <td>{{client.firstName}}</td>
+                            <td>{{client.lastName}}</td>
+                            <td>{{client.company}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
