@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b0a58ee-7172-4ec2-8b00-5221b4329d91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/admin-menu/admin-menu.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/admin-menu/admin-menu.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/admin-menu/admin-menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/admin-menu/admin-menu.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/adproduct/adproduct.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/adproduct/adproduct.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/adproduct/adproduct.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/adproduct/adproduct.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/cart/cart.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/cart/cart.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/cart/cart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/cart/cart.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/header/header.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/single/single.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/single/single.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/userprofile/userprofile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/userprofile/userprofile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularJS/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularJS/src/app/userprofile/userprofile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularJS/src/app/userprofile/userprofile.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/db-service/target/" />
     <ignored path="$PROJECT_DIR$/user-service/target/" />
@@ -467,12 +458,12 @@
       <workItem from="1544951276685" duration="2192000" />
       <workItem from="1545025310086" duration="10480000" />
       <workItem from="1545134206180" duration="3714000" />
-      <workItem from="1545194873370" duration="802000" />
+      <workItem from="1545194873370" duration="1972000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6267000" />
+    <option name="totallyTimeSpent" value="7437000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />

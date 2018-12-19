@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.user.accountName = localStorage.getItem("accountName");
+    this.user.avatar = localStorage.getItem("avatar");
     console.log(this.user.accountName);
   }
 

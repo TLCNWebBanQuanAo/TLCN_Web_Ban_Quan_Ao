@@ -63,8 +63,12 @@ export class UserprofileComponent implements OnInit {
     console.log(this.userprofile.avatar);
     this.userService.changeAvatar(this.userprofile).pipe(first())
     .subscribe(res=>{
-      if(res.success == "true")
+      if(res.success == "true"){
         alert("Cập nhật ảnh đại diện thành công !!!");
+        console.log(res.data.avatar);
+        localStorage.setItem("avatar", res.data.avatar);
+      }
+        
       else
         alert("Cập nhật ảnh đại diện không thành công ???");
     },

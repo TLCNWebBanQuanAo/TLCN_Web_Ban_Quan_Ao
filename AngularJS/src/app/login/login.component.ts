@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     this.guestService.login(this.user).pipe(first()).subscribe(res => {
   if(res.success == "true"){
     localStorage.setItem("accountName",res.data.accountName);
+    localStorage.setItem("avatar",res.data.avatar);
     if(res.data.role_id==1){
       this.router.navigate(["/adtype"]);
     }
