@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { User } from '../../models/user';
-import { UserServiceService } from '../user-service/user-service.service';
+import { HeaderService } from '../user-service/header.service';
 import * as moment from 'moment';
 import { Route, Router } from '@angular/router'
 import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
@@ -13,14 +13,28 @@ import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
   user: User;
-  constructor() {
+  error: string;
+  image:string = "";
+  constructor(private router: Router, private headerService: HeaderService,private fb: FormBuilder) {
     this.user = new User;
    }
 
   ngOnInit() {
     this.user.accountName = localStorage.getItem("accountName");
-    this.user.avatar = localStorage.getItem("avatar");
     console.log(this.user.accountName);
+    this.headerService.layavatar(this.user.accountName).pipe(first()).subscribe(res => {
+      if (res.success == "true") {
+        
+        this.image = res.data.avatar;
+      }
+      else {
+        location.href = "/login";
+      }
+    },
+      err => {
+        console.log("login fail: " + err);
+        this.error = err;
+      })
+  }
   }
 
-}
