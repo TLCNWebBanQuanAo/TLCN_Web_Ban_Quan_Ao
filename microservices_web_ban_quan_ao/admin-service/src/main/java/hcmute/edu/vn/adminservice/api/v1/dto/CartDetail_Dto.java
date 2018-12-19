@@ -6,7 +6,7 @@ import lombok.Data;
 public class CartDetail_Dto {
     private String name;
     private Double price;
-    private int quanlity;
+    private int quantity;
     private int size;
     private String discrible;
     private String images;
