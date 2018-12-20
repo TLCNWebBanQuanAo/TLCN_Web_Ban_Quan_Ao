@@ -22,7 +22,6 @@ import { AdproductComponent } from './adproduct/adproduct.component';
 import { AdAddproductComponent } from './ad-addproduct/ad-addproduct.component';
 import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.component';
 import { AduserComponent } from './aduser/aduser.component';
-import { AdEdituserComponent } from './ad-edituser/ad-edituser.component';
 import { MemuAdminComponent } from './memu-admin/memu-admin.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { GuestServiceService } from './guest-service/guest-service.service';
@@ -57,7 +56,6 @@ import { AdminFramesComponent } from './admin-frames/admin-frames.component';
     AdAddproductComponent,
     AdEditproductComponent,
     AduserComponent,
-    AdEdituserComponent,
     MemuAdminComponent,
     AdminMenuComponent,
     UserprofileComponent,

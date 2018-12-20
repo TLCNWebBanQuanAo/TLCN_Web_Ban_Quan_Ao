@@ -11,7 +11,7 @@
         <module name="gateway-service" />
         <module name="microservices_web_ban_quan_ao" />
       </profile>
-      <profile name="Annotation profile for guest-service" enabled="true">
+      <profile name="Annotation profile for admin-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -39,7 +39,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="admin-service" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="admin-service" options="-Amapstruct.defaultComponentModel=spring" />
       <module name="db-service" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />

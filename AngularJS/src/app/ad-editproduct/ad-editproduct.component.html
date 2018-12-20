@@ -1,36 +1,86 @@
-<app-admin-menu></app-admin-menu>
-<div class="container">
-    <form action="/action_page.php">
-    <div class="row">
-      <div class="col-25">
-        <label for="fname">First Name</label>
+<app-memu-admin></app-memu-admin>
+<div style="margin-left: 40px; margin-right: 40px;">
+  <div class="app-content container center-layout mt-2">
+    <!-- Basic form layout section start -->
+    <section id="horizontal-form-layouts">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title" id="horz-layout-basic">Chỉnh Sửa Thông Tin Sản Phẩm</h4>
+            </div>
+            <div class="card-content collpase show">
+              <div class="card-body">
+                <form class="form form-horizontal">
+                  <div class="form-body">
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control" for="projectinput1" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Tên sản phẩm</label>
+                      <div class="col-md-9">
+                        <input type="text" id="projectinput1" class="form-control" placeholder="Tên sản phẩm" name="fname">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control" for="projectinput2" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Giá</label>
+                      <div class="col-md-9">
+                        <input type="text" id="projectinput2" class="form-control" placeholder="Giá" name="lname">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control" for="projectinput3" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Số lượng</label>
+                      <div class="col-md-9">
+                        <input type="text" id="projectinput3" class="form-control" placeholder="Số lượng" name="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 label-control" for="projectinput3" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Size</label>
+                        <div class="col-md-9">
+                          <input type="text" id="projectinput3" class="form-control" placeholder="Size" name="">
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control" for="projectinput4" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Loại</label>
+                      <div class="col-md-9">
+                        <input type="text" id="projectinput4" class="form-control" placeholder="Loại" name="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control" for="projectinput5" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Tình trạng</label>
+                      <div class="col-md-9">
+                        <input type="text" id="projectinput5" class="form-control" placeholder="Tình trạng" name="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 label-control" for="projectinput4" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Mô tả</label>
+                        <div class="col-md-9">
+                          <input type="text" id="projectinput4" class="form-control" placeholder="Mô tả" name="">
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control" style="padding-top: 12px;padding-right: 0px;padding-left: 15px;">Select File</label>
+                      <div class="col-md-9">
+                        <label id="projectinput8" class="file center-block">
+                          <input type="file" id="file">
+                          <span class="file-custom"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-actions">
+                    <button type="button" class="btn btn-warning mr-1">
+                      <i class="ft-x"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fa fa-check-square-o"></i> Save
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Your name..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Last Name</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="country">Country</label>
-      </div>
-      <div class="col-75">
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <input type="submit" value="Submit">
-    </div>
-    </form>
+    </section>
+    <!-- // Basic form layout section end -->
   </div>
+</div>
+<app-footer></app-footer>
