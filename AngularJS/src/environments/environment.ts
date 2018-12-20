@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   base_guest_url:'http://localhost:8080/',
-  base_user_url:'http://localhost:8081/'
+  base_user_url:'http://localhost:8081/',
+  base_admin_url:'http://localhost:8083'
 };
 
 /*

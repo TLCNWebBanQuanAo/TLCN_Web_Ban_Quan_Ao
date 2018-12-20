@@ -4,6 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
+import { User } from '../../models/user';
+import { Router } from '@angular/router';
+import { AdminServiceService } from '../admin-service/admin-service.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-aduser',
@@ -11,25 +15,23 @@ import 'datatables.net-bs4';
   styleUrls: ['./aduser.component.css']
 })
 export class AduserComponent implements OnInit {
-// Our array of clients
-clients: any[];
-dataTable: any;
+  // Our array of clients
+  users: User[];
+  dataTable: any;
 
-constructor(private http: HttpClient, private chRef: ChangeDetectorRef) { }
+  constructor(private chRef: ChangeDetectorRef, private router: Router, private adminservice: AdminServiceService) { }
 
-ngOnInit(){
-this.http.get('https://5a5a9e00bc6e340012a03796.mockapi.io/clients')
-  .subscribe((data: any[]) => {
-    this.clients = data;
+  ngOnInit() {
+    this.adminservice.GetListUser().subscribe(res => {
+        this.users = res;
 
-    // You'll have to wait that changeDetection occurs and projects data into 
-    // the HTML template, you can ask Angular to that for you ;-)
-    this.chRef.detectChanges();
+      this.chRef.detectChanges();
 
-    // Now you can use jQuery DataTables :
-    const table: any = $('table');
-    this.dataTable = table.DataTable();
-  });
-}
+      const table: any = $('table');
+      this.dataTable = table.DataTable();
+    }, err => {
+      console.log(err.message)
+    });
+  }
 
 }
