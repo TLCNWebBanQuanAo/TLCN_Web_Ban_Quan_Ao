@@ -16,7 +16,7 @@ public class CartDetailService_Impl implements CartDetail_Service {
 
     @Override
     public List<Cart_Detail> RetrieveAllProductInCart (int id){
-        List<Cart_Detail> cart_details = cart_detail_repository.findByIdCart(id);
+        List<Cart_Detail> cart_details = cart_detail_repository.findById_CartId(Integer.valueOf(id));
         if(cart_details.isEmpty())
             throw new NotFoundException("Your cart is empty !");
         return cart_details;
@@ -34,7 +34,7 @@ public class CartDetailService_Impl implements CartDetail_Service {
 
     @Override
     public boolean DeleteAllProductInCart(int id){
-        List<Cart_Detail> cart_details = cart_detail_repository.findByIdCart(id);
+        List<Cart_Detail> cart_details = cart_detail_repository.findById_CartId(Integer.valueOf(id));
 
         if(cart_details.isEmpty())
             throw new NotFoundException("Your cart is empty !");

@@ -26,6 +26,8 @@ import { MemuAdminComponent } from './memu-admin/memu-admin.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { GuestServiceService } from './guest-service/guest-service.service';
 import { UserServiceService } from './user-service/user-service.service';
+import{HeaderService} from './user-service/header.service'
+import{UserproductService} from './user-service/userproduct.service'
 import{HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { from } from 'rxjs';
@@ -69,7 +71,9 @@ import { AdminFramesComponent } from './admin-frames/admin-frames.component';
   ],
   providers: [
     GuestServiceService,
-    UserServiceService
+    UserServiceService,
+    UserproductService,
+    HeaderService
   ],
   bootstrap: [AppComponent]
 })
