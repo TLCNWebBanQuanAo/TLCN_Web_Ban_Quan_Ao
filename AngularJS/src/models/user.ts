@@ -1,19 +1,19 @@
 export class User {
-    id: Number;
-    name: String;
+    id: number;
+    name: string;
     dateOfBirth: Date;
-    gender: Number;
-    accountName: String;
-    password: String;
+    gender: number;
+    accountName: string;
+    password: string;
     confirmpassword: string;
-    avatar: String;
-    address: String;
-    phone: Number;
-    email: String;
+    avatar: string;
+    address: string;
+    phone: number;
+    email: string;
     role_id: number;
-    status: String;
-    userCreate: String;
+    status: string;
+    userCreate: string;
     dateCreate: Date;
-    userUpdate: String;
+    userUpdate: string;
     dateUpdate: Date;
 }

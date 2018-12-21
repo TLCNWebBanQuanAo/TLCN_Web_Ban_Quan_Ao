@@ -12,11 +12,7 @@
                     <h4 class="card-title">Quản lý loại sản phẩm</h4>
                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements" style="float: right;">
-                      <a class="btn btn-primary btn-sm" href=""><i class="ft-plus white"></i> Thêm tin tức</a>
-                      <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure?')"
-                        name="delete" value="delete" style="margin-left: 5px;">
-                        <i class="ft-minus white"></i> Xóa
-                      </button>
+                      <a class="btn btn-primary btn-sm" href=""><i class="ft-plus white"></i> Thêm loại sản phẩm</a>
                     </div>
                   </div>
                   <div class="card-content collapse show" style="margin-top: 3%;">
@@ -24,16 +20,16 @@
                       <table class="table table-striped table-bordered">
                         <thead>
                           <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Company</th>
+                            <th>Tên loại sản phẩm </th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let client of clients">
-                            <td>{{client.firstName}}</td>
-                            <td>{{client.lastName}}</td>
-                            <td>{{client.company}}</td>
+                          <tr *ngFor="let type of types">
+                            <td>{{type.typename}}</td>
+                            <td><button>Sửa</button></td>
+                            <td><button>Xóa</button></td>
                           </tr>
                         </tbody>
                       </table>
