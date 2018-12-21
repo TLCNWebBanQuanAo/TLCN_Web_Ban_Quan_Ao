@@ -7,7 +7,7 @@
       </div>
       <div class="">
         <select id="country" [(ngModel)]="typeid" name="id" (change)="onChangeProductType()">
-          <option *ngFor="let t of type" [value]="t.id">{{t.name}}</option>
+          <option *ngFor="let t of type" [value]="t.id">{{t.typename}}</option>
         </select>
       </div>
     </div>

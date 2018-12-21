@@ -70,7 +70,7 @@ export class HomepageComponent implements OnInit {
         this.type = res.data;
         const typeAll:Type = new Type;
         typeAll.id = 0;
-        typeAll.name = "Tất cả";
+        typeAll.typename = "Tất cả";
         this.type.unshift(typeAll);
         console.log(this.type);
       }
