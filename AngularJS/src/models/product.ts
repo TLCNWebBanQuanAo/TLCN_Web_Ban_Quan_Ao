@@ -1,14 +1,14 @@
 export class Product{
-id: Number;
-name: String;
-price: Number;
-status: String;
-quantity: Number;
-size: Number;
-discrible: String;
-images: String;
-userCreate: String;
+id: number;
+name: string;
+price: number;
+status: string;
+quantity: number;
+size: number;
+discrible: string;
+images: string;
+userCreate: string;
 dateCreate: Date;
-userUpdate: String;
+userUpdate: string;
 dateUpdate: Date; 
 }

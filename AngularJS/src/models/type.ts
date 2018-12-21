@@ -1,8 +1,8 @@
 export class Type {
-    id: Number;
-    name: String;
-    userCreate: String;
+    id: number;
+    name: string;
+    userCreate: string;
     dateCreate: Date;
-    userUpdate: String;
+    userUpdate: string;
     dateUpdate: Date;
 }
