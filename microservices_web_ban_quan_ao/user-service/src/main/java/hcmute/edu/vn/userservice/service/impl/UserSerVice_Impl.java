@@ -1,10 +1,14 @@
 package hcmute.edu.vn.userservice.service.impl;
 
 import hcmute.edu.vn.userservice.exception.NotFoundException;
+import hcmute.edu.vn.userservice.model.Product;
 import hcmute.edu.vn.userservice.model.User;
 import hcmute.edu.vn.userservice.repository.User_Repository;
 import hcmute.edu.vn.userservice.service.User_Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -39,6 +43,7 @@ public class UserSerVice_Impl implements User_Service {
             throw new NotFoundException("Account does not exist!.");
         return user.get();
     }
+
 }
 
 

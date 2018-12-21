@@ -2,23 +2,21 @@ package hcmute.edu.vn.userservice.controller;
 
 import hcmute.edu.vn.userservice.api.v1.DataReturnList;
 import hcmute.edu.vn.userservice.api.v1.DataReturnRecord;
-import hcmute.edu.vn.userservice.api.v1.dto.Bill_Dto;
-import hcmute.edu.vn.userservice.api.v1.dto.CartDetail_Dto;
-import hcmute.edu.vn.userservice.api.v1.dto.Product_Dto;
-import hcmute.edu.vn.userservice.api.v1.dto.User_Dto;
-import hcmute.edu.vn.userservice.api.v1.mapper.Bill_Mapper;
-import hcmute.edu.vn.userservice.api.v1.mapper.CartDetail_Mapper;
-import hcmute.edu.vn.userservice.api.v1.mapper.Product_Mapper;
-import hcmute.edu.vn.userservice.api.v1.mapper.User_Mapper;
+import hcmute.edu.vn.userservice.api.v1.dto.*;
+import hcmute.edu.vn.userservice.api.v1.mapper.*;
+import hcmute.edu.vn.userservice.exception.NotFoundException;
 import hcmute.edu.vn.userservice.model.*;
 import hcmute.edu.vn.userservice.repository.Product_Repository;
 import hcmute.edu.vn.userservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 @RestController
@@ -27,6 +25,8 @@ import java.util.stream.Collectors;
 public class User_Controller {
     @Autowired
     private User_Service user_service;
+    @Autowired
+    private Type_Service type_service;
 
     @Autowired
     private User_Mapper user_mapper;
@@ -48,6 +48,8 @@ public class User_Controller {
 
     @Autowired
     private Product_Mapper product_mapper;
+    @Autowired
+    private Type_Mapper type_mapper;
 
     @Autowired
     private BillDetail_Service billDetail_service;
@@ -104,6 +106,16 @@ public class User_Controller {
         User user = user_service.FindByAccountName(accountname);
         dataReturnRecord.setMessage("Get User By User Name");
         dataReturnRecord.setData(user_mapper.UserToUserDto(user));
+
+        return dataReturnRecord;
+    }
+    @GetMapping("/product/{productid}")
+    public DataReturnRecord<Product_Dto> GetProduct(@PathVariable int productid){
+        DataReturnRecord<Product_Dto> dataReturnRecord = new DataReturnRecord<>();
+
+        Product product = product_service.FindProductById(productid);
+        dataReturnRecord.setMessage("Get Product by id");
+        dataReturnRecord.setData(product_mapper.ProductToProductDto(product));
 
         return dataReturnRecord;
     }
@@ -233,7 +245,37 @@ public class User_Controller {
 
         return cartDetail_service.DeleteAllProductInCart(cart.getId());
     }
+    @GetMapping("/types")
+    public DataReturnList<Type_Dto> getAllType(){
+        DataReturnList<Type_Dto> typeDtoDataReturnList = new DataReturnList<>();
+        try{
+            typeDtoDataReturnList.setMessage("Lay danh sach loai san pham thanh cong !!!");
+            typeDtoDataReturnList.setData(type_service.findAllType().stream()
+                    .map(type_mapper::TypeToTypeDto).collect(Collectors.toList()));
+        }catch (Exception e){
+            typeDtoDataReturnList.setSuccess("false");
+            typeDtoDataReturnList.setMessage("Khong lay duoc danh sach loai san pham ???");
+        }
+        return typeDtoDataReturnList;
+    }
+    @GetMapping("/products")
+    public DataReturnList<Product_Dto> getAllProductPaging(@RequestParam Optional<Integer> id ,@RequestParam Optional<String> keyword, @RequestParam Optional<Integer> page
+            , @RequestParam Optional<Integer> size){
+        DataReturnList<Product_Dto> dataReturnList = new DataReturnList<>();
+        Page<Product> productPage = null;
 
+        try {
+            productPage = product_service.findAllProductPaging(id ,keyword, page, size);
+            dataReturnList.setPagenumber(productPage.getTotalPages());
+            dataReturnList.setData(productPage.getContent().stream().map(product_mapper::ProductToProductDto)
+                    .collect(Collectors.toList()));
+            dataReturnList.setMessage("Co " + dataReturnList.getPagenumber() + " trang san pham");
+        }catch (Exception e){
+            dataReturnList.setSuccess("false");
+            dataReturnList.setMessage("Khong the lay san pham ???");
+        }
 
+        return dataReturnList;
+    }
 
 }

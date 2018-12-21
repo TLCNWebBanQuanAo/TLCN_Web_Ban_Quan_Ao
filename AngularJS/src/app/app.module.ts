@@ -27,6 +27,7 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { GuestServiceService } from './guest-service/guest-service.service';
 import { UserServiceService } from './user-service/user-service.service';
 import{HeaderService} from './user-service/header.service'
+import{TypeService} from './user-service/type.service'
 import{UserproductService} from './user-service/userproduct.service'
 import{HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -73,7 +74,8 @@ import { AdminFramesComponent } from './admin-frames/admin-frames.component';
     GuestServiceService,
     UserServiceService,
     UserproductService,
-    HeaderService
+    HeaderService,
+    TypeService
   ],
   bootstrap: [AppComponent]
 })

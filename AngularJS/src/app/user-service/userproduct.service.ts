@@ -16,4 +16,16 @@ export class UserproductService {
     return this.http.get(`${this.context}api/v1/user/getproductincart/${accountName}`
     );
   }
+  addProductInCart(accountName:string, product_id:Number, quantity:Number): Observable<any>{
+    return this.http.post(`${this.context}api/v1/user/addproductincart/${accountName}/${product_id}/${quantity}`,"");
+  }
+
+  getProduct(productId:Number):Observable<any>{
+    return this.http.get(`${this.context}api/v1/user/product/${productId}`);
+  }
+  getAllProductsPage(type:number ,keyword:string, page:number, size:number): Observable<any>{
+    if(!keyword)
+      keyword = "";
+    return this.http.get(`${this.context}api/v1/user/products?keyword=${keyword}&page=${page}&size=${size}&id=${type}`);
+  }
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,6 +23,7 @@ public class Product {
     private int quantity;;
     private int size;
     private String discrible;
+    @Size(max = 2000000)
     private String images;
     private String userCreate;
     private Date dateCreate;

@@ -25,7 +25,7 @@ const router: Routes=[
   {path: 'login', component: LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'homepage',component:HomepageComponent},
-  {path: 'single',component:SingleComponent},
+  {path: 'single/:id/:quantity',component:SingleComponent},
   {path: 'allitem',component:AllItemComponent},
   {path: 'cart',component:CartComponent},
   {path: 'adtype',component:AdtypeComponent},
