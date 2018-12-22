@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class Type_Dto {
     private int id;
-    private String typename;
+    private String name;
 
 }

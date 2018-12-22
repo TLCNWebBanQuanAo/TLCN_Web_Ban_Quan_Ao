@@ -22,7 +22,14 @@ public class User_Controller {
     @Autowired
     private UserMapper userMapper;
     @PostMapping("/edituser")
-    public User editUser(@RequestBody User user){
+    public User editUser(@RequestBody int id){
+        User user = user_service.findUserById(id);
+            if(user.getStatus() == 1){
+                user.setStatus(2);
+            }
+            else if(user.getStatus() == 2){
+                user.setStatus(1);
+            }
         return user_service.editUser(user);
     }
     @DeleteMapping("deleteuser/{userId}")

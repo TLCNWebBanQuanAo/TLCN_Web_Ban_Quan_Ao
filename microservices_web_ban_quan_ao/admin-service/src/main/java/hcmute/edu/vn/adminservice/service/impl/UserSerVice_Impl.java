@@ -21,7 +21,7 @@ public class UserSerVice_Impl implements User_Service {
     @Override
     public User editUser(User user) {
         if(user == null)
-            throw new NotFoundException("sua user khong thanh cong !!!");
+            throw new NotFoundException("Sua user khong thanh cong !!!");
         return user_repository.save(user);
     }
 

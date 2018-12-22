@@ -11,12 +11,13 @@
             </div>
             <div class="card-content collpase show">
               <div class="card-body">
-                <form class="form form-horizontal">
+                <form class="form form-horizontal" id="frmUser" (ngSubmit)="createType()" action="" method="POST" #f="ngForm"
+                enctype="multipart/form-data" novalidate>
                   <div class="form-body">
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput1" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Loại</label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput1" class="form-control" placeholder="Loại" name="fname">
+                        <input type="text" id="projectinput1" class="form-control" [(ngModel)]="type.name" placeholder="Loại" name="fname">
                       </div>
                     </div>
                   </div>

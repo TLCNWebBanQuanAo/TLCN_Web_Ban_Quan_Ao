@@ -11,9 +11,10 @@ export class User {
     phone: number;
     email: string;
     role_id: number;
-    status: string;
+    status: number;
     userCreate: string;
     dateCreate: Date;
     userUpdate: string;
     dateUpdate: Date;
+    isActive: string;
 }

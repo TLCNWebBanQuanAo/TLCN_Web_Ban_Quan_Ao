@@ -14,7 +14,6 @@ import { RegisterComponent } from './register/register.component';
 import { SingleComponent } from './single/single.component';
 import { AdtypeComponent } from './adtype/adtype.component';
 import { AdAddtypeComponent } from './ad-addtype/ad-addtype.component';
-import { AdEdittypeComponent } from './ad-edittype/ad-edittype.component';
 import { AdEditsaleComponent } from './ad-editsale/ad-editsale.component';
 import { AdAddsaleComponent } from './ad-addsale/ad-addsale.component';
 import { AdsaleComponent } from './adsale/adsale.component';
@@ -49,7 +48,6 @@ import { AdminFramesComponent } from './admin-frames/admin-frames.component';
     SingleComponent,
     AdtypeComponent,
     AdAddtypeComponent,
-    AdEdittypeComponent,
     AdEditsaleComponent,
     AdAddsaleComponent,
     AdsaleComponent,

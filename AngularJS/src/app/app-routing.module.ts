@@ -15,7 +15,6 @@ import { AdAddproductComponent } from './ad-addproduct/ad-addproduct.component';
 import { AdAddsaleComponent } from './ad-addsale/ad-addsale.component';
 import { AdAddtypeComponent } from './ad-addtype/ad-addtype.component';
 import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.component';
-import { AdEdittypeComponent } from './ad-edittype/ad-edittype.component';
 import { AdEditsaleComponent } from './ad-editsale/ad-editsale.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { AdminFramesComponent } from './admin-frames/admin-frames.component';
@@ -35,7 +34,6 @@ const router: Routes=[
   {path: 'ad-addsale',component:AdAddsaleComponent},
   {path: 'ad-addproduct',component:AdAddproductComponent},
   {path: 'ad-addtype',component:AdAddtypeComponent},
-  {path: 'ad-edittype',component:AdEdittypeComponent},
   {path: 'ad-editsale',component:AdEditsaleComponent},
   {path: 'ad-editproduct',component:AdEditproductComponent},
   {path: 'userprofile', component:UserprofileComponent},

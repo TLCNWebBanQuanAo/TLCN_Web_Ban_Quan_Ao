@@ -6,6 +6,7 @@ import java.util.Date;
 
 @Data
 public class User_Dto {
+    private int id;
     private String name;
     private Date dateOfBirth;
     private int gender;

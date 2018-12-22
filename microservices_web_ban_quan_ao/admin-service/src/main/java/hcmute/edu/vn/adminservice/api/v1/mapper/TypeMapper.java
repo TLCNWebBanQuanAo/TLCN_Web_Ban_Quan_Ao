@@ -12,9 +12,5 @@ import org.mapstruct.Mapper;
 public interface TypeMapper {
     TypeMapper INSTANCE = Mappers.getMapper(TypeMapper.class);
 
-    @Mappings({
-            @Mapping(source = "name", target = "typename")
-    })
-
     Type_Dto typeToTypeDto(Type type);
 }
