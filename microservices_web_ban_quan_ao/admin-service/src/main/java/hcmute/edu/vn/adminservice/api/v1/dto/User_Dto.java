@@ -17,4 +17,5 @@ public class User_Dto {
     private int phone;
     private String email;
     private int status;
+    private int role_id;
 }

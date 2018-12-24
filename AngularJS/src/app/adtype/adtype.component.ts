@@ -21,11 +21,18 @@ export class AdtypeComponent implements OnInit {
   type: Type;
   isClick: boolean = false;
   editTypeName: string;
+  role:string ; 
 
   constructor(private http: HttpClient, private chRef: ChangeDetectorRef, private router: Router, private adminservice: AdminServiceService) { }
 
   ngOnInit() {
-    this.getAllType();
+    this.role= localStorage.getItem("role");
+    if(this.role=="1"){
+      this.getAllType();
+    }else{
+      this.router.navigate(["/homepage"]);
+    }
+   
   }
 
   getAllType() {

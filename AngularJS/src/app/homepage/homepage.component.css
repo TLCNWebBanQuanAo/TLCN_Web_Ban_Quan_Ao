@@ -1,0 +1,8 @@
+.menu{
+    margin: 20px;
+    background-color: beige;
+    padding: 10px;
+width: 300px !important;
+position: inherit;
+z-index: 1000000;
+}

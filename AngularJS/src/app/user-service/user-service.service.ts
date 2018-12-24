@@ -22,5 +22,8 @@ export class UserServiceService {
   changeAvatar(user:User):Observable<any>{
     return this.http.post(`${this.context}api/v1/user/changeavatar`, user);
   }
+  getInvoicesByUser(accountName:string):Observable<any>{
+    return this.http.get(`${this.context}api/v1/user/getbilllist/${accountName}`);
+  }
 }
 

@@ -33,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { AdminFramesComponent } from './admin-frames/admin-frames.component';
+import { BillComponent } from './bill/bill.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AdminFramesComponent } from './admin-frames/admin-frames.component';
     MemuAdminComponent,
     AdminMenuComponent,
     UserprofileComponent,
-    AdminFramesComponent
+    AdminFramesComponent,
+    BillComponent
   ],
   imports: [
     BrowserModule,

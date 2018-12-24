@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Product } from '../../models/product';
+import { User } from '../../models/user';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -24,5 +25,9 @@ export class CartService {
 
   getProductInCart(accountName: string): Observable<any>{
     return this.http.get(`${this.context}/api/v1/user/getproductincart/${accountName}`);
+  }
+  thanhToan(accountName:string, diaChiGiaoHang:string, tongTien:number):Observable<any>{
+    let user:User = JSON.parse('{ "accountName": "' + accountName+ '",' + '"address": "' +diaChiGiaoHang+ '"}');
+    return this.http.post(`${this.context}/api/v1/user/thanhtoan/${tongTien}`, user);
   }
 }

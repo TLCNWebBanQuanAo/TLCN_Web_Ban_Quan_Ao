@@ -27,17 +27,23 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
   register() {
-    this.guestService.register(this.user).pipe(first()).subscribe(res => {
-      alert("Tao thanh cong");
-      this.user.accountName = "";
-      this.user.name = "";
-      this.user.email = "";
-      this.user.password = "";
-      this.user.confirmpassword = "";
+    if(this.user.password==this.user.confirmpassword){
+      this.guestService.register(this.user).pipe(first()).subscribe(res => {
+        alert("Tao thanh cong");
+        this.user.accountName = "";
+        this.user.name = "";
+        this.user.email = "";
+        this.user.password = "";
+        this.user.confirmpassword = "";
+        this.router.navigate(["/login"]);
+      
+      },
+      err=>{
+        this.error = err.message;
+      })
+    }
+    else
+    alert("mật khẩu không khớp");
     
-    },
-    err=>{
-      this.error = err.message;
-    })
   }
 }

@@ -18,11 +18,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     localStorage.setItem("accountName","");
+    localStorage.setItem("role",null);
   }
   login() {
     this.guestService.login(this.user).pipe(first()).subscribe(res => {
   if(res.success == "true"){
     localStorage.setItem("accountName",res.data.accountName);
+    localStorage.setItem("role",res.data.role_id);
     if(res.data.role_id==1){
       this.router.navigate(["/adtype"]);
     }

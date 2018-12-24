@@ -1,17 +1,15 @@
 <app-header></app-header>
 <app-menu></app-menu>
-<div class="">
+<div class="menu">
     <div class="">
-      <div class="">
-        <label class="" for="country">Sex</label>
-      </div>
-      <div class="">
+      <div class="" style="margin-top: 10px;">
+          <label class="" for="country" style="margin-right: 10px;">Loại</label>
         <select id="country" [(ngModel)]="typeid" name="id" (change)="onChangeProductType()">
-          <option *ngFor="let t of type" [value]="t.id">{{t.typename}}</option>
+          <option *ngFor="let t of type" [value]="t.id">{{t.name}}</option>
         </select>
       </div>
     </div>
-    <button class="btn btn-danger btn-sm" (click)="onFilter()">Search</button>
+    <button class="btn btn-danger btn-sm" style="margin-left: 10px;" (click)="onFilter()">Search</button>
     <div class="search">	  
       <input type="text" [(ngModel)]="keyword" name="keyword" class="textbox" value="Search">
       

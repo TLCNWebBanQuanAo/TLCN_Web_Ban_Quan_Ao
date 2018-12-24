@@ -1,14 +1,13 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../../models/user';
+import { AdminServiceService } from '../admin-service/admin-service.service';
+import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
-import { User } from '../../models/user';
-import { Router } from '@angular/router';
-import { AdminServiceService } from '../admin-service/admin-service.service';
-import { from } from 'rxjs';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-aduser',
@@ -18,15 +17,22 @@ import { first } from 'rxjs/operators';
 export class AduserComponent implements OnInit {
   // Our array of clients
   users: User[];
-
   dataTable: any;
+  user: User;
+  isClick: boolean = false;
+  editRole: number;
+  role:string ; 
   kichhoat: string;
-  roleChange: string;
 
-  constructor(private chRef: ChangeDetectorRef, private router: Router, private adminservice: AdminServiceService) { }
+  constructor(private http: HttpClient, private chRef: ChangeDetectorRef, private router: Router, private adminservice: AdminServiceService) { }
 
   ngOnInit() {
-    this.load();
+    this.role= localStorage.getItem("role");
+    if(this.role=="1"){
+      this.load();
+    }else{
+      this.router.navigate(["/homepage"]);
+    }
   }
 
   load() {

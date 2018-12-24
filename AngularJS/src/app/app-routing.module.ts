@@ -18,7 +18,8 @@ import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.componen
 import { AdEditsaleComponent } from './ad-editsale/ad-editsale.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { AdminFramesComponent } from './admin-frames/admin-frames.component';
-import { fromEventPattern } from 'rxjs';
+import { fromEventPattern, from } from 'rxjs';
+import { BillComponent } from './bill/bill.component';
 
 const router: Routes=[
   {path: 'login', component: LoginComponent},
@@ -38,6 +39,7 @@ const router: Routes=[
   {path: 'ad-editproduct',component:AdEditproductComponent},
   {path: 'userprofile', component:UserprofileComponent},
   {path: 'frames', component:AdminFramesComponent},
+  {path: 'bill' , component:BillComponent},
   {path: '', redirectTo:'/homepage',pathMatch: 'full'}
 ];
 @NgModule({

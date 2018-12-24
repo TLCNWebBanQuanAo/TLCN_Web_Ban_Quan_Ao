@@ -4,9 +4,7 @@ import hcmute.edu.vn.userservice.api.v1.DataReturnList;
 import hcmute.edu.vn.userservice.api.v1.DataReturnRecord;
 import hcmute.edu.vn.userservice.api.v1.dto.*;
 import hcmute.edu.vn.userservice.api.v1.mapper.*;
-import hcmute.edu.vn.userservice.exception.NotFoundException;
 import hcmute.edu.vn.userservice.model.*;
-import hcmute.edu.vn.userservice.repository.Product_Repository;
 import hcmute.edu.vn.userservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 @RestController
@@ -131,18 +128,19 @@ public class User_Controller {
 
     }
 
-    @GetMapping("/getbilllist")
-    public DataReturnList<Bill_Dto> GetBillList() {
+    @GetMapping("/getbilllist/{accountName}")
+    public DataReturnList<Bill_Dto> getBills(@PathVariable String accountName){
         DataReturnList<Bill_Dto> dataReturnList = new DataReturnList<>();
-        List<Bill> bills = bill_service.Bill_List();
-        if (bills.isEmpty()){
-            dataReturnList.setMessage("Your bills does not exist !");
+
+        try{
+            dataReturnList.setMessage("Get All Invoice Of User");
+            dataReturnList.setData(bill_service.findAllByUser(accountName).stream()
+                    .map(bill_mapper::BillToBillDto).collect(Collectors.toList()));
+        }catch (Exception e){
+            dataReturnList.setMessage("Have No Invoice ???");
             dataReturnList.setSuccess("false");
         }
-        else {
-            dataReturnList.setMessage("Get all your bills");
-            dataReturnList.setData(bills.stream().map(bill_mapper::BillToBillDto).collect(Collectors.toList()));
-        }
+
         return dataReturnList;
     }
 
@@ -276,6 +274,44 @@ public class User_Controller {
         }
 
         return dataReturnList;
+    }
+    @PostMapping("/thanhtoan/{total}")
+    public boolean thanhToan(@RequestBody User userTemp,  @PathVariable Double total){
+        User user = user_service.FindByAccountName(userTemp.getAccountName());
+        Date date = new Date();
+
+        Bill bill = new Bill();
+        bill.setTotal(total);
+        bill.setUser(user);
+        bill.setAddress(userTemp.getAddress());
+        bill.setDateCreate(date);
+        bill.setDateUpdate(date);
+        bill.setUserCreate(userTemp.getAccountName());
+        bill.setUserUpdate(userTemp.getAccountName());
+
+        Bill invoiceAdd = bill_service.AddBill(bill);
+
+        System.out.println(invoiceAdd.getId());
+
+        Cart cart = user.getCart();
+        List<Cart_Detail> cart_details = cartDetail_service.RetrieveAllProductInCart(cart.getId());
+
+        List<Bill_Detail> bill_details = new ArrayList<>();
+
+        for (Cart_Detail cart_detail: cart_details) {
+            Bill_Product_Id bill_product_id = new Bill_Product_Id();
+            bill_product_id.setBill(invoiceAdd);
+            bill_product_id.setProduct(cart_detail.getId().getProduct());
+
+            Bill_Detail bill_detail = new Bill_Detail();
+            bill_detail.setId(bill_product_id);
+            bill_detail.setPrice(cart_detail.getId().getProduct().getPrice());
+            bill_detail.setQuantity(cart_detail.getQuantity());
+
+            bill_details.add(billDetail_service.AddBillProduct(bill_detail));
+        }
+
+        return cartDetail_service.DeleteAllProductInCart(cart.getId());
     }
 
 }
