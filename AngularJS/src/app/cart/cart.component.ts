@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/models/product';
 import { CartService } from '../user-service/cart.service'
 import { from } from 'rxjs';
+import { isNumber } from 'util';
 
 @Component({
   selector: 'app-cart',
@@ -26,12 +27,12 @@ export class CartComponent implements OnInit {
   accountName: string = "";
   temp = 0;
   diaChiGiaoHang: string = "";
+  phone: number = 0;
   tong: number = 0;
   constructor(private http: HttpClient, private chRef: ChangeDetectorRef, private router: Router, private UserproductService: UserproductService, private fb: FormBuilder, private cartService: CartService) { }
 
   ngOnInit() {
     this.accountName = localStorage.getItem("accountName");
-
     this.UserproductService.laythongtingiohang(this.accountName).pipe(first())
       .subscribe(res => {
         this.clients = res.data;
@@ -65,6 +66,7 @@ export class CartComponent implements OnInit {
     this.cartService.deleteProductInCart(this.accountName.toString(), productId).pipe(first())
       .subscribe(res => {
         if (res.success == "true") {
+         
           this.clients.forEach(product => {
             if (product.product_id == productId) {
               this.clients.splice(this.temp, 1);
@@ -88,7 +90,7 @@ export class CartComponent implements OnInit {
           this.clients = null;
           this.diaChiGiaoHang = "";
           this.tong = 0;
-          alert("Thanh toán thành công !!!");
+           alert("Thanh toán thành công !!!");
         }
         else
           alert("Thanh toán không thành công ???");

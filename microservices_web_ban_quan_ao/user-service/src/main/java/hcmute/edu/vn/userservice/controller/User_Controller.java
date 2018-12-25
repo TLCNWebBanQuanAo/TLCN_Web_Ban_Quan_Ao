@@ -212,8 +212,8 @@ public class User_Controller {
 
         Bill bill = new Bill();
         bill.setTotal(Double.valueOf(0));
-        bill.setAddress("");
-        bill.setPhone(Integer.valueOf(0));
+        bill.setAddress(user.getAddress());
+        bill.setPhone(user.getPhone());
         bill.setStatus(Integer.valueOf(0));
         bill.setDateCreate(date);
         bill.setDateUpdate(date);
@@ -283,6 +283,7 @@ public class User_Controller {
         Bill bill = new Bill();
         bill.setTotal(total);
         bill.setUser(user);
+        bill.setPhone(userTemp.getPhone());
         bill.setAddress(userTemp.getAddress());
         bill.setDateCreate(date);
         bill.setDateUpdate(date);
