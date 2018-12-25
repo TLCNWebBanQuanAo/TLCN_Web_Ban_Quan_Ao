@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, private guestService: GuestServiceService) {
     this.user = new User();
     this.user.gender = null;
-    this.user.phone = 0;
+    this.user.phone = "";
     this.user.status = 1;
     this.user.role_id = 1;
     this.user.avatar = "";

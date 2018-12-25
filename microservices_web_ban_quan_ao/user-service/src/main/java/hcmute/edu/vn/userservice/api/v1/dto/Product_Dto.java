@@ -9,7 +9,7 @@ public class Product_Dto {
     private Double price;
     private int status;
     private int quantity;
-    private int size;
-    private String discrible;
+    private String size;
+    private String describe;
     private String images;
 }

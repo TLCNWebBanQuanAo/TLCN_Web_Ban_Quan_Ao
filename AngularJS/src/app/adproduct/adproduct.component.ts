@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
+import { Product } from 'src/models/product';
+import { AdminServiceService } from '../admin-service/admin-service.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-adproduct',
@@ -13,24 +16,52 @@ import 'datatables.net-bs4';
 export class AdproductComponent implements OnInit {
 
   // Our array of clients
-  clients: any[];
+  products: Product[];
   dataTable: any;
+  trangthai: string;
+  trangthaiBan: string;
 
-constructor(private http: HttpClient, private chRef: ChangeDetectorRef) { }
+  constructor(private http: HttpClient, private chRef: ChangeDetectorRef, private adminservice: AdminServiceService) { }
 
-ngOnInit(){
-  this.http.get('https://5a5a9e00bc6e340012a03796.mockapi.io/clients')
-    .subscribe((data: any[]) => {
-      this.clients = data;
+  ngOnInit() {
+    this.getAllProduct();
+  }
 
-      // You'll have to wait that changeDetection occurs and projects data into 
-      // the HTML template, you can ask Angular to that for you ;-)
+  getAllProduct() {
+    this.adminservice.GetListProduct().subscribe(res => {
+      this.products = res;
+
+      for(let product of this.products)
+      {
+        if(product.status == 1){
+         product.trangthai = "Còn bán";
+         product.trangthaiBan = "Ngừng bán";
+        }
+        else if(product.status == 0){
+          product.trangthai = "Ngưng bán";
+          product.trangthaiBan = "Mở bán lại";
+        }
+      }
+
       this.chRef.detectChanges();
 
-      // Now you can use jQuery DataTables :
       const table: any = $('table');
       this.dataTable = table.DataTable();
+    }, err => {
+      console.log(err.message)
     });
-}
+  }
+
+  onEditStatus(id: number){
+    this.adminservice.updateStatusProduct(id)
+      .pipe(first())
+      .subscribe(res => {
+        this.getAllProduct()
+      }, err => {
+        this.getAllProduct()
+        console.log(err);
+      })  
+
+  }
 
 }

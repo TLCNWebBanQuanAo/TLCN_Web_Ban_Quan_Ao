@@ -12,7 +12,7 @@ public interface CartDetail_Mapper   {
     CartDetail_Mapper INSTANCE = Mappers.getMapper(CartDetail_Mapper.class);
     @Mappings({
             @Mapping(source = "id.product.images", target ="images"),
-            @Mapping(source = "id.product.discrible", target = "discrible"),
+            @Mapping(source = "id.product.describe", target = "describe"),
             @Mapping(source = "id.product.name", target = "name"),
             @Mapping(source = "id.product.id", target = "product_id"),
             @Mapping(source = "id.product.price", target = "price")

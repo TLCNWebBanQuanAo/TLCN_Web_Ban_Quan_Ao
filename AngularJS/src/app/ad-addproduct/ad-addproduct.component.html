@@ -11,55 +11,56 @@
             </div>
             <div class="card-content collpase show">
               <div class="card-body">
-                <form class="form form-horizontal">
+                <div class="form-group row">
+                  <label class="col-md-3 label-control" for="projectinput4" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Loại</label>
+                  <div class="col-md-9">
+                    <select class="form-control input" [(ngModel)]="selectedOption" (change)="changeSelected($event)">
+                      <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <form method="POST" (ngSubmit)="onSaveImage()" novalidate class="form form-horizontal">
                   <div class="form-body">
                     <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput1" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Tên sản phẩm</label>
+                      <label class="col-md-3 label-control" for="projectinput1" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Tên
+                        sản phẩm</label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput1" class="form-control" placeholder="Tên sản phẩm" name="fname">
+                        <input type="text" id="projectinput1" class="form-control" [(ngModel)]="product.name" placeholder="Tên sản phẩm" name="name">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-3 label-control" for="projectinput2" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Giá</label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput2" class="form-control" placeholder="Giá" name="number">
+                        <input type="text" id="projectinput2" class="form-control" [(ngModel)]="product.price" placeholder="Giá" name="price">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput3" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Số lượng</label>
+                      <label class="col-md-3 label-control" for="projectinput3" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Số
+                        lượng</label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput3" class="form-control" placeholder="Số lượng" name="">
+                        <input type="text" id="projectinput3" class="form-control" [(ngModel)]="product.quantity" placeholder="Số lượng" name="quantity">
                       </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 label-control" for="projectinput3" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Size</label>
-                        <div class="col-md-9">
-                          <input type="text" id="projectinput4" class="form-control" placeholder="Size" name="">
-                        </div>
-                      </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput4" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Loại</label>
+                      <label class="col-md-3 label-control" for="projectinput3" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Size</label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput5" class="form-control" placeholder="Loại" name="">
+                        <input type="text" id="projectinput4" class="form-control" [(ngModel)]="product.size" placeholder="Size" name="size">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-3 label-control" for="projectinput5" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Tình trạng</label>
+                      <label class="col-md-3 label-control" for="projectinput4" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Mô
+                        tả</label>
                       <div class="col-md-9">
-                        <input type="text" id="projectinput6" class="form-control" placeholder="Tình trạng" name="">
+                        <input type="text" id="projectinput7" class="form-control" [(ngModel)]="product.describe" placeholder="Mô tả" name="describe">
                       </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 label-control" for="projectinput4" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Mô tả</label>
-                        <div class="col-md-9">
-                          <input type="text" id="projectinput7" class="form-control" placeholder="Mô tả" name="">
-                        </div>
-                      </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 label-control" style="padding-top: 12px;padding-right: 0px;padding-left: 15px;">Select File</label>
+                      <label class="col-md-3 label-control" style="padding-top: 12px;padding-right: 0px;padding-left: 15px;">Select
+                        File</label>
                       <div class="col-md-9">
                         <label id="projectinput8" class="file center-block">
-                          <input type="file" id="file">
+                          <input type="file" id="file" name="avatar" (change)="onChangedImage($event)" #fileInput
+                          accept="image/*">
                           <span class="file-custom"></span>
                         </label>
                       </div>

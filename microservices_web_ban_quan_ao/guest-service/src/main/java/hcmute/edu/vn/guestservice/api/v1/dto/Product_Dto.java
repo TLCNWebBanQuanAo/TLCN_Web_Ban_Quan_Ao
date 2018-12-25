@@ -6,7 +6,7 @@ import lombok.Data;
 public class Product_Dto {
     private String name;
 
-    private String discrible;
+    private String describe;
 
     private String images;
 

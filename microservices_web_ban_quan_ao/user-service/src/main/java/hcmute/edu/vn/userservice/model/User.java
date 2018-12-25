@@ -25,7 +25,7 @@ public class User {
     @Size(max = 2000000)
     private String avatar;
     private String address;
-    private int phone;
+    private String phone;
     private String email;
     private int status;
     private String userCreate;

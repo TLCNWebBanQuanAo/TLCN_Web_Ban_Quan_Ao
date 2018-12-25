@@ -24,6 +24,7 @@ export class AdAddtypeComponent implements OnInit {
   createType() {
     if (this.type.name != "") {
       this.adminservice.createType(this.type).pipe(first()).subscribe(res => {
+        this.type.name = "";
         alert("Thêm loại sản phẩm thành công!!!");
       },
         err => {

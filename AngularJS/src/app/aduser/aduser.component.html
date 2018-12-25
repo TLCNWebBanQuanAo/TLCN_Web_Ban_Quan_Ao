@@ -33,7 +33,7 @@
                             <td>{{user.name}}</td>
                             <td>{{user.accountName}}</td>
                             <td>{{user.email}}</td>
-                            <td>{{user.dateOfBirth}}</td>
+                            <td>{{user.dateOfBirth | date : "dd/MM/yyyy"}}</td>
                             <td>{{user.phone}}</td>
                             <td><button (click)="onSetStatus(user.id)">{{user.isActive}}</button></td>
                           </tr>

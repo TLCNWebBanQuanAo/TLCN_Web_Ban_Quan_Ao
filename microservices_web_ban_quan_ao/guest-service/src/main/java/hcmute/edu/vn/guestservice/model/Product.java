@@ -21,8 +21,8 @@ public class Product {
     private Double price;
     private int status;
     private int quantity;;
-    private int size;
-    private String discrible;
+    private String size;
+    private String describe;
     @Size(max = 2000000)
     private String images;
     private String userCreate;

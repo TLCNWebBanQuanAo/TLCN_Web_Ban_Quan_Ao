@@ -8,7 +8,7 @@ export class User {
     confirmpassword: string;
     avatar: string;
     address: string;
-    phone: number;
+    phone: string;
     email: string;
     role_id: number;
     status: number;

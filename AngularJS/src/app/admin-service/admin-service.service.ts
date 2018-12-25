@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user';
 import { Type } from '../../models/type';
+import { Product } from 'src/models/product';
 
 
 @Injectable({
@@ -33,4 +34,17 @@ export class AdminServiceService {
   updateType(type: Type) : Observable<any> {
     return this.http.post(`${this.context}/api/v1/admin/type/edittype`, type);
   }
+
+  createProduct(product: Product, id) : Observable<any> {
+    return this.http.post(`${this.context}/api/v1/admin/product/addproduct/${id}`, product);
+  }
+
+  GetListProduct() : Observable<any> {
+    return this.http.get(`${this.context}/api/v1/admin/product/products`)
+  }
+
+  updateStatusProduct(id) : Observable<any> {
+    return this.http.post(`${this.context}/api/v1/admin/product/editStatusproduct`, id);
+  }
+
 }

@@ -24,14 +24,19 @@ public class Product_Controller {
     @Autowired
     private Product_Service product_service;
     @Autowired
+    private  Type_Service type_service;
+    @Autowired
     private ProductMapper productMapper;
     @PostMapping("/editproduct")
     public Product editProduct(@RequestBody Product product){
         return product_service.editProduct(product);
     }
-    @PostMapping("/addproduct")
-    public Product addProduct(@RequestBody Product product){
-        return product_service.addProduct(product);
+    @PostMapping("/addproduct/{id}")
+    public Product_Dto addProduct(@RequestBody Product product, @PathVariable int id){
+        Type type = type_service.findTypeById(id);
+        product.setType(type);
+        Product newProduct = product_service.addProduct(product);
+        return product_service.mapperSingle(newProduct);
     }
     @DeleteMapping("deleteproduct/{productId}")
     public Product_Dto deleteProduct(@PathVariable int productId){
@@ -45,5 +50,15 @@ public class Product_Controller {
     @GetMapping("/products")
     public List<Product_Dto> findAll(){
         return product_service.findAll().stream().map(productMapper::productToProductDto).collect(Collectors.toList());
+    }
+
+    @PostMapping("/editStatusproduct")
+    public Product editProductStatus(@RequestBody int id){
+        Product product1 = product_service.findProductById(id);
+        if(product1.getStatus() == 1){
+            product1.setStatus(0);
+        } else
+            product1.setStatus(1);
+        return product_service.editProduct(product1);
     }
 }

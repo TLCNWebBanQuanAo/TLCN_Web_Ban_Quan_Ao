@@ -8,7 +8,7 @@ public class CartDetail_Dto {
     private Double price;
     private int quantity;
     private int size;
-    private String discrible;
+    private String describe;
     private String images;
     private int product_id;
 }

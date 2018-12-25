@@ -1,5 +1,7 @@
 package hcmute.edu.vn.adminservice.service.impl;
 
+import hcmute.edu.vn.adminservice.api.v1.dto.Product_Dto;
+import hcmute.edu.vn.adminservice.api.v1.mapper.ProductMapper;
 import hcmute.edu.vn.adminservice.exception.NotFoundException;
 import hcmute.edu.vn.adminservice.model.Product;
 import hcmute.edu.vn.adminservice.model.Type;
@@ -12,12 +14,25 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductSerVice_Impl implements Product_Service {
     @Autowired
+    private ProductMapper productMapper;
+    @Autowired
     private Product_Repository product_repository;
 
+
+    @Override
+    public Product_Dto mapperSingle(Product product) {
+        return productMapper.productToProductDto(product);
+    }
+
+    @Override
+    public List<Product_Dto> mapperArray(List<Product> products) {
+        return products.stream().map(productMapper::productToProductDto).collect(Collectors.toList());
+    }
 
     @Override
     public Product addProduct(Product product) {

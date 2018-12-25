@@ -14,7 +14,7 @@ public class User_Dto {
     private String avatar;
     private int role_id;
     private String address;
-    private int phone;
+    private String phone;
     private String email;
     private int status;
 }

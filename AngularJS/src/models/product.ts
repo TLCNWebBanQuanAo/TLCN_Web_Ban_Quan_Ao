@@ -2,13 +2,16 @@ export class Product{
 id: number;
 name: string;
 price: number;
-status: string;
+status: number;
 quantity: number;
-size: number;
-discrible: string;
+size: string;
+describe: string;
 images: string;
+type_id: number;
 userCreate: string;
 dateCreate: Date;
 userUpdate: string;
 dateUpdate: Date; 
+trangthai: string;
+trangthaiBan: string;
 }
