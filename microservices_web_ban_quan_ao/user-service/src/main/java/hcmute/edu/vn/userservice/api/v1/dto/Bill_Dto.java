@@ -10,7 +10,7 @@ public class Bill_Dto {
     private Double total;
     private int status;
     private String address;
-    private int phone;
+    private String phone;
     private String userCreate;
     private Date dateCreate;
 }

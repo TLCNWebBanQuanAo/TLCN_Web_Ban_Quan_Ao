@@ -276,23 +276,22 @@ public class User_Controller {
         return dataReturnList;
     }
     @PostMapping("/thanhtoan/{total}")
-    public boolean thanhToan(@RequestBody User userTemp,  @PathVariable Double total){
+    public boolean thanhToan(@RequestBody User userTemp, @PathVariable Double total){
         User user = user_service.FindByAccountName(userTemp.getAccountName());
         Date date = new Date();
 
         Bill bill = new Bill();
         bill.setTotal(total);
         bill.setUser(user);
-        bill.setPhone(userTemp.getPhone());
         bill.setAddress(userTemp.getAddress());
         bill.setDateCreate(date);
         bill.setDateUpdate(date);
         bill.setUserCreate(userTemp.getAccountName());
         bill.setUserUpdate(userTemp.getAccountName());
 
-        Bill invoiceAdd = bill_service.AddBill(bill);
+        Bill billAdd = bill_service.AddBill(bill);
 
-        System.out.println(invoiceAdd.getId());
+        System.out.println(billAdd.getId());
 
         Cart cart = user.getCart();
         List<Cart_Detail> cart_details = cartDetail_service.RetrieveAllProductInCart(cart.getId());
@@ -301,7 +300,7 @@ public class User_Controller {
 
         for (Cart_Detail cart_detail: cart_details) {
             Bill_Product_Id bill_product_id = new Bill_Product_Id();
-            bill_product_id.setBill(invoiceAdd);
+            bill_product_id.setBill(billAdd);
             bill_product_id.setProduct(cart_detail.getId().getProduct());
 
             Bill_Detail bill_detail = new Bill_Detail();

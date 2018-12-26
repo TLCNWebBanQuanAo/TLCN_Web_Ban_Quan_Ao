@@ -22,20 +22,20 @@
 			<h1>Đến với D and M</h1>
 			<h2>Thời trang là nghệ thuật</h2>
 			<div class="button">
-			      <a href="#" class="hvr-shutter-out-horizontal">Shop Now</a>
+			      <a href="#" class="hvr-shutter-out-horizontal" routerLink='/login'>LOGIN</a>
 			    </div>
 		</div>
 	</div>
 </div>	
 <div class="content_top">
-	<h3 class="m_1">Latest Products</h3>
+	<h3 class="m_1">Danh sách sản phẩm</h3>
 	<div class="container">
 	   <div class="box_1" *ngFor="let product of products">
 	      <div class="grids_of_4" >
             <div class="grid1_of_4 simpleCart_shelfItem" style="margin-right: 10px; margin-bottom: 10px; border: solid 2px; border-color: darkgrey; background-color: white; padding: 10px !important;" >
               <div class=""><a>
                   <div class="view view-fifth">
-                    <img [src]="product.images"  class="img-responsive" alt="" style="max-height: 300px; min-height: 200px;" />
+                    <img [src]="product.images"  class="img-responsive" alt="" style="height: 270px; width: 100%" />
                     <div class="mask1">
                       <div class="info"> </div>
                     </div>
@@ -43,7 +43,7 @@
                 </a>
               </div>
               <h5><h2 routerLink="/single/{{product.id}}/1" style="text-decoration: none; cursor: pointer;">{{product.name}}</h2></h5>
-              <h6>{{product.price}}</h6>
+              <h6>{{product.price}} VNĐ</h6>
               <div class="size_2">
                 <div class="size_2-right" style="margin-left: 25% !important;"><input type="button" class="item_add add3" (click)="addProductInCart(product.id)" /></div>
                 <div class="clearfix"> </div>

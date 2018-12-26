@@ -8,9 +8,10 @@
 					
 				<thead>
 					<tr>
-						<th>Ngày mua</th>
+						<th>Tên sản phẩm</th>
+						<th>Số lượng</th>
 						<th>Giá</th>
-						<th>Thanh toán</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -23,7 +24,6 @@
 										</div>
 									  </div>
 						</td>
-						<td>{{client.discrible}}</td>
 						<td>{{client.quantity}}</td>
 						<td>{{client.price}}</td>
 						<td><button class="btn btn-danger btn-sm" (click)="deleteProductInCart(client.product_id)" >Delete</button></td>
@@ -36,13 +36,13 @@
 			
 			 <ul class="total_price">
 			   <li class="last_price"> <h4>TOTAL</h4></li>	
-			   <li class="last_price"><span>{{tong}}</span></li>
+			   <li class="last_price"><span>{{tong}} VNĐ</span></li>
 			   <div class="clearfix"> </div>
 			 </ul>
 			
 			 
 			 <div class="clearfix"></div>
-			 <a class="order" style="color: white;" (click)="thanhtoan()">Place Order</a>
+			 <a class="order" style="color: white;" (click)="thanhtoan()">Thanh toán</a>
 			 
 			</div>
 	 </div>

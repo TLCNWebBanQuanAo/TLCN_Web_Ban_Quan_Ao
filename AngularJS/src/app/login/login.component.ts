@@ -12,13 +12,19 @@ export class LoginComponent implements OnInit {
 
   user: User;
   error: string;
+  
   constructor(private router: Router, private guestService: GuestServiceService) {
     this.user = new User();
   }
 
   ngOnInit() {
+  if(localStorage.getItem("accountName")!=""){
+    this.router.navigate(["/homepage"]);
+  }
+  else{
     localStorage.setItem("accountName","");
     localStorage.setItem("role",null);
+  }
   }
   login() {
     this.guestService.login(this.user).pipe(first()).subscribe(res => {
