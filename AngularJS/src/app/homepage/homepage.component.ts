@@ -20,7 +20,7 @@ export class HomepageComponent implements OnInit {
   keyword: string="";
   page: number;
   type: Type[];
-  pageNumber: number;
+  pageNumber: number = 0;
   pageArray: Array<number> = [];
   size: number;
   current: number;
@@ -52,7 +52,7 @@ export class HomepageComponent implements OnInit {
     .pipe(first()).subscribe(res=>{
       if(res.success == "true"){
         this.products = res.data;
-        this.pageNumber = res.pageNumber;
+        this.pageNumber = res.pagenumber;
         for (let index = 0; index < this.pageNumber; index++) {
           this.pageArray.push(index);
         }
@@ -107,14 +107,19 @@ export class HomepageComponent implements OnInit {
     this.getAllProductOnPage(this.typeid,this.keyword, this.current, this.size);
   }
   addProductInCart(id: number){
-    this.accountName = localStorage.getItem("accountName");
-    this.productService.addProductInCart(this.accountName, id, 1)
-    .pipe(first()).subscribe(res=>{
-      if(res.success == "true")
-        alert("Cập nhật giỏ hàng !!!");
-    },
-    err=>{
+if(localStorage.getItem("accountName")!=""){
+  this.accountName = localStorage.getItem("accountName");
+  this.productService.addProductInCart(this.accountName, id, 1)
+  .pipe(first()).subscribe(res=>{
+    if(res.success == "true")
+      alert("Cập nhật giỏ hàng !!!");
+  },
+  err=>{
 
-    });
+  });
+}
+else
+alert("Mời bạn đăng nhập để thao tác");
+    
   }
 }

@@ -12,6 +12,7 @@
 						<th>Tổng tiền</th>
 						<th>Người thanh toán</th>
 						<th>Địa chỉ</th>
+						<th>Trạng thái</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -20,6 +21,15 @@
 						<td>{{client.total}}</td>
 						<td>{{client.userCreate}}</td>
 						<td>{{client.address}}</td>
+						<td>
+								<div class="lessons-list" *ngIf="client.status else loading">
+										Đã thanh toán
+									  </div>
+									  
+									  <ng-template #loading>
+										  <div>Chưa thanh toán</div>
+									  </ng-template>
+						</td>
 					</tr>
 				</tbody>
 			</table>

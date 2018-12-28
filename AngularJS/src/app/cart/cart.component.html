@@ -24,13 +24,22 @@
 										</div>
 									  </div>
 						</td>
-						<td>{{client.quantity}}</td>
+						<td><span> {{client.quantity}} </span>
+						<span>
+							<button class="btn btn-plus  btn-sm" style="float: right;" (click)="plusProductInCart(client.product_id,client.quantity)">+</button>
+						</span>
+						<span>
+							<button class="btn btn-minus  btn-sm" style="float: right;" (click)="minusProductInCart(client.product_id,client.quantity)">-</button>
+						</span>
+					</td>
 						<td>{{client.price}}</td>
 						<td><button class="btn btn-danger btn-sm" (click)="deleteProductInCart(client.product_id)" >Delete</button></td>
 					</tr>
 				</tbody>
 			</table>
-					
+					<div>
+						<span>Địa chỉ giao hàng:</span><input type="text" id="projectinput1" class="form-control" [(ngModel)]="diaChiGiaoHang" placeholder="Địa chỉ" name="diaChiGiaoHang" style="margin-left: 5px; display: inline-block; width: 80%;">
+					</div>
 		</div>
 		 <div class="col-md-3 cart-total">
 			
@@ -42,7 +51,8 @@
 			
 			 
 			 <div class="clearfix"></div>
-			 <a class="order" style="color: white;" (click)="thanhtoan()">Thanh toán</a>
+			 <a class="order" style="color: white;" (click)="thanhtoan(0)">Thanh toán</a>
+			 <div id="paypal-checkout-btn"></div>
 			 
 			</div>
 	 </div>

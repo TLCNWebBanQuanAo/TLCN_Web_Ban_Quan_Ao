@@ -35,7 +35,6 @@ export class AdAddproductComponent implements OnInit {
   }
 
   changeSelected(){
-    alert(this.selectedOption)
   }
 
   getAllType() {

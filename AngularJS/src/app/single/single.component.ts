@@ -39,14 +39,18 @@ export class SingleComponent implements OnInit {
     this.accountName = localStorage.getItem("accountName");
     this.id = +this.route.snapshot.paramMap.get('id');
     console.log(this.id);
-    this.userProductService.addProductInCart(this.accountName, this.id, this.product.quantity)
-    .pipe(first()).subscribe(res=>{
-      if(res.success == "true")
-        alert("Cập nhật giỏ hàng !!!");
-    },
-    err=>{
-
-    });
+    if(localStorage.getItem("accountName")!=""){
+      this.userProductService.addProductInCart(this.accountName, this.id, this.product.quantity)
+      .pipe(first()).subscribe(res=>{
+        if(res.success == "true")
+          alert("Cập nhật giỏ hàng !!!");
+      },
+      err=>{
+  
+      });
+    }else
+    alert("Mời bạn đăng nhập để thao tác!");
+    
   }
 
   goBack(){

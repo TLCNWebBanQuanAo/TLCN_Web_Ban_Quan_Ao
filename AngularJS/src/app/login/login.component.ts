@@ -24,11 +24,13 @@ export class LoginComponent implements OnInit {
   else{
     localStorage.setItem("accountName","");
     localStorage.setItem("role",null);
+    localStorage.setItem("address","");
   }
   }
   login() {
     this.guestService.login(this.user).pipe(first()).subscribe(res => {
   if(res.success == "true"){
+    localStorage.setItem("address",res.data.address);
     localStorage.setItem("accountName",res.data.accountName);
     localStorage.setItem("role",res.data.role_id);
     if(res.data.role_id==1){

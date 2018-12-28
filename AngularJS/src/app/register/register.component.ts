@@ -18,32 +18,43 @@ export class RegisterComponent implements OnInit {
     this.user.gender = null;
     this.user.phone = "";
     this.user.status = 1;
-    this.user.role_id = 1;
+    this.user.role_id = 2;
     this.user.avatar = "";
     this.user.dateOfBirth = null;
+    
 
   }
 
   ngOnInit() {
+    this.user.accountName = "";
+          this.user.name = "";
+          this.user.email = "";
+          this.user.password = "";
+          this.user.confirmpassword = "";
   }
   register() {
-    if(this.user.password==this.user.confirmpassword){
-      this.guestService.register(this.user).pipe(first()).subscribe(res => {
-        alert("Tao thanh cong");
-        this.user.accountName = "";
-        this.user.name = "";
-        this.user.email = "";
-        this.user.password = "";
-        this.user.confirmpassword = "";
-        this.router.navigate(["/login"]);
-      
-      },
-      err=>{
-        this.error = err.message;
-      })
+    if(this.user.accountName=="" || this.user.password=="" || this.user.email=="")
+        alert("Mời bạn nhập đầy đủ thông tin");
+    else{
+      if(this.user.password==this.user.confirmpassword){
+        this.guestService.register(this.user).pipe(first()).subscribe(res => {
+          alert("Tao thanh cong");
+          this.user.accountName = "";
+          this.user.name = "";
+          this.user.email = "";
+          this.user.password = "";
+          this.user.confirmpassword = "";
+          this.router.navigate(["/login"]);
+        
+        },
+        err=>{
+          this.error = err.message;
+        })
+      }
+      else
+      alert("mật khẩu không khớp");
     }
-    else
-    alert("mật khẩu không khớp");
+    
     
   }
 }

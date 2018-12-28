@@ -283,6 +283,7 @@ public class User_Controller {
         Bill bill = new Bill();
         bill.setTotal(total);
         bill.setUser(user);
+        bill.setStatus(userTemp.getStatus());
         bill.setAddress(userTemp.getAddress());
         bill.setDateCreate(date);
         bill.setDateUpdate(date);
@@ -312,6 +313,46 @@ public class User_Controller {
         }
 
         return cartDetail_service.DeleteAllProductInCart(cart.getId());
+    }
+    @PostMapping("/plusproductincart/{accountname}/{productid}/{quantity}")
+    public DataReturnRecord<CartDetail_Dto> PlusProductInCart (@PathVariable String accountname,
+                                                              @PathVariable int productid, @PathVariable int quantity){
+        DataReturnRecord<CartDetail_Dto> dataReturnRecord = new DataReturnRecord<>();
+
+        Cart cart = user_service.FindByAccountName(accountname).getCart();
+        Product product = product_service.FindProductById(productid);
+
+        Cart_Product_Id cart_product_id = new Cart_Product_Id();
+        cart_product_id.setCart(cart);
+        cart_product_id.setProduct(product);
+
+        Cart_Detail cart_detail = new Cart_Detail();
+        cart_detail.setId(cart_product_id);
+        cart_detail.setQuantity(quantity+1);
+
+        dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
+        dataReturnRecord.setMessage("Add products successful.");
+        return dataReturnRecord;
+    }
+    @PostMapping("/minusproductincart/{accountname}/{productid}/{quantity}")
+    public DataReturnRecord<CartDetail_Dto> MinusProductInCart (@PathVariable String accountname,
+                                                               @PathVariable int productid, @PathVariable int quantity){
+        DataReturnRecord<CartDetail_Dto> dataReturnRecord = new DataReturnRecord<>();
+
+        Cart cart = user_service.FindByAccountName(accountname).getCart();
+        Product product = product_service.FindProductById(productid);
+
+        Cart_Product_Id cart_product_id = new Cart_Product_Id();
+        cart_product_id.setCart(cart);
+        cart_product_id.setProduct(product);
+
+        Cart_Detail cart_detail = new Cart_Detail();
+        cart_detail.setId(cart_product_id);
+        cart_detail.setQuantity(quantity-1);
+
+        dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
+        dataReturnRecord.setMessage("Add products successful.");
+        return dataReturnRecord;
     }
 
 }

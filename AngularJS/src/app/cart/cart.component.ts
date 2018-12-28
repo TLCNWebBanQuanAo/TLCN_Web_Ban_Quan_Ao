@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery';
 import 'datatables.net';
@@ -13,7 +13,7 @@ import { Product } from 'src/models/product';
 import { CartService } from '../user-service/cart.service'
 import { from } from 'rxjs';
 import { isNumber } from 'util';
-
+declare let paypal: any;
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -29,6 +29,9 @@ export class CartComponent implements OnInit {
   diaChiGiaoHang: string = "";
   phone: number = 0;
   tong: number = 0;
+  addScript: boolean = false;
+  paypalLoad: boolean = true;
+  finalAmount: number = 1;
   constructor(private http: HttpClient, private chRef: ChangeDetectorRef, private router: Router, private UserproductService: UserproductService, private fb: FormBuilder, private cartService: CartService) { }
 
   ngOnInit() {
@@ -83,8 +86,8 @@ export class CartComponent implements OnInit {
           alert("Không bỏ sản phẩm ra khỏi giỏ hàng được !!!");
         });
   }
-  async thanhtoan() {
-    await this.cartService.thanhToan(this.accountName, this.diaChiGiaoHang, this.tong).pipe(first())
+  async thanhtoan(status: number) {
+    await this.cartService.thanhToan(this.accountName, this.diaChiGiaoHang, this.tong, status).pipe(first())
       .subscribe(res => {
         if (res == true) {
           this.clients = null;
@@ -98,5 +101,82 @@ export class CartComponent implements OnInit {
         err => {
           alert("Hiện tại không thể thanh toán ???");
         });
+  }
+  paypalConfig = {
+    env: 'sandbox',
+    client: {
+      sandbox: 'AaA2r4L0yM1IMIR1mXkOXggEQyiyyJpYDrJAjNB2pjrB59sAnvM_u7qc6iBtV-1_WIaod6mdb3h5wwGJ',
+      production: 'EPt6FS3URTzAd9dfRXvIYuvxSch6tB6QUS172ZN4PSfupifsGc7I8YQWgNeM3iN-PBG-PYzxaHtM7dq0'
+    },
+    commit: true,
+    payment: (data, actions) => {
+      return actions.payment.create({
+        payment: {
+          transactions: [
+            { amount: { total: this.tong, currency: 'USD' } }
+          ]
+        }
+      });
+    },
+    onAuthorize: (data, actions) => {
+      return actions.payment.execute().then((payment) => {
+        this.thanhtoan(1);
+      })
+    }
+  };
+ 
+  ngAfterViewChecked(): void {
+    if (!this.addScript) {
+      this.addPaypalScript().then(() => {
+        paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
+        this.paypalLoad = false;
+      })
+    }
+  }
+  
+  addPaypalScript() {
+    this.addScript = true;
+    return new Promise((resolve, reject) => {
+      let scripttagElement = document.createElement('script');    
+      scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
+      scripttagElement.onload = resolve;
+      document.body.appendChild(scripttagElement);
+    })
+  }
+  plusProductInCart(id: number, quantity: number){
+    this.accountName = localStorage.getItem("accountName");
+      this.cartService.plusProductInCart(this.accountName, id, quantity)
+      .pipe(first()).subscribe(res=>{
+        if(res.success == "true"){
+          this.clients.forEach(product => {
+            if (product.product_id == res.data.product_id) {
+              product.quantity= product.quantity +1;
+              this.tong= this.tong + product.price;
+              return;
+            }
+          });
+        }
+      },
+      err=>{
+  
+      }); 
+  }
+  minusProductInCart(id: number, quantity: number){
+    this.accountName = localStorage.getItem("accountName");
+      this.cartService.minusProductInCart(this.accountName, id, quantity)
+      .pipe(first()).subscribe(res=>{
+        if(res.success == "true"){
+          this.clients.forEach(product => {
+            if (product.product_id == res.data.product_id) {
+              product.quantity= product.quantity-1;
+              this.tong= this.tong - product.price;
+              return;
+            }
+          });
+        }
+      },
+      err=>{
+  
+      }); 
   }
 }

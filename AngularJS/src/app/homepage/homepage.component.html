@@ -35,7 +35,7 @@
             <div class="grid1_of_4 simpleCart_shelfItem" style="margin-right: 10px; margin-bottom: 10px; border: solid 2px; border-color: darkgrey; background-color: white; padding: 10px !important;" >
               <div class=""><a>
                   <div class="view view-fifth">
-                    <img [src]="product.images"  class="img-responsive" alt="" style="height: 270px; width: 100%" />
+                    <img [src]="product.images" routerLink="/single/{{product.id}}/1"  class="img-responsive" alt="" style="height: 270px; width: 100%; cursor: pointer;" />
                     <div class="mask1">
                       <div class="info"> </div>
                     </div>
@@ -55,15 +55,15 @@
 <div class="clearfix"></div>
 <nav aria-label="Page navigation" style="margin-top: -5px;">
     <ul class="pagination">
-      <li [className]="current==0?'disabled':'enable'">
+      <li [className]="current==0?'disabled':'enable'" style="cursor: pointer;">
         <a (click)="onPrePage()" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <li [className]="item === current ? 'active' : 'inactive'" *ngFor="let item of pageArray">
+      <li [className]="item === current ? 'active' : 'inactive'" *ngFor="let item of pageArray" style="cursor: pointer; color: orangered;">
         <a (click)="onGotoPage(item)">{{item + 1}}</a>
       </li>
-      <li [className]="current==pageNumber-1?'disabled':'enable'">
+      <li [className]="current==pageNumber-1?'disabled':'enable'" style="cursor: pointer;">
         <a (click)="onNextPage()" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
