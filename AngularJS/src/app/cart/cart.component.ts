@@ -167,7 +167,7 @@ export class CartComponent implements OnInit {
       .pipe(first()).subscribe(res=>{
         if(res.success == "true"){
           this.clients.forEach(product => {
-            if (product.product_id == res.data.product_id) {
+            if (product.product_id == res.data.product_id && product.quantity!= 1 ) {
               product.quantity= product.quantity-1;
               this.tong= this.tong - product.price;
               return;

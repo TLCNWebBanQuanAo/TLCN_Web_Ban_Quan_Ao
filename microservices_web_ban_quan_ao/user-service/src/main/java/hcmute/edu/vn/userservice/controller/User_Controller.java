@@ -348,8 +348,14 @@ public class User_Controller {
 
         Cart_Detail cart_detail = new Cart_Detail();
         cart_detail.setId(cart_product_id);
-        cart_detail.setQuantity(quantity-1);
-
+        if(quantity == 1)
+        {
+            cart_detail.setQuantity(quantity);
+        }
+        else
+        {
+            cart_detail.setQuantity(quantity-1);
+        }
         dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
         dataReturnRecord.setMessage("Add products successful.");
         return dataReturnRecord;
