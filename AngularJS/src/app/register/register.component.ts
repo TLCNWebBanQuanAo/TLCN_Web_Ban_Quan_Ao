@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     this.user.gender = null;
     this.user.phone = "";
     this.user.status = 1;
-    this.user.role_id = 2;
+    this.user.role_id = 0;
     this.user.avatar = "";
     this.user.dateOfBirth = null;
     

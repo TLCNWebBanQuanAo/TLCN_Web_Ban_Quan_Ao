@@ -18,14 +18,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-  if(localStorage.getItem("accountName")!=""){
-    this.router.navigate(["/homepage"]);
-  }
-  else{
+
     localStorage.setItem("accountName","");
     localStorage.setItem("role",null);
-    localStorage.setItem("address","");
-  }
   }
   login() {
     this.guestService.login(this.user).pipe(first()).subscribe(res => {
@@ -33,6 +28,7 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("address",res.data.address);
     localStorage.setItem("accountName",res.data.accountName);
     localStorage.setItem("role",res.data.role_id);
+    localStorage.setItem("count","0");
     if(res.data.role_id==1){
       this.router.navigate(["/adtype"]);
     }

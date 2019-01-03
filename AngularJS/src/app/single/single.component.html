@@ -11,16 +11,15 @@
                 <ul class="back">
                     <li><i class="back_arrow" (click)="goBack()" style="cursor: pointer;"> </i>Go back<a (click)="goBack()" style="cursor: pointer;"></a></li>
                 </ul>
-                <h1>{{product.name}}</h1>
-					<p>{{product.discrible}}</p>
+                <h1 style="font-size: 50px;">{{product.name}}</h1>
+					<p>{{product.describe}}</p>
                     <div class="dropdown_top">
                         <span>Số lượng: </span> <input type="text" style="width: 50px;" [(ngModel)]="product.quantity">
                         <div class="clearfix"></div>
                     </div>
                     <div class="simpleCart_shelfItem">
-                        <div class="price_single">
-                            <div class="head"><h2><span class="amount item_price">{{product.price}}</span><span>VNĐ</span></h2></div>
-                            <!-- <div class="head_desc"><a href="#">12 reviews</a><img src="../../assets/images/review.png" alt=""/></li></div> -->
+                        <div class="price_single" style="font-size: 10px;">
+                            <div class="head"><h2 ><span class="amount item_price">{{product.price}}</span><span>Dollar</span></h2></div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="size_2-right"><button class="btn btn-danger btn-sm" (click)="addProductInCart()" value="">Add to Cart </button></div>
@@ -28,14 +27,6 @@
                 </div>
                 <div class="clearfix"></div>
         </div>
-        <div class="single_social_top">   
-            <ul class="single_social">
-              <li><a href="#"> <i class="s_fb"> </i> <div class="social_desc">Share<br> on facebook</div><div class="clearfix"> </div></a></li>
-              <li><a href="#"> <i class="s_twt"> </i> <div class="social_desc">Tweet<br> this product</div><div class="clearfix"> </div></a></li>
-              <li><a href="#"> <i class="s_google"> </i><div class="social_desc">Google+<br> this product</div><div class="clearfix"> </div></a></li>
-              <li class="last"><a href="#"> <i class="s_email"> </i><div class="social_desc">Email<br> a Friend</div><div class="clearfix"> </div></a></li>
-          </ul>
-         </div>
     </div>
 </div>
 <app-footer></app-footer>

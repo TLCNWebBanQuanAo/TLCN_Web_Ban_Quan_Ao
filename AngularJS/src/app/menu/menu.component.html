@@ -21,7 +21,19 @@
            <div class="clearfix"> </div>
            
          </div>
-      <button class="btn btn-danger btn-sm" style=" float: right; margin-right: 10px;" (click)="Logout()">Logout</button>
+         <div class="lessons-list" *ngIf="count else load">
+            <button class="btn btn-danger btn-sm" style=" float: right; margin-right: 10px;" routerLink='/login'>Login</button>
+            </div>
+            
+            <ng-template #load>
+                <button class="btn btn-danger btn-sm" style=" float: right; margin-right: 10px;" (click)="Logout()">Logout</button>
+            </ng-template>
+      <div class="lessons-list" *ngIf="role else loading">
+        <button class="btn btn-danger btn-sm" style=" float: right; margin-right: 10px;" routerLink='/adtype'>Back to admin</button>
+        </div>
+        
+        <ng-template #loading>
+        </ng-template>
       <div class="clearfix"></div>
    </div>
     <div class="clearfix"></div>
