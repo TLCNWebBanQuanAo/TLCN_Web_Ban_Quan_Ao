@@ -42,10 +42,10 @@ export class AduserComponent implements OnInit {
       for(let user of this.users)
       {
         if(user.status == 1){
-          user.isActive = "Bỏ Kích Hoạt"
+          user.isActive = "Admin"
         }
         else if(user.status == 2){
-          user.isActive = "Kích Hoạt"
+          user.isActive = "Người dùng"
         }
       }
 

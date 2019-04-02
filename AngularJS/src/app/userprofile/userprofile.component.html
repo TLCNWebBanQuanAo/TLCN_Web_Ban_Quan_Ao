@@ -4,10 +4,10 @@
   <img class="avatar" [src]="image" alt="">
   <form [formGroup]="formImage" method="POST" (ngSubmit)="onSaveImage()"
   novalidate>
-  <label class="hinhanh" id="#bb"> Select Img
+  <label class="hinhanh" id="#bb"> Chọn hình ảnh
       <input type="file" (change)="onChangedImage($event)" #fileInput id="File"   size="60" >
       </label> 
-      <button class="up" type="submit">Up</button>
+      <button class="up" type="submit">Cập nhật</button>
       </form>
   </div>
   <div class="col-xs-9">
@@ -15,7 +15,7 @@
           <form form method="POST" (ngSubmit)="doithongtincanhan()">
           <div class="row">
             <div class="col-25">
-              <label class="a" >Name</label>
+              <label class="a" >Tên</label>
             </div>
             <div class="col-75">
               <input [(ngModel)]="userprofile.name" type="text" id="fname" name="name" placeholder="Your name..">
@@ -23,7 +23,7 @@
           </div>
           <div class="row">
             <div class="col-25">
-              <label class="a" for="lname">Date of Birth</label>
+              <label class="a" for="lname">Ngày sinh</label>
             </div>
             <div class="col-75">
               <input [(ngModel)]="dateOfBirth" type="date" data-date-format="DD MMMM YYYY" id="lname" name="dateOfBirth">
@@ -31,7 +31,7 @@
           </div>
           <div class="row">
               <div class="col-25">
-                <label class="a" >Phone</label>
+                <label class="a" >Số điện thoại</label>
               </div>
               <div class="col-75">
                 <input [(ngModel)]="userprofile.phone" type="text" id="fname" name="phonr" placeholder="Your phone..">
@@ -39,7 +39,7 @@
             </div>
             <div class="row">
                 <div class="col-25">
-                  <label class="a" >Password</label>
+                  <label class="a" >Mật khẩu</label>
                 </div>
                 <div class="col-75">
                   <input [(ngModel)]="userprofile.password" type="text" id="fname" name="password" placeholder="Your password..">
@@ -47,7 +47,7 @@
               </div>
               <div class="row">
                   <div class="col-25">
-                    <label class="a" >Address</label>
+                    <label class="a" >Địa chỉ</label>
                   </div>
                   <div class="col-75">
                     <input [(ngModel)]="userprofile.address" type="text" id="fname" name="address" placeholder="Your address..">
@@ -63,17 +63,17 @@
                   </div>
           <div class="row">
             <div class="col-25">
-              <label class="a" for="country">Sex</label>
+              <label class="a" for="country">Giới tính</label>
             </div>
             <div class="col-75">
               <select id="country" [(ngModel)]="userprofile.gender" name="gender">
-                <option value="1">male</option>
-                <option value="2">female</option>
+                <option value="1">Nam</option>
+                <option value="2">Nữ</option>
               </select>
             </div>
           </div>
           <div class="row">
-            <input type="submit" value="Submit">
+            <input type="submit" value="Cập nhật thông tin">
           </div>
           </form>
         </div>
