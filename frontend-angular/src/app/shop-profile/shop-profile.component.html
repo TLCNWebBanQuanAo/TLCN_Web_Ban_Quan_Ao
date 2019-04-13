@@ -15,23 +15,12 @@
           </a>
         </div>
         <div class="col-xl-6 col-lg-5">
-          <form class="header-search-form">
-            <input type="text" placeholder="Search on divisima ....">
-            <button><i class="flaticon-search"></i></button>
-          </form>
         </div>
         <div class="col-xl-4 col-lg-5">
           <div class="user-panel">
             <div class="up-item">
               <i class="flaticon-profile"></i>
               <a href="#">Sign</a> In or <a href="#">Create Account</a>
-            </div>
-            <div class="up-item">
-              <div class="shopping-card">
-                <i class="flaticon-bag"></i>
-                <span>0</span>
-              </div>
-              <a href="#">Cart</a>
             </div>
           </div>
         </div>
@@ -43,70 +32,97 @@
       <!-- menu -->
       <ul class="main-menu">
         <li><a href="#">Home</a></li>
-        <li><a href="#">Women</a></li>
-        <li><a href="#">Men</a></li>
-        <li><a href="#">Jewelry
-            <span class="new">New</span>
-          </a></li>
-        <li><a href="#">Shoes</a>
-          <ul class="sub-menu">
-            <li><a href="#">Sneakers</a></li>
-            <li><a href="#">Sandals</a></li>
-            <li><a href="#">Formal Shoes</a></li>
-            <li><a href="#">Boots</a></li>
-            <li><a href="#">Flip Flops</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Pages</a>
-          <ul class="sub-menu">
-            <li><a>Product Page</a></li>
-            <li><a>Category Page</a></li>
-            <li><a>Cart Page</a></li>
-            <li><a>Checkout Page</a></li>
-            <li><a>Contact Page</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Category</a></li>
+        <li><a href="#">SaleOff</a></li>
+        <li><a href="#">Account</a></li>
       </ul>
     </div>
   </nav>
 </header>
 <!-- Header section end -->
 
-<!-- Contact section -->
-<section class="contact-section">
+
+<!-- product section -->
+<section class="product-section">
   <div class="container">
-      <div class="row">
-          <div class="col-lg-12 contact-info text-center">
-              <h3 style="padding-bottom: 10px;">Create Account</h3>
-          </div>
-        </div>
-    <div class="row">
-      <div class="col-lg-6 contact-info">
-        
+    <!-- <div class="row">
+      <div class="col-lg-4 contact-info">
         <form class="contact-form">
-          <!--<p style="margin-bottom: 0px; padding-left: 18px;">Account name *</p>-->
           <input type="text" placeholder="Name">
           <input type="email" placeholder="Email">
           <input type="number" placeholder="Phone number">
         </form>
       </div>
-      <div class="col-lg-6 contact-info">
+      <div class="col-lg-4 contact-info">
+        <h3 style="padding-bottom: 10px;">Update Information</h3>
         <form class="contact-form">
-          <input type="text" placeholder="Account name">
-          <input type="text" placeholder="Password">
-          <input type="text" placeholder="Confirm Password">
+          <input type="text" placeholder="Name">
+          <input type="date" placeholder="Ngày sinh">
+          <input type="text" placeholder="Số điện thoại">
+          <input type="email" placeholder="Email">
+          <input type="text" placeholder="Địa chỉ">
+          <input type="text" placeholder="Giới tính">
         </form>
+        <h3 style="padding-bottom: 10px;">Update Password</h3>
+        <form class="contact-form">
+            <input type="text" placeholder="Current password">
+            <input type="text" placeholder="New password">
+            <input type="text" placeholder="Confirm new password">
+          </form>
       </div>
     </div>
     <div class="row">
       <div style="padding-top: 40px; padding-bottom: 50px;" class="col-lg-12 contact-info text-center">
         <button class="site-btn">CREATE</button>
       </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-lg-4 contact-info" style="text-align: center;">
+        <h3 style="padding-bottom: 10px;">Change Avatar</h3>
+        <img class="avatar" src="" alt="" style="width: 200px; height: 200px; border-radius: 50%;">
+        <form>
+            <label class="hinhanh" id="#bb">
+                <input type="file" (change)="onChangedImage($event)" #fileInput id="File" size="60" >
+              </label> 
+          <button class="site-btn">UPDATE</button>
+        </form>
+      </div>
+      <div class="col-lg-4 contact-info" style="text-align: center;">
+        <h3 style="padding-bottom: 10px;">Update Information</h3>
+        <form class="contact-form">
+          <input type="text" placeholder="Name">
+          <input type="date" placeholder="Ngày sinh">
+          <input type="text" placeholder="Số điện thoại">
+          <input type="email" placeholder="Email">
+          <input type="text" placeholder="Địa chỉ">
+          <input type="text" placeholder="Giới tính">
+        </form>
+      </div>
+      <div class="col-lg-4 contact-info" style="text-align: center;">
+        <h3 style="padding-bottom: 10px;">Update Password</h3>
+        <form class="contact-form">
+          <input type="text" placeholder="Current password">
+          <input type="text" placeholder="New password">
+          <input type="text" placeholder="Confirm new password">
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 contact-info">
+      </div>
+      <div class="col-lg-4 contact-info" style="text-align: center;">
+        <button class="site-btn">UPDATE</button>
+      </div>
+      <div class="col-lg-4 contact-info" style="text-align: center;">
+        <button class="site-btn">CHANGE</button>
+      </div>
     </div>
   </div>
 </section>
-<!-- Contact section end -->
+<!-- product section end -->
 
 
 <!-- Footer section -->
@@ -149,7 +165,7 @@
           <h2>Questions</h2>
           <div class="fw-latest-post-widget">
             <div class="lp-item">
-              <div class="lp-thumb set-bg" data-setbg="/assets/divisima/img/blog-thumbs/1.jpg"></div>
+              <div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/1.jpg"></div>
               <div class="lp-content">
                 <h6>what shoes to wear</h6>
                 <span>Oct 21, 2018</span>
@@ -157,7 +173,7 @@
               </div>
             </div>
             <div class="lp-item">
-              <div class="lp-thumb set-bg" data-setbg="/assets/divisima/img/blog-thumbs/2.jpg"></div>
+              <div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/2.jpg"></div>
               <div class="lp-content">
                 <h6>trends this year</h6>
                 <span>Oct 21, 2018</span>

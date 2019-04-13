@@ -12,6 +12,11 @@ import { ShopCheckoutComponent } from './shop-checkout/shop-checkout.component';
 import { ShopCartComponent } from './shop-cart/shop-cart.component';
 import { ShopLoginComponent } from './shop-login/shop-login.component';
 import { ShopRegisterComponent } from './shop-register/shop-register.component';
+import { AdAddproductComponent } from './ad-addproduct/ad-addproduct.component';
+import { AdListproductComponent } from './ad-listproduct/ad-listproduct.component';
+import { AdAddcategoryComponent } from './ad-addcategory/ad-addcategory.component';
+import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.component';
+import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { ShopRegisterComponent } from './shop-register/shop-register.component';
     ShopCheckoutComponent,
     ShopCartComponent,
     ShopLoginComponent,
-    ShopRegisterComponent
+    ShopRegisterComponent,
+    AdAddproductComponent,
+    AdListproductComponent,
+    AdAddcategoryComponent,
+    AdEditproductComponent,
+    ShopProfileComponent
   ],
   imports: [
     BrowserModule,
