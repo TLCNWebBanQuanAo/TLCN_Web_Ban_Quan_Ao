@@ -79,24 +79,24 @@
     <div class="row">
       <div class="col-lg-6 contact-info">
         
-        <form class="contact-form">
+        <div class="contact-form">
           <!--<p style="margin-bottom: 0px; padding-left: 18px;">Account name *</p>-->
-          <input type="text" placeholder="Name">
-          <input type="email" placeholder="Email">
-          <input type="number" placeholder="Phone number">
-        </form>
+          <input type="text" [(ngModel)]="name" placeholder="Name">
+          <input type="email" [(ngModel)]="email" placeholder="Email">
+          <input type="text" [(ngModel)]="phone" placeholder="Phone number">
+        </div>
       </div>
       <div class="col-lg-6 contact-info">
-        <form class="contact-form">
-          <input type="text" placeholder="Account name">
-          <input type="text" placeholder="Password">
-          <input type="text" placeholder="Confirm Password">
-        </form>
+        <div class="contact-form">
+          <input type="text" [(ngModel)]="accountName" placeholder="Account name">
+          <input type="password" [(ngModel)]="password" placeholder="Password">
+          <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirm Password">
+        </div>
       </div>
     </div>
     <div class="row">
       <div style="padding-top: 40px; padding-bottom: 50px;" class="col-lg-12 contact-info text-center">
-        <button class="site-btn">CREATE</button>
+        <button type="submit" (click)="register()" class="site-btn">CREATE</button>
       </div>
     </div>
   </div>
