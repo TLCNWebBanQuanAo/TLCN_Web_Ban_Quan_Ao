@@ -12,6 +12,7 @@ import { AdListproductComponent } from './ad-listproduct/ad-listproduct.componen
 import { AdAddcategoryComponent } from './ad-addcategory/ad-addcategory.component';
 import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
+import { fromEventPattern, from } from 'rxjs';
 
 const routes: Routes = [
   { path: '', component: ShopIndexComponent },

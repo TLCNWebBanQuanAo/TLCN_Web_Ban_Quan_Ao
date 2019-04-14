@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,8 @@ import { AdListproductComponent } from './ad-listproduct/ad-listproduct.componen
 import { AdAddcategoryComponent } from './ad-addcategory/ad-addcategory.component';
 import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
+
+import { GuestServiceService } from './_service/guest-service/guest-service.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,7 @@ import { ShopProfileComponent } from './shop-profile/shop-profile.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GuestServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
