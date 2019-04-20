@@ -19,6 +19,8 @@ import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.componen
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 
 import { GuestServiceService } from './_service/guest-service/guest-service.service';
+import { UserServiceService } from './_service/user-service/user-service.service';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { GuestServiceService } from './_service/guest-service/guest-service.serv
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [GuestServiceService],
+  providers: [
+    GuestServiceService,
+    UserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

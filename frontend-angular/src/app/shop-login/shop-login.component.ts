@@ -13,40 +13,56 @@ export class ShopLoginComponent implements OnInit {
 
   user: User;
   error: string;
+  accountName: string;
+  password: string;
 
-  constructor(private router: Router, private guestService: GuestServiceService) { 
+  constructor(private router: Router, private guestService: GuestServiceService) {
     this.user = new User();
   }
 
   ngOnInit() {
-    localStorage.setItem("accountName","");
-    localStorage.setItem("role",null);
+    localStorage.setItem("accountName", "");
+    localStorage.setItem("role", null);
+    this.accountName = "";
+    this.password = "";
   }
 
   login() {
-    this.guestService.login(this.user).pipe(first()).subscribe(res => {
-  if(res.success == "true"){
-    localStorage.setItem("address",res.data.address);
-    localStorage.setItem("accountName",res.data.accountName);
-    localStorage.setItem("role",res.data.role_id);
-    localStorage.setItem("count","0");
-    if(res.data.role_id == 1){
-      // this.router.navigate(["/adtype"]);
-      alert("Admin login successful !!!")
+    if (this.accountName == "" || this.password == "") {
+      alert("Please enter account name and password !!!");
     }
-    else{
-      // this.router.navigate(["/userprofile"]);
-      alert("User login successful !!!")
+    else {
+      this.user.accountName = this.accountName;
+      this.user.password = this.password;
+      this.guestService.login(this.user).pipe(first()).subscribe(res => {
+        if (res.success == "true") {
+          localStorage.setItem("address", res.data.address);
+          localStorage.setItem("accountName", res.data.accountName);
+          localStorage.setItem("role", res.data.role_id);
+          localStorage.setItem("count", "0");
+          if (res.data.role_id == 1) {
+            // this.router.navigate(["/adtype"]);
+            alert("Admin login successful !!!")
+          }
+          else {
+            // this.router.navigate(["/userprofile"]);
+            alert("User login successful !!!")
+          }
+
+        } else {
+          alert("Login unsuccessful !!!");
+        }
+
+      },
+        err => {
+          console.log("login fail: " + err);
+          this.error = err;
+        })
     }
-    
-  }else{
-    alert("Login unsuccessful !!!");
+
   }
-    
-    },
-    err=>{
-      console.log("login fail: " + err);
-      this.error = err;
-    })
+
+  createAccount() {
+    window.location.href = "/register";
   }
 }
