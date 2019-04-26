@@ -21,6 +21,10 @@ import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 import { GuestServiceService } from './_service/guest-service/guest-service.service';
 import { UserServiceService } from './_service/user-service/user-service.service';
 import { from } from 'rxjs';
+import { ShopHeaderComponent } from './shop-header/shop-header.component';
+import { ShopMenuComponent } from './shop-menu/shop-menu.component';
+import { AdMenuComponent } from './ad-menu/ad-menu.component';
+import { ShopFooterComponent } from './shop-footer/shop-footer.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { from } from 'rxjs';
     AdListproductComponent,
     AdAddcategoryComponent,
     AdEditproductComponent,
-    ShopProfileComponent
+    ShopProfileComponent,
+    ShopHeaderComponent,
+    ShopMenuComponent,
+    AdMenuComponent,
+    ShopFooterComponent
   ],
   imports: [
     BrowserModule,
