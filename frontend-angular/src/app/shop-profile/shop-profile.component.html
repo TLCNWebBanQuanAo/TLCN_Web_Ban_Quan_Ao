@@ -1,44 +1,7 @@
-<!-- Page Preloder -->
-<div id="preloder">
-  <div class="loader"></div>
-</div>
-
 <!-- Header section -->
 <header class="header-section">
-  <div class="header-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-2 text-center text-lg-left">
-          <!-- logo -->
-          <a class="site-logo">
-            <img src="/assets/divisima/img/logo.png" alt="">
-          </a>
-        </div>
-        <div class="col-xl-6 col-lg-5">
-        </div>
-        <div class="col-xl-4 col-lg-5">
-          <div class="user-panel">
-            <div class="up-item">
-              <i class="flaticon-profile"></i>
-              <a href="#">Sign</a> In or <a href="#">Create Account</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <nav class="main-navbar">
-    <div class="container">
-      <!-- menu -->
-      <ul class="main-menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Product</a></li>
-        <li><a href="#">Category</a></li>
-        <li><a href="#">SaleOff</a></li>
-        <li><a href="#">Account</a></li>
-      </ul>
-    </div>
-  </nav>
+  <app-shop-header></app-shop-header>
+  <app-shop-menu></app-shop-menu>
 </header>
 <!-- Header section end -->
 
@@ -51,27 +14,33 @@
         <h3 style="padding-bottom: 10px;">Update Avatar</h3>
         <img class="avatar" src="" alt="" style="width: 200px; height: 200px; border-radius: 50%;">
         <form [formGroup]="formImage" method="POST" (ngSubmit)="onSaveImage()" novalidate>
-            <label class="hinhanh" id="#bb">
-                <input type="file" (change)="onChangedImage($event)" #fileInput id="File" size="60" >
-              </label> 
+          <label class="hinhanh" id="#bb">
+            <input type="file" (change)="onChangedImage($event)" #fileInput id="File" size="60">
+          </label>
           <button class="site-btn">UPDATE</button>
         </form>
       </div>
       <div class="col-lg-4 contact-info" style="text-align: center;">
         <h3 style="padding-bottom: 10px;">Update Information</h3>
-        <form class="contact-form">
-          <input type="text" placeholder="Name">
-          <input type="date" placeholder="Ngày sinh">
-          <input type="text" placeholder="Số điện thoại">
-          <input type="email" placeholder="Email">
-          <input type="text" placeholder="Địa chỉ">
-          <input type="text" placeholder="Giới tính">
+        <form class="contact-form" method="POST" (ngSubmit)="doithongtincanhan()">
+          <input [(ngModel)]="userprofile.name" type="text" placeholder="Name">
+          <input [(ngModel)]="dateOfBirth" data-date-format="MM DD YYYY" type="date" placeholder="Ngày sinh">
+          <input [(ngModel)]="userprofile.phone" type="text" placeholder="Số điện thoại">
+          <input [(ngModel)]="userprofile.email" type="email" placeholder="Email">
+          <input [(ngModel)]="userprofile.address" type="text" placeholder="Địa chỉ">
+          <select [(ngModel)]="userprofile.gender" style="width: 100%; height: 44px;
+          border: none; padding: 0 18px; background: #f0f0f0; border-radius: 40px;
+          margin-bottom: 17px; font-size: 14px;" type="text" placeholder="Giới tính">
+            <option value="1">Nam</option>
+            <option value="2">Nữ</option>
+            <option value="3">Khác</option>
+          </select>
         </form>
       </div>
       <div class="col-lg-4 contact-info" style="text-align: center;">
         <h3 style="padding-bottom: 10px;">Update Password</h3>
         <form class="contact-form">
-          <input type="text" placeholder="Current password">
+          <input [(ngModel)]="userprofile.password" type="text" placeholder="Current password">
           <input type="text" placeholder="New password">
           <input type="text" placeholder="Confirm new password">
         </form>
@@ -93,106 +62,4 @@
 <!-- product section end -->
 
 
-<!-- Footer section -->
-<section class="footer-section">
-  <div class="container">
-    <div class="footer-logo text-center">
-      <a href="index.html"><img src="/assets/divisima/./img/logo-light.png" alt=""></a>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-sm-6">
-        <div class="footer-widget about-widget">
-          <h2>About</h2>
-          <p>Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam frin-gilla faucibus urna, id
-            dapibus erat iaculis ut. Integer ac sem.</p>
-          <img src="/assets/divisima/img/cards.png" alt="">
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="footer-widget about-widget">
-          <h2>Questions</h2>
-          <ul>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Track Orders</a></li>
-            <li><a href="">Returns</a></li>
-            <li><a href="">Jobs</a></li>
-            <li><a href="">Shipping</a></li>
-            <li><a href="">Blog</a></li>
-          </ul>
-          <ul>
-            <li><a href="">Partners</a></li>
-            <li><a href="">Bloggers</a></li>
-            <li><a href="">Support</a></li>
-            <li><a href="">Terms of Use</a></li>
-            <li><a href="">Press</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="footer-widget about-widget">
-          <h2>Questions</h2>
-          <div class="fw-latest-post-widget">
-            <div class="lp-item">
-              <div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/1.jpg"></div>
-              <div class="lp-content">
-                <h6>what shoes to wear</h6>
-                <span>Oct 21, 2018</span>
-                <a href="#" class="readmore">Read More</a>
-              </div>
-            </div>
-            <div class="lp-item">
-              <div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/2.jpg"></div>
-              <div class="lp-content">
-                <h6>trends this year</h6>
-                <span>Oct 21, 2018</span>
-                <a href="#" class="readmore">Read More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="footer-widget contact-widget">
-          <h2>Questions</h2>
-          <div class="con-info">
-            <span>C.</span>
-            <p>Your Company Ltd </p>
-          </div>
-          <div class="con-info">
-            <span>B.</span>
-            <p>1481 Creekside Lane Avila Beach, CA 93424, P.O. BOX 68 </p>
-          </div>
-          <div class="con-info">
-            <span>T.</span>
-            <p>+53 345 7953 32453</p>
-          </div>
-          <div class="con-info">
-            <span>E.</span>
-            <p>office@youremail.com</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="social-links-warp">
-    <div class="container">
-      <div class="social-links">
-        <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
-        <a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
-        <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
-        <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
-        <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
-        <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
-        <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
-      </div>
-
-      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-      <p class="text-white text-center mt-5">Copyright &copy;
-        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
-          class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-      </p>
-      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-    </div>
-  </div>
-</section>
+<app-shop-footer></app-shop-footer>
