@@ -12,7 +12,9 @@ export class UserServiceService {
   user: User
   context = environment.base_user_url;
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient ) { 
+    
+  }
   laythongtinnguoidung(accountName: String): Observable<any>{
     return this.http.get(`${this.context}api/v1/user/${accountName}`
     );
@@ -25,5 +27,9 @@ export class UserServiceService {
   }
   getInvoicesByUser(accountName:string):Observable<any>{
     return this.http.get(`${this.context}api/v1/user/getbilllist/${accountName}`);
+  }
+  layavatar(accountName: String): Observable<any> {
+    return this.http.get(`${this.context}api/v1/user/${accountName}`
+    );
   }
 }

@@ -21,6 +21,7 @@ export class ShopLoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.clear;
     localStorage.setItem("accountName", "");
     localStorage.setItem("role", null);
     this.accountName = "";

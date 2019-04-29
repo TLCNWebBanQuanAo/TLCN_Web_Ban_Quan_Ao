@@ -27,18 +27,18 @@ export class ShopRegisterComponent implements OnInit {
     this.user.phone = "";
     this.user.status = 1;
     this.user.role_id = 0;
-    this.user.avatar = "";
     this.user.dateOfBirth = null;
   }
 
   ngOnInit() {
+    localStorage.clear;
     this.user.accountName = "";
-          this.name = "";
-          this.email = "";
-          this.password = "";
-          this.confirmPassword = "";
-          this.accountName = "";
-          this.phone = "";
+    this.name = "";
+    this.email = "";
+    this.password = "";
+    this.confirmPassword = "";
+    this.accountName = "";
+    this.phone = "";
   }
 
   register() {
