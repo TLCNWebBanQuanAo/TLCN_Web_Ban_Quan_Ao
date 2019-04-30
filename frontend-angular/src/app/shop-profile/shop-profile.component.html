@@ -5,56 +5,46 @@
 </header>
 <!-- Header section end -->
 
-
 <!-- product section -->
 <section class="product-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 contact-info" style="text-align: center;">
         <h3 style="padding-bottom: 10px;">Update Avatar</h3>
-        <img class="avatar" src="" alt="" style="width: 200px; height: 200px; border-radius: 50%;">
-        <form [formGroup]="formImage" method="POST" (ngSubmit)="onSaveImage()" novalidate>
+        <img class="avatar" [src]="image" alt="" style="width: 50% !important">
+        <form [formGroup]="formImage" method="POST" (ngSubmit)="onSaveImage()" novalidate style="margin-top: 10px;">
           <label class="hinhanh" id="#bb">
             <input type="file" (change)="onChangedImage($event)" #fileInput id="File" size="60">
           </label>
-          <button class="site-btn">UPDATE</button>
+          <button class="site-btn" type="submit">Update</button>
         </form>
       </div>
-      <div class="col-lg-4 contact-info" style="text-align: center;">
+      <form form method="POST" (ngSubmit)="doithongtincanhan()" action="" #f="ngForm"
+      enctype="multipart/form-data" novalidate class="col-lg-4 contact-info" style="text-align: center;">
         <h3 style="padding-bottom: 10px;">Update Information</h3>
-        <form class="contact-form" method="POST" (ngSubmit)="doithongtincanhan()">
-          <input [(ngModel)]="userprofile.name" type="text" placeholder="Name">
-          <input [(ngModel)]="dateOfBirth" data-date-format="MM DD YYYY" type="date" placeholder="Ngày sinh">
-          <input [(ngModel)]="userprofile.phone" type="text" placeholder="Số điện thoại">
-          <input [(ngModel)]="userprofile.email" type="email" placeholder="Email">
-          <input [(ngModel)]="userprofile.address" type="text" placeholder="Địa chỉ">
-          <select [(ngModel)]="userprofile.gender" style="width: 100%; height: 44px;
+        <div class="contact-form">
+          <input [(ngModel)]="user.name" id="nameOfUser" name="nameOfUser" type="text" placeholder="Name">
+          <input [(ngModel)]="dateOfBirth" id="dateOfBirth" name="dateOfBirth" type="date" data-date-format="DD MMMM YYYY" placeholder="Ngày sinh">
+          <input [(ngModel)]="user.phone" id="phone" name="phone" type="text" placeholder="Số điện thoại">
+          <input [(ngModel)]="user.email" id="email" name="email" type="email" placeholder="Email">
+          <input [(ngModel)]="user.address" id="address" name="address" type="text" placeholder="Địa chỉ">
+          <select [(ngModel)]="user.gender" id="gender" name="gender" style="width: 100%; height: 44px;
           border: none; padding: 0 18px; background: #f0f0f0; border-radius: 40px;
           margin-bottom: 17px; font-size: 14px;" type="text" placeholder="Giới tính">
             <option value="1">Nam</option>
             <option value="2">Nữ</option>
-            <option value="3">Khác</option>
           </select>
-        </form>
-      </div>
+        </div>
+        <button type="submit" class="site-btn">UPDATE</button>
+      </form>
       <div class="col-lg-4 contact-info" style="text-align: center;">
         <h3 style="padding-bottom: 10px;">Update Password</h3>
-        <form class="contact-form">
-          <input [(ngModel)]="userprofile.password" type="text" placeholder="Current password">
-          <input type="text" placeholder="New password">
-          <input type="text" placeholder="Confirm new password">
-        </form>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-4 contact-info">
-      </div>
-      <div class="col-lg-4 contact-info" style="text-align: center;">
-        <button class="site-btn">UPDATE</button>
-      </div>
-      <div class="col-lg-4 contact-info" style="text-align: center;">
-        <button class="site-btn">UPDATE</button>
+        <div class="contact-form">
+          <input [(ngModel)]="password" type="password" placeholder="Current password">
+          <input [(ngModel)]="newPassword" type="password" placeholder="New password">
+          <input [(ngModel)]="reNewPassword" type="password" placeholder="Confirm new password">
+        </div>
+        <button (click)="doiMatKhau()" class="site-btn">UPDATE</button>
       </div>
     </div>
   </div>

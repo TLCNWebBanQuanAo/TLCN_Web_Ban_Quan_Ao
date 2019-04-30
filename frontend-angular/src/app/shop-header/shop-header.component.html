@@ -14,8 +14,9 @@
           <ng-container *ngIf="username; else nullName">
             <div class="up-item" style="margin-right: 15px;">
               <ul href="">
-                <img href="" [src]="image" alt="Avatar" style="border-radius: 50%; padding-right: 5px; width: 35px;" />
-                <a href="" name="accountName">{{user.accountName}}</a>
+                <img href="profile" [src]="image" alt="Avatar" style="border-radius: 50%; padding-right: 5px; width: 35px;" />
+                <a href="profile" name="accountName">{{username}}</a>
+                <a href="/login" > | Log out</a>
               </ul>
             </div>
             <div class="up-item" style="margin-right: 15px;">
@@ -30,9 +31,6 @@
               </div>
               <a href="">Bill</a>
             </div>
-            <div class="up-item">
-                <button (click)="onLogout()" style="background-color: #FFFFFF; border: none;">| Log out</button>
-              </div>
           </ng-container>
           <ng-template #nullName>
             <div class="up-item">

@@ -51,6 +51,7 @@ export class ShopRegisterComponent implements OnInit {
         this.user.email = this.email;
         this.user.accountName = this.accountName;
         this.user.phone = this.phone;
+        this.user.role_id = 0;
         this.guestService.register(this.user).pipe(first()).subscribe(res => {
           alert("Account successfully created !!!");
           this.user.accountName = "";

@@ -16,7 +16,7 @@ import { fromEventPattern, from } from 'rxjs';
 
 const routes: Routes = [
   { path: '', component: ShopIndexComponent },
-  { path: 'product', component: ShopProductComponent },
+  { path: 'product/:id/:quantity', component: ShopProductComponent },
   { path: 'category', component: ShopCategoryComponent },
   { path: 'checkout', component: ShopCheckoutComponent},
   { path: 'cart', component: ShopCartComponent },

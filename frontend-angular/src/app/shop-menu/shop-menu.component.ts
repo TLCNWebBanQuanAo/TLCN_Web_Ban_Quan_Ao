@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-shop-menu',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop-menu.component.css']
 })
 export class ShopMenuComponent implements OnInit {
-
-  constructor() { }
+  isAdmin: boolean = false;
+  role: string;
+  constructor() {
+   }
 
   ngOnInit() {
+    this.role = localStorage.getItem("role");
+    if(this.role == "1")
+      this.isAdmin = true;
   }
-
 }

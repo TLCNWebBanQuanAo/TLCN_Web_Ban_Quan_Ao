@@ -12,286 +12,62 @@
     <div class="col-xl-4 col-lg-3" style="padding-left: 0px;">
       <div class="">
         <div class="" style="margin-top: 10px;">
-          <label class="" for="country" style="margin-right: 10px;">Loại</label>
+          <label class="" for="country" style="margin-right: 10px;">Type</label>
           <select id="country" [(ngModel)]="typeid" name="id" (change)="onChangeProductType()">
             <option *ngFor="let t of type" [value]="t.id">{{t.name}}</option>
           </select>
         </div>
       </div>
-      <form class="header-search-form" style="padding-left: 0px;">
-        <input type="text" placeholder="Search on divisima ....">
-        <button style="padding-top: 3px;"><i class="flaticon-search"></i></button>
-      </form>
+      <div class="search">
+        <ul>
+          <input type="text" [(ngModel)]="keyword" name="keyword" class="textbox" value="Search on divisima">
+          <button class="btn btn-danger btn-sm" style="margin-left: 10px;" (click)="onFilter()">Search</button>
+        </ul>
+        <div id="response"> </div>
+      </div>
     </div>
     <div class="section-title" style="margin-bottom: 40px;">
     </div>
     <div class="row">
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/5.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+        <div *ngFor="let product of products">
+          <div class="col-lg-3 col-sm-6">
+            <div class="product-item">
+              <div class="pi-pic">
+                <img [src]="product.images" routerLink="/product/{{product.id}}/1" alt="">
+                <div class="pi-links">
+                  <a (click)="addProductInCart(product.id)" class="add-card"><i class="flaticon-bag"></i><span>ADD TO
+                      CART</span></a>
+                </div>
+              </div>
+              <div class="pi-text">
+                <h6>$ {{product.price}}</h6>
+                <p routerLink="/product/{{product.id}}/1">{{product.name}}</p>
+              </div>
             </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <div class="tag-sale">ON SALE</div>
-            <img src="/assets/divisima/./img/product/6.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Black and White Stripes Dress</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/7.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/8.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/9.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/10.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Black and White Stripes Dress</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/11.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/12.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-center pt-5">
-      <button class="site-btn sb-line sb-dark">LOAD MORE</button>
-    </div>
+      <nav aria-label="Page navigation" style="margin-top: -5px;">
+        <ul class="pagination">
+          <li [className]="current==0?'disabled':'enable'" style="cursor: pointer;">
+            <a (click)="onPrePage()" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li [className]="item === current ? 'active' : 'inactive'" *ngFor="let item of pageArray"
+            style="cursor: pointer; color: orangered;">
+            <a (click)="onGotoPage(item)">{{item + 1}}</a>
+          </li>
+          <li [className]="current==pageNumber-1?'disabled':'enable'" style="cursor: pointer;">
+            <a (click)="onNextPage()" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
   </div>
 </section>
 <!-- letest product section end -->
-
-
-
-<!-- Product filter section -->
-<section class="product-filter-section">
-  <div class="container">
-    <div class="section-title">
-      <h2>BROWSE TOP SELLING PRODUCTS</h2>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/5.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <div class="tag-sale">ON SALE</div>
-            <img src="/assets/divisima/./img/product/6.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Black and White Stripes Dress</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/7.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/8.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/9.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/10.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Black and White Stripes Dress</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/11.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/12.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-center pt-5">
-      <button class="site-btn sb-line sb-dark">LOAD MORE</button>
-    </div>
-  </div>
-</section>
-<!-- Product filter section end -->
 
 <app-shop-footer></app-shop-footer>
 
