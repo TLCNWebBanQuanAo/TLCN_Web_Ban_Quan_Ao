@@ -15,80 +15,52 @@
           <h3>Your Cart</h3>
           <div class="cart-table-warp">
             <table>
-            <thead>
-              <tr>
-                <th class="product-th">Product</th>
-                <th class="quy-th">Quantity</th>
-                <th class="size-th">SizeSize</th>
-                <th class="total-th">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let client of clients">
-                <td class="product-col">
-                  <img src="/assets/divisima/img/cart/1.jpg" alt="">
-                  <div class="pc-title">
-                    <h4>Animal Print Dress</h4>
-                    <p>$45.90</p>
-                  </div>
-                </td>
-                <td class="quy-col">
-                  <div class="quantity">
-                                <div class="pro-qty">
-                      <input type="text" value="1">
+              <thead>
+                <tr>
+                  <th class="product-th">Product</th>
+                  <th class="quy-th">Quantity</th>
+                  <th class="size-th">SizeSize</th>
+                  <th class="total-th">Price</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let client of clients">
+                  <td class="product-col">
+                    <img [src]="product.images" alt="">
+                    <div class="pc-title">
+                      <h4><a routerLink="/product/{{client.product_id}}/{{client.quantity}}">{{client.name}}</a></h4>
+                      <p>${{client.price}}</p>
                     </div>
-                            </div>
-                </td>
-                <td class="size-col"><h4>Size M</h4></td>
-                <td class="total-col"><h4>$45.90</h4></td>
-              </tr>
-              <tr>
-                <td class="product-col">
-                  <img src="/assets/divisima/img/cart/2.jpg" alt="">
-                  <div class="pc-title">
-                    <h4>Ruffle Pink Top</h4>
-                    <p>$45.90</p>
-                  </div>
-                </td>
-                <td class="quy-col">
-                  <div class="quantity">
-                                <div class="pro-qty">
-                      <input type="text" value="1">
+                  </td>
+                  <td class="quy-col">
+                    <div class="quantity">
+                      <div class="pro-qty">
+                        <input type="text" value="1">
+                      </div>
                     </div>
-                            </div>
-                </td>
-                <td class="size-col"><h4>Size M</h4></td>
-                <td class="total-col"><h4>$45.90</h4></td>
-              </tr>
-              <tr>
-                <td class="product-col">
-                  <img src="/assets/divisima/img/cart/3.jpg" alt="">
-                  <div class="pc-title">
-                    <h4>Skinny Jeans</h4>
-                    <p>$45.90</p>
-                  </div>
-                </td>
-                <td class="quy-col">
-                  <div class="quantity">
-                                <div class="pro-qty">
-                      <input type="text" value="1">
-                    </div>
-                            </div>
-                </td>
-                <td class="size-col"><h4>Size M</h4></td>
-                <td class="total-col"><h4>$45.90</h4></td>
-              </tr>
-            </tbody>
-          </table>
+                  </td>
+                  <td class="size-col">
+                    <h4>Size M</h4>
+                  </td>
+                  <td class="total-col">
+                    <h4>${{client.price}}</h4>
+                  </td>
+                  <td><button class="btn btn-danger btn-sm"
+                    (click)="deleteProductInCart(client.product_id)">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="total-cost">
-            <h6>Total <span>$99.90</span></h6>
+            <h6>Total <span>${{tong}}</span></h6>
           </div>
         </div>
       </div>
       <div class="col-lg-4 card-right">
+        <a (click)="clearCart()" href="" class="site-btn">All delete</a>
         <a href="" class="site-btn">Proceed to checkout</a>
-        <a href="" class="site-btn sb-dark">Continue shopping</a>
+        <a href="" class="site-btn">Continue shopping</a>
       </div>
     </div>
   </div>
