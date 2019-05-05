@@ -14,7 +14,7 @@
         <div class="cart-table">
           <h3>Your Cart</h3>
           <div class="cart-table-warp">
-            <table>
+            <table class="table">
               <thead>
                 <tr>
                   <th class="product-th">Product</th>
@@ -27,24 +27,21 @@
               <tbody>
                 <tr *ngFor="let client of clients">
                   <td class="product-col">
-                    <img [src]="product.images" alt="">
+                    <img [src]="client.images" alt="">
                     <div class="pc-title">
                       <h4><a routerLink="/product/{{client.product_id}}/{{client.quantity}}">{{client.name}}</a></h4>
-                      <p>${{client.price}}</p>
                     </div>
                   </td>
                   <td class="quy-col">
-                    <div class="quantity">
-                      <div class="pro-qty">
-                        <input type="text" value="1">
-                      </div>
+                    <div class="quantity">              
+                        <input class="pro-qty" type="number" value="{{client.quantity}}">
                     </div>
                   </td>
                   <td class="size-col">
                     <h4>Size M</h4>
                   </td>
                   <td class="total-col">
-                    <h4>${{client.price}}</h4>
+                    <h4>$ {{client.price}}</h4>
                   </td>
                   <td><button class="btn btn-danger btn-sm"
                     (click)="deleteProductInCart(client.product_id)">Delete</button></td>
@@ -58,7 +55,7 @@
         </div>
       </div>
       <div class="col-lg-4 card-right">
-        <a (click)="clearCart()" href="" class="site-btn">All delete</a>
+        <a (click)="clearCart()" href="" class="site-btn">Delete all</a>
         <a href="" class="site-btn">Proceed to checkout</a>
         <a href="" class="site-btn">Continue shopping</a>
       </div>
