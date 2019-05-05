@@ -14,129 +14,83 @@
         <div class="cart-table">
           <h3>Your Cart</h3>
           <div class="cart-table-warp">
-            <table class="table">
+            <table>
               <thead>
                 <tr>
                   <th class="product-th">Product</th>
                   <th class="quy-th">Quantity</th>
-                  <th class="size-th">SizeSize</th>
-                  <th class="total-th">Price</th>
-                  <th></th>
+                  <th class="size-th" style="padding-right: 0px;">Size</th>
+                  <th class="total-th" style="padding-right: 20px;">Price</th>
+                  <th class="total-th">Option</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let client of clients">
                   <td class="product-col">
-                    <img [src]="client.images" alt="">
+                    <img [src]="client.images" alt="" style="object-fit: cover; height: 73px;">
                     <div class="pc-title">
                       <h4><a routerLink="/product/{{client.product_id}}/{{client.quantity}}">{{client.name}}</a></h4>
+                      <p>${{client.price}}</p>
                     </div>
                   </td>
                   <td class="quy-col">
-                    <div class="quantity">              
+                    <!-- <div class="quantity">              
                         <input class="pro-qty" type="number" value="{{client.quantity}}">
+                    </div> -->
+
+                    <div class="quantity">
+                      <div class="pro-qty" style="padding: 0px; width: auto !important;">
+                        <span>
+                          <button class="btn"
+                            (click)="minusProductInCart(client.product_id,client.quantity, client.size)">-</button>
+                        </span>
+                        <span> {{client.quantity}} </span>
+                        <span>
+                          <button class="btn"
+                            (click)="plusProductInCart(client.product_id,client.quantity, client.size)">+</button>
+                        </span>
+                      </div>
                     </div>
                   </td>
                   <td class="size-col">
-                    <h4>Size M</h4>
+                    <!-- <h4>Size {{client.size}}</h4> -->
+                    <div class="quantity">
+                      <div class="pro-qty" style="padding: 0px; width: auto !important;">
+                        <span>
+                          <button class="btn"
+                          (click)="minusSizeInCart(client.product_id,client.quantity, client.size)">-</button>
+                        </span>
+                        <span> {{client.size}} </span>
+                        <span>
+                          <button class="btn"
+                          (click)="plusSizeInCart(client.product_id,client.quantity, client.size)">+</button>
+                        </span>
+                      </div>
+                    </div>
+                    
                   </td>
-                  <td class="total-col">
-                    <h4>$ {{client.price}}</h4>
+                  <td class="total-col" style="padding-right: 20px;">
+                    <h4>${{client.price}}</h4>
                   </td>
-                  <td><button class="btn btn-danger btn-sm"
-                    (click)="deleteProductInCart(client.product_id)">Delete</button></td>
+                  <td class="total-col"><button class="btn btn-danger btn-sm"
+                      (click)="deleteProductInCart(client.product_id)">Delete</button></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class="total-cost">
+          <div class="total-cost" style="padding-right: 135px;">
             <h6>Total <span>${{tong}}</span></h6>
           </div>
         </div>
       </div>
       <div class="col-lg-4 card-right">
-        <a (click)="clearCart()" href="" class="site-btn">Delete all</a>
-        <a href="" class="site-btn">Proceed to checkout</a>
-        <a href="" class="site-btn">Continue shopping</a>
+        <a (click)="clearCart()" class="site-btn">Delete all</a>
+        <a (click)="checkout()" class="site-btn">Proceed to checkout</a>
+        <a href="/" class="site-btn sb-dark">Continue shopping</a>
       </div>
     </div>
   </div>
 </section>
 <!-- cart section end -->
-
-<!-- Related product section -->
-<section class="related-product-section">
-  <div class="container">
-    <div class="section-title text-uppercase">
-      <h2>Continue Shopping</h2>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <div class="tag-new">New</div>
-            <img src="/assets/divisima/./img/product/2.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Black and White Stripes Dress</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/5.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/9.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <img src="/assets/divisima/./img/product/1.jpg" alt="">
-            <div class="pi-links">
-              <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-              <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>$35,00</h6>
-            <p>Flamboyant Pink Top </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Related product section end -->
-
-
 
 <app-shop-footer></app-shop-footer>

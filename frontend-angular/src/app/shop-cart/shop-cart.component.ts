@@ -23,6 +23,7 @@ export class ShopCartComponent implements OnInit {
   clients: any[];
   dataTable: any;
   error: string;
+  size: string;
   product: Product;
   accountName: string = "";
   temp = 0;
@@ -33,7 +34,7 @@ export class ShopCartComponent implements OnInit {
   paypalLoad: boolean = true;
   finalAmount: number = 1;
 
-  constructor(private http: HttpClient, private chRef: ChangeDetectorRef, private router: Router, private userService: UserServiceService, private fb: FormBuilder) { }
+  constructor(private http: HttpClient, private router: Router, private userService: UserServiceService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.accountName = localStorage.getItem("accountName");
@@ -43,13 +44,6 @@ export class ShopCartComponent implements OnInit {
         for (let i = 0; i < this.clients.length; i++) {
           this.tong += this.clients[i].price * this.clients[i].quantity;
         }
-        // You'll have to wait that changeDetection occurs and projects data into 
-        // the HTML template, you can ask Angular to that for you ;-)
-        this.chRef.detectChanges();
-
-        // Now you can use jQuery DataTables :
-        const table: any = $('table');
-        this.dataTable = table.DataTable();
       });
   }
 
@@ -66,6 +60,11 @@ export class ShopCartComponent implements OnInit {
 
         });
   }
+
+  checkout() {
+    window.location.href = "/checkout";
+  }
+
   deleteProductInCart(productId: number) {
     this.userService.deleteProductInCart(this.accountName.toString(), productId).pipe(first())
       .subscribe(res => {
@@ -144,9 +143,9 @@ export class ShopCartComponent implements OnInit {
       document.body.appendChild(scripttagElement);
     })
   }
-  plusProductInCart(id: number, quantity: number){
+  plusProductInCart(id: number, quantity: number, size: string){
     this.accountName = localStorage.getItem("accountName");
-      this.userService.plusProductInCart(this.accountName, id, quantity)
+      this.userService.plusProductInCart(this.accountName, id, quantity, size)
       .pipe(first()).subscribe(res=>{
         if(res.success == "true"){
           this.clients.forEach(product => {
@@ -162,15 +161,56 @@ export class ShopCartComponent implements OnInit {
   
       }); 
   }
-  minusProductInCart(id: number, quantity: number){
+  minusProductInCart(id: number, quantity: number, size:string){
     this.accountName = localStorage.getItem("accountName");
-      this.userService.minusProductInCart(this.accountName, id, quantity)
+      this.userService.minusProductInCart(this.accountName, id, quantity, size)
       .pipe(first()).subscribe(res=>{
         if(res.success == "true"){
           this.clients.forEach(product => {
             if (product.product_id == res.data.product_id && product.quantity!= 1 ) {
               product.quantity= product.quantity-1;
               this.tong= this.tong - product.price;
+              return;
+            }
+          });
+        }
+      },
+      err=>{
+  
+      }); 
+  }
+
+  plusSizeInCart(id: number, quantity: number, size: string){
+    if(+size > 41){
+      return;
+    }
+    this.accountName = localStorage.getItem("accountName");
+      this.userService.plusSizeInCart(this.accountName, id, quantity, size)
+      .pipe(first()).subscribe(res=>{
+        if(res.success == "true"){
+          this.clients.forEach(product => {
+            if (product.product_id == res.data.product_id && product.size!= 42 ) {
+              product.size= +product.size + 1;
+              return;
+            }
+          });
+        }
+      },
+      err=>{
+  
+      }); 
+  }
+  minusSizeInCart(id: number, quantity: number, size:string){
+    if(+size < 33){
+      return;
+    }
+    this.accountName = localStorage.getItem("accountName");
+      this.userService.minusSizeInCart(this.accountName, id, quantity, size)
+      .pipe(first()).subscribe(res=>{
+        if(res.success == "true"){
+          this.clients.forEach(product => {
+            if (product.product_id == res.data.product_id && product.size!= 32 ) {
+              product.size= +product.size - 1;
               return;
             }
           });

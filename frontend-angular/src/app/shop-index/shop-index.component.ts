@@ -108,7 +108,7 @@ export class ShopIndexComponent implements OnInit {
 
     if (localStorage.getItem("accountName") != "") {
       this.accountName = localStorage.getItem("accountName");
-      this.userService.addProductInCart(this.accountName, id, 1)
+      this.userService.addProductInCart(this.accountName, id, 1, "32")
         .pipe(first()).subscribe(res => {
           if (res.success == "true")
             alert("Cập nhật giỏ hàng !!!");

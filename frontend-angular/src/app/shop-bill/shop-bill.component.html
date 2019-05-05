@@ -1,0 +1,50 @@
+<!-- Header section -->
+<header class="header-section">
+  <app-shop-header></app-shop-header>
+  <app-shop-menu></app-shop-menu>
+</header>
+<!-- Header section end -->
+
+
+<!-- cart section end -->
+<section class="cart-section spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="cart-table">
+          <h3>Your Billing</h3>
+          <div class="cart-table-warp">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th class="product-th">Purchase date</th>
+                  <th class="quy-th">Total</th>
+                  <th class="total-th" style="padding-right: 20px;">Address</th>
+                  <th class="total-th">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let client of clients">
+                  <td>{{client.dateCreate | date : "dd/MM/yyyy"}}</td>
+                  <td>{{client.total}}</td>
+                  <td>{{client.address}}</td>
+                  <td>
+                      <div class="lessons-list" *ngIf="client.status else loading">
+                        Paid
+                      </div>
+                      <ng-template #loading>
+                        <div>Unpaid</div>
+                      </ng-template>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- cart section end -->
+
+<app-shop-footer></app-shop-footer>

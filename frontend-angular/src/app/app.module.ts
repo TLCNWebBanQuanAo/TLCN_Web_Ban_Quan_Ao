@@ -25,6 +25,7 @@ import { ShopHeaderComponent } from './shop-header/shop-header.component';
 import { ShopMenuComponent } from './shop-menu/shop-menu.component';
 import { AdMenuComponent } from './ad-menu/ad-menu.component';
 import { ShopFooterComponent } from './shop-footer/shop-footer.component';
+import { ShopBillComponent } from './shop-bill/shop-bill.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ShopFooterComponent } from './shop-footer/shop-footer.component';
     ShopHeaderComponent,
     ShopMenuComponent,
     AdMenuComponent,
-    ShopFooterComponent
+    ShopFooterComponent,
+    ShopBillComponent
   ],
   imports: [
     BrowserModule,

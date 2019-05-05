@@ -41,8 +41,8 @@ export class UserServiceService {
     return this.http.get(`${this.context}api/v1/user/getproductincart/${accountName}`
     );
   }
-  addProductInCart(accountName:string, product_id:Number, quantity:Number): Observable<any>{
-    return this.http.post(`${this.context}api/v1/user/addproductincart/${accountName}/${product_id}/${quantity}`,"");
+  addProductInCart(accountName:string, product_id:Number, quantity:Number, size:string): Observable<any>{
+    return this.http.post(`${this.context}api/v1/user/addproductincart/${accountName}/${product_id}/${quantity}/${size}`,"");
   }
 
   getProduct(productId:Number):Observable<any>{
@@ -71,10 +71,16 @@ export class UserServiceService {
     let user:User = JSON.parse('{ "accountName": "' + accountName+ '",' + '"address": "' +diaChiGiaoHang+ '",'  + '"status": "'+status+ '"}');
     return this.http.post(`${this.context}/api/v1/user/thanhtoan/${tongTien}`, user);
   }
-  plusProductInCart(accountName:string, product_id:Number, quantity:Number): Observable<any>{
-    return this.http.post(`${this.context}api/v1/user/plusproductincart/${accountName}/${product_id}/${quantity}`,"");
+  plusProductInCart(accountName:string, product_id:Number, quantity:Number, size:string): Observable<any>{
+    return this.http.post(`${this.context}api/v1/user/plusproductincart/${accountName}/${product_id}/${quantity}/${size}`,"");
   }
-  minusProductInCart(accountName:string, product_id:Number, quantity:Number): Observable<any>{
-    return this.http.post(`${this.context}api/v1/user/minusproductincart/${accountName}/${product_id}/${quantity}`,"");
+  minusProductInCart(accountName:string, product_id:Number, quantity:Number, size:string): Observable<any>{
+    return this.http.post(`${this.context}api/v1/user/minusproductincart/${accountName}/${product_id}/${quantity}/${size}`,"");
+  }
+  plusSizeInCart(accountName:string, product_id:Number, quantity:Number, size:string): Observable<any>{
+    return this.http.post(`${this.context}api/v1/user/plussizeincart/${accountName}/${product_id}/${quantity}/${size}`,"");
+  }
+  minusSizeInCart(accountName:string, product_id:Number, quantity:Number, size:string): Observable<any>{
+    return this.http.post(`${this.context}api/v1/user/minussizeincart/${accountName}/${product_id}/${quantity}/${size}`,"");
   }
 }

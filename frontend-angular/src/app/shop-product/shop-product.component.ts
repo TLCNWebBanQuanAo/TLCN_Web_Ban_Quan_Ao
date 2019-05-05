@@ -16,13 +16,13 @@ export class ShopProductComponent implements OnInit {
   userNameTemp:string = "";
   product: Product;
   id:number;
-  quantity:number = 0;
+  quantity: number = 1;
+  size: string;
   constructor(private route: ActivatedRoute, private userService: UserServiceService, private location: Location) { }
 
   ngOnInit() {
     this.accountName = localStorage.getItem("accountName");
     this.id = +this.route.snapshot.paramMap.get('id');
-    this.quantity = +this.route.snapshot.paramMap.get('quantity');
     this.userService.getProduct(this.id).pipe(first())
     .subscribe(res=>{
       if(res.success == "true"){
@@ -38,10 +38,11 @@ export class ShopProductComponent implements OnInit {
   }
   addProductInCart(){
     this.accountName = localStorage.getItem("accountName");
+    this.product.quantity = this.quantity;
+    this.product.size = this.size;
     this.id = +this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
     if(localStorage.getItem("accountName")!=""){
-      this.userService.addProductInCart(this.accountName, this.id, this.product.quantity)
+      this.userService.addProductInCart(this.accountName, this.id, this.product.quantity, this.product.size)
       .pipe(first()).subscribe(res=>{
         if(res.success == "true")
           alert("Cập nhật giỏ hàng !!!");

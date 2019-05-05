@@ -12,6 +12,7 @@ import { AdListproductComponent } from './ad-listproduct/ad-listproduct.componen
 import { AdAddcategoryComponent } from './ad-addcategory/ad-addcategory.component';
 import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
+import { ShopBillComponent } from './shop-bill/shop-bill.component';
 import { fromEventPattern, from } from 'rxjs';
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'listproduct', component: AdListproductComponent },
   { path: 'addcategory', component: AdAddcategoryComponent },
   { path: 'editproduct', component: AdEditproductComponent },
-  { path: 'profile', component: ShopProfileComponent }
+  { path: 'profile', component: ShopProfileComponent },
+  { path: 'bill', component: ShopBillComponent }
 ];
 
 @NgModule({

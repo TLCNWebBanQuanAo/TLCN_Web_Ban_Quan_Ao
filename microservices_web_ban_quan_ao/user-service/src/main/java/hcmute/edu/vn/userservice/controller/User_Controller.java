@@ -156,9 +156,9 @@ public class User_Controller {
         return dataReturnList;
     }
 
-    @PostMapping("/addproductincart/{accountname}/{productid}/{quantity}")
+    @PostMapping("/addproductincart/{accountname}/{productid}/{quantity}/{size}")
     public DataReturnRecord<CartDetail_Dto> AddProductInCart (@PathVariable String accountname,
-                                                              @PathVariable int productid, @PathVariable int quantity){
+                                                              @PathVariable int productid, @PathVariable int quantity, @PathVariable String size){
         DataReturnRecord<CartDetail_Dto> dataReturnRecord = new DataReturnRecord<>();
 
         Cart cart = user_service.FindByAccountName(accountname).getCart();
@@ -171,6 +171,7 @@ public class User_Controller {
         Cart_Detail cart_detail = new Cart_Detail();
         cart_detail.setId(cart_product_id);
         cart_detail.setQuantity(quantity);
+        cart_detail.setSize(size);
 
         dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
         dataReturnRecord.setMessage("Add products successful.");
@@ -314,9 +315,9 @@ public class User_Controller {
 
         return cartDetail_service.DeleteAllProductInCart(cart.getId());
     }
-    @PostMapping("/plusproductincart/{accountname}/{productid}/{quantity}")
+    @PostMapping("/plusproductincart/{accountname}/{productid}/{quantity}/{size}")
     public DataReturnRecord<CartDetail_Dto> PlusProductInCart (@PathVariable String accountname,
-                                                              @PathVariable int productid, @PathVariable int quantity){
+                                                              @PathVariable int productid, @PathVariable int quantity, @PathVariable String size){
         DataReturnRecord<CartDetail_Dto> dataReturnRecord = new DataReturnRecord<>();
 
         Cart cart = user_service.FindByAccountName(accountname).getCart();
@@ -329,14 +330,15 @@ public class User_Controller {
         Cart_Detail cart_detail = new Cart_Detail();
         cart_detail.setId(cart_product_id);
         cart_detail.setQuantity(quantity+1);
+        cart_detail.setSize(size);
 
         dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
         dataReturnRecord.setMessage("Add products successful.");
         return dataReturnRecord;
     }
-    @PostMapping("/minusproductincart/{accountname}/{productid}/{quantity}")
+    @PostMapping("/minusproductincart/{accountname}/{productid}/{quantity}/{size}")
     public DataReturnRecord<CartDetail_Dto> MinusProductInCart (@PathVariable String accountname,
-                                                               @PathVariable int productid, @PathVariable int quantity){
+                                                               @PathVariable int productid, @PathVariable int quantity, @PathVariable String size){
         DataReturnRecord<CartDetail_Dto> dataReturnRecord = new DataReturnRecord<>();
 
         Cart cart = user_service.FindByAccountName(accountname).getCart();
@@ -356,8 +358,55 @@ public class User_Controller {
         {
             cart_detail.setQuantity(quantity-1);
         }
+        cart_detail.setSize(size);
         dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
         dataReturnRecord.setMessage("Add products successful.");
+        return dataReturnRecord;
+    }
+
+    @PostMapping("/plussizeincart/{accountname}/{productid}/{quantity}/{size}")
+    public DataReturnRecord<CartDetail_Dto> PlusSizeInCart (@PathVariable String accountname,
+                                                               @PathVariable int productid, @PathVariable int quantity, @PathVariable String size){
+        DataReturnRecord<CartDetail_Dto> dataReturnRecord = new DataReturnRecord<>();
+
+        Cart cart = user_service.FindByAccountName(accountname).getCart();
+        Product product = product_service.FindProductById(productid);
+
+        Cart_Product_Id cart_product_id = new Cart_Product_Id();
+        cart_product_id.setCart(cart);
+        cart_product_id.setProduct(product);
+        int newSize = Integer.valueOf(size) + 1;
+
+        Cart_Detail cart_detail = new Cart_Detail();
+        cart_detail.setId(cart_product_id);
+        cart_detail.setQuantity(quantity);
+        cart_detail.setSize(String.valueOf(newSize));
+
+        dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
+        dataReturnRecord.setMessage("Change size successful.");
+        return dataReturnRecord;
+    }
+
+    @PostMapping("/minussizeincart/{accountname}/{productid}/{quantity}/{size}")
+    public DataReturnRecord<CartDetail_Dto> MinusSizeInCart (@PathVariable String accountname,
+                                                            @PathVariable int productid, @PathVariable int quantity, @PathVariable String size){
+        DataReturnRecord<CartDetail_Dto> dataReturnRecord = new DataReturnRecord<>();
+
+        Cart cart = user_service.FindByAccountName(accountname).getCart();
+        Product product = product_service.FindProductById(productid);
+
+        Cart_Product_Id cart_product_id = new Cart_Product_Id();
+        cart_product_id.setCart(cart);
+        cart_product_id.setProduct(product);
+        int newSize = Integer.valueOf(size) - 1;
+
+        Cart_Detail cart_detail = new Cart_Detail();
+        cart_detail.setId(cart_product_id);
+        cart_detail.setQuantity(quantity);
+        cart_detail.setSize(String.valueOf(newSize));
+
+        dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
+        dataReturnRecord.setMessage("Change size successful.");
         return dataReturnRecord;
     }
 

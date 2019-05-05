@@ -17,6 +17,7 @@ public interface CartDetail_Mapper   {
             @Mapping(source = "id.product.id", target = "product_id"),
             @Mapping(source = "id.product.price", target = "price")
 
+
     })
     CartDetail_Dto CartDetailToCartDetailDto(Cart_Detail cart_detail);
 }

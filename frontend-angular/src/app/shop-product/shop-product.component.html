@@ -20,37 +20,57 @@
         <div class="fw-size-choose">
           <p>Size</p>
           <div class="sc-item">
-            <input type="radio" name="sc" id="xs-size">
+            <input type="radio" [(ngModel)]="size" name="size" id="xs-size" value="32">
             <label for="xs-size">32</label>
           </div>
           <div class="sc-item">
-            <input type="radio" name="sc" id="s-size">
+            <input type="radio" [(ngModel)]="size" name="size" value="33" id="xss-size">
+            <label for="xss-size">33</label>
+          </div>
+          <div class="sc-item">
+            <input type="radio" [(ngModel)]="size" name="size" value="34" id="s-size">
             <label for="s-size">34</label>
           </div>
           <div class="sc-item">
-            <input type="radio" name="sc" id="m-size" checked="">
+            <input type="radio" [(ngModel)]="size" name="size" value="35" id="ss-size">
+            <label for="ss-size">35</label>
+          </div>
+          <div class="sc-item">
+            <input type="radio" [(ngModel)]="size" name="size" value="36" id="m-size">
             <label for="m-size">36</label>
           </div>
           <div class="sc-item">
-            <input type="radio" name="sc" id="l-size">
+            <input type="radio" [(ngModel)]="size" name="size" value="37" id="ms-size">
+            <label for="ms-size">37</label>
+          </div>
+          <div class="sc-item">
+            <input type="radio" [(ngModel)]="size" name="size" value="38" id="l-size">
             <label for="l-size">38</label>
           </div>
-          <div class="sc-item disable">
-            <input type="radio" name="sc" id="xl-size" disabled>
+          <div class="sc-item">
+            <input type="radio" [(ngModel)]="size" name="size" value="39" id="ls-size">
+            <label for="ls-size">39</label>
+          </div>
+          <div class="sc-item">
+            <input type="radio" [(ngModel)]="size" name="size" value="40" id="xl-size" >
             <label for="xl-size">40</label>
           </div>
           <div class="sc-item">
-            <input type="radio" name="sc" id="xxl-size">
+            <input type="radio" [(ngModel)]="size" name="size" value="41" id="xls-size" >
+            <label for="xls-size">41</label>
+          </div>
+          <div class="sc-item">
+            <input type="radio" [(ngModel)]="size" name="size" value="42" id="xxl-size">
             <label for="xxl-size">42</label>
           </div>
         </div>
         <div class="quantity">
           <p>Quantity</p>
-          <input class="pro-qty" type="number" value="1">
+          <input class="pro-qty" [(ngModel)]="quantity" name="quantity"  type="number">
         </div>
-        <a href="#"  class="site-btn">SHOP NOW</a>
+        <a (click)="addProductInCart()" class="site-btn">ADD TO CART</a>
         <div id="accordion" class="accordion-area">
-          <div class="panel">
+          <div class="panel" style="border-bottom: none;">
             <div class="panel-header" id="headingOne">
               <button style="background-image: none;" class="panel-link active" data-toggle="collapse"
                 data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">information</button>
