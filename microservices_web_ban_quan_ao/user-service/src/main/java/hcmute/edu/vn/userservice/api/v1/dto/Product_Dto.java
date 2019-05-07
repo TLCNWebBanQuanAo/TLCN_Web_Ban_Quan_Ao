@@ -12,4 +12,5 @@ public class Product_Dto {
     private String size;
     private String describe;
     private String images;
+    private long dealPrice;
 }
