@@ -1,0 +1,55 @@
+<!-- Header section -->
+<header class="header-section">
+  <app-shop-header></app-shop-header>
+  <app-ad-menu></app-ad-menu>
+</header>
+<!-- Header section end -->
+
+
+<!-- product section -->
+<section class="product-section">
+  <div style="margin-left: 40px; margin-right: 40px;">
+    <div class="app-content container center-layout mt-2">
+      <!-- Basic form layout section start -->
+      <section id="horizontal-form-layouts">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title" id="horz-layout-basic">Thêm Loại Sản Phẩm</h4>
+              </div>
+              <div class="card-content collpase show">
+                <div class="card-body">
+                  <div class="form form-horizontal">
+                    <div class="form-body">
+                      <div class="form-group row">
+                        <label class="col-md-3 label-control" for="projectinput1" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Loại</label>
+                        <div class="col-md-9">
+                          <input type="text" id="projectinput1" class="form-control" [(ngModel)]="type.name" placeholder="Loại" name="name">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <button (click)="Cancel()" class="btn btn-warning mr-1">
+                        <i class="ft-x"></i> Cancel
+                      </button>
+                      <button (click)="createType()" class="btn btn-primary">
+                        <i class="fa fa-check-square-o"></i> Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- // Basic form layout section end -->
+    </div>
+  </div>
+</section>
+<!-- product section end -->
+
+
+<app-shop-footer></app-shop-footer>
+

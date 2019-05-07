@@ -25,6 +25,9 @@ import { ShopMenuComponent } from './shop-menu/shop-menu.component';
 import { AdMenuComponent } from './ad-menu/ad-menu.component';
 import { ShopFooterComponent } from './shop-footer/shop-footer.component';
 import { ShopBillComponent } from './shop-bill/shop-bill.component';
+import { AdAddtypeComponent } from './ad-addtype/ad-addtype.component';
+import { AdListtypeComponent } from './ad-listtype/ad-listtype.component';
+import { AdListuserComponent } from './ad-listuser/ad-listuser.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { ShopBillComponent } from './shop-bill/shop-bill.component';
     ShopMenuComponent,
     AdMenuComponent,
     ShopFooterComponent,
-    ShopBillComponent
+    ShopBillComponent,
+    AdAddtypeComponent,
+    AdListtypeComponent,
+    AdListuserComponent
   ],
   imports: [
     BrowserModule,
