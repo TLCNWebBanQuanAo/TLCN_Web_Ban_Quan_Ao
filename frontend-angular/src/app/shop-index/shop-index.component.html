@@ -34,9 +34,10 @@
           <div class="pi-pic">
             <img [src]="product.images" routerLink="/product/{{product.id}}/1" alt="">
             <div class="pi-links">
-              <a class="add-card" (click)="addProductInCart(product.id)"><i class="flaticon-bag"></i>
+              <a class="add-card" style="margin-right: 5px !important;" (click)="addProductInCart(product.id)"><i class="flaticon-bag"></i>
               <span style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; 
               user-select: none;">ADD TO CART</span></a>
+              <a class="wishlist-btn"><i class="flaticon-heart"></i></a>
             </div>
           </div>
           <div class="pi-text">
