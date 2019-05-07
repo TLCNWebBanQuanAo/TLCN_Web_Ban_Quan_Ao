@@ -5,6 +5,7 @@ import hcmute.edu.vn.userservice.api.v1.DataReturnRecord;
 import hcmute.edu.vn.userservice.api.v1.dto.*;
 import hcmute.edu.vn.userservice.api.v1.mapper.*;
 import hcmute.edu.vn.userservice.model.*;
+import hcmute.edu.vn.userservice.repository.Wishlist_Repository;
 import hcmute.edu.vn.userservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -50,6 +51,9 @@ public class User_Controller {
 
     @Autowired
     private BillDetail_Service billDetail_service;
+
+    @Autowired
+    private Wishlist_Repository wishlist_repository;
 
     @PostMapping("/changeavatar")
     public DataReturnRecord<User_Dto> changeavatar(@RequestBody User user){
@@ -409,5 +413,65 @@ public class User_Controller {
         dataReturnRecord.setMessage("Change size successful.");
         return dataReturnRecord;
     }
+    @GetMapping("/wishlist/{userName}")
+    public DataReturnList<Wishlist_Dto> getWishList(@PathVariable String userName){
+        User user = user_service.FindByAccountName(userName);
+        List<Wishlist> wishList = wishlist_repository.findAllByUserId(user.getId());
+        List<Wishlist_Dto> wishListDTOS = new ArrayList<>();
+        for (Wishlist item : wishList) {
+            Wishlist_Dto wishItem = new Wishlist_Dto();
+            wishItem.setProductName(item.getWishlist_id().getProduct().getName());
+            wishItem.setUserId(item.getWishlist_id().getUser().getId());
+            wishItem.setProductId(item.getWishlist_id().getProduct().getId());
+            wishItem.setCurrentPrice(item.getWishlist_id().getProduct().getPrice());
+            wishItem.setWishPrice(item.getDealPrice());
+            wishItem.setImage(item.getWishlist_id().getProduct().getImages());
+            wishItem.setQuantity(item.getWishlist_id().getProduct().getQuantity());
+            wishListDTOS.add(wishItem);
+        }
+
+        DataReturnList<Wishlist_Dto> result = new DataReturnList<>();
+        result.setData(wishListDTOS);
+        result.setMessage("get wishlist successfully");
+        return result;
+    }
+    @DeleteMapping("/deleteWishProduct/{userName}/{productId}")
+    public DataReturnRecord<Wishlist_Dto> deleteWishProduct(@PathVariable String userName, @PathVariable Integer productId){
+        DataReturnRecord<Wishlist_Dto> dataReturnRecord = new DataReturnRecord<>();
+
+        Product product = product_service.FindProductById(productId);
+        User user = user_service.FindByAccountName(userName);
+        Wishlist_Id wishId = new Wishlist_Id();
+        wishId.setUser(user);
+        wishId.setProduct(product);
+
+        wishlist_repository.deleteById(wishId);
+
+        dataReturnRecord.setMessage("Delete Wish Item Successfully !!!");
+
+        return dataReturnRecord;
+    }
+    @PostMapping("/addDealPrice/{userName}/{productId}/{dealPrice}")
+    public DataReturnRecord<?> addDealPrice(@PathVariable String userName, @PathVariable Integer productId, @PathVariable Double dealPrice){
+
+        DataReturnRecord<Cart_Detail> dataReturnRecord = new DataReturnRecord<>();
+
+        User user = user_service.FindByAccountName(userName);
+        Product product = product_service.FindProductById(productId);
+
+        Wishlist_Id userProductId = new Wishlist_Id();
+        userProductId.setUser(user);
+        userProductId.setProduct(product);
+
+        Wishlist userProduct = new Wishlist();
+        userProduct.setWishlist_id(userProductId);
+        userProduct.setDealPrice(dealPrice);
+
+        wishlist_repository.save(userProduct);
+
+        dataReturnRecord.setMessage("add deal price succesfully!");
+        return dataReturnRecord;
+    }
+
 
 }
