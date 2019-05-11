@@ -55,6 +55,23 @@ export class ShopProductComponent implements OnInit {
     
   }
 
+  addProductInWishlist(){
+    this.accountName = localStorage.getItem("accountName");
+    this.id = +this.route.snapshot.paramMap.get('id');
+    if(localStorage.getItem("accountName")!=""){
+      this.userService.addProductInWishList(this.accountName, this.id, this.product.price*0.9)
+      .pipe(first()).subscribe(res=>{
+        if(res.success == "true")
+          alert("Cập nhật wishlist !!!");
+      },
+      err=>{
+  
+      });
+    }else
+    alert("Mời bạn đăng nhập để thao tác!");
+    
+  }
+
   goBack(){
     this.location.back();
   }

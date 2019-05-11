@@ -36,7 +36,7 @@
             <div class="pi-links">
               <a class="add-card" style="margin-right: 5px !important;" (click)="addProductInCart(product.id)"><i class="flaticon-bag"></i>
               <span style="-webkit-user-select: none; -moz-user-select: none; cursor: pointer; -ms-user-select: none; user-select: none;">ADD TO CART</span></a>
-              <a class="wishlist-btn"><i class="flaticon-heart"></i></a>
+              <a class="wishlist-btn" (click)="addProductInWishList(product.id, product.price)"><i class="flaticon-heart"></i></a>
             </div>
           </div>
           <div class="pi-text">

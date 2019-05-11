@@ -1,0 +1,61 @@
+<!-- Header section -->
+<header class="header-section">
+  <app-shop-header></app-shop-header>
+  <app-shop-menu></app-shop-menu>
+</header>
+<!-- Header section end -->
+
+
+<!-- cart section end -->
+<section class="cart-section spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="cart-table">
+          <h3>Your Wishlist</h3>
+          <div class="cart-table-warp">
+            <table>
+              <thead>
+                <tr>
+                  <th class="product-th">Product</th>
+                  <th class="quy-th">Quantity</th>
+                  <th class="quy-th">Dealprice</th>
+                  <th class="total-th">Option</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let client of clients">
+                  <td class="product-col">
+                    <img [src]="client.image" alt="" style="object-fit: cover; height: 73px;">
+                    <div class="pc-title">
+                      <h4><a>{{client.productName}}</a></h4>
+                    </div>
+                  </td>
+                  <td class="total-col" style="padding-right: 20px;">
+                    <h4>${{client.currentPrice}}</h4>
+                  </td>
+                  <td class="total-col" style="padding-right: 20px;">
+                    <h4>${{client.wishPrice}}</h4>
+                  </td>
+                  <td class="total-col"><button class="btn btn-danger btn-sm"
+                      (click)="deleteProductInWishlist(client.productId)">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="total-cost" style="padding-right: 135px;">
+            <h6>Total <span></span></h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 card-right">
+        <a (click)="clearCart()" class="site-btn">Delete all</a>
+        <a (click)="checkout()" class="site-btn">Proceed to checkout</a>
+        <a href="/" class="site-btn sb-dark">Continue shopping</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- cart section end -->
+
+<app-shop-footer></app-shop-footer>
