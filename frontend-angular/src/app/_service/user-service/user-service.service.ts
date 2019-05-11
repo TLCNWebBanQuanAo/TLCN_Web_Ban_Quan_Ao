@@ -83,4 +83,13 @@ export class UserServiceService {
   minusSizeInCart(accountName:string, product_id:Number, quantity:Number, size:string): Observable<any>{
     return this.http.post(`${this.context}api/v1/user/minussizeincart/${accountName}/${product_id}/${quantity}/${size}`,"");
   }
+  getProductInWishList(accountName: string): Observable<any>{
+    return this.http.get(`${this.context}/api/v1/user/wishlist/${accountName}`);
+  }
+  deleteProductInWishList(accountName:string, productId:number): Observable<any>{
+    return this.http.delete(`${this.context}/api/v1/user/deleteWishProduct/${accountName}/${productId}`);
+  }
+  addProductInWishList(accountName:string, product_id:Number, dealPrice:Number): Observable<any>{
+    return this.http.post(`${this.context}api/v1/user/addDealPrice/${accountName}/${product_id}/${dealPrice}`,"");
+  }
 }

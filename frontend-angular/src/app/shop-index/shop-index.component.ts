@@ -121,4 +121,21 @@ export class ShopIndexComponent implements OnInit {
       alert("Mời bạn đăng nhập để thao tác");
 
   }
+  addProductInWishList(id: number, price: number) {
+
+    if (localStorage.getItem("accountName") != "") {
+      this.accountName = localStorage.getItem("accountName");
+      this.userService.addProductInWishList(this.accountName, id, price*0.9)
+        .pipe(first()).subscribe(res => {
+          if (res.success == "true")
+            alert("Cập nhật wish list !!!");
+        },
+          err => {
+
+          });
+    }
+    else
+      alert("Mời bạn đăng nhập để thao tác");
+
+  }
 }

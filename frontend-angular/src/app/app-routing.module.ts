@@ -13,6 +13,7 @@ import { AdAddcategoryComponent } from './ad-addcategory/ad-addcategory.componen
 import { AdEditproductComponent } from './ad-editproduct/ad-editproduct.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 import { ShopBillComponent } from './shop-bill/shop-bill.component';
+import {ShopWishlistComponent} from './shop-wishlist/shop-wishlist.component';
 import { fromEventPattern, from } from 'rxjs';
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'addcategory', component: AdAddcategoryComponent },
   { path: 'editproduct', component: AdEditproductComponent },
   { path: 'profile', component: ShopProfileComponent },
+  {path: 'wishlist', component: ShopWishlistComponent},
   { path: 'bill', component: ShopBillComponent }
 ];
 
