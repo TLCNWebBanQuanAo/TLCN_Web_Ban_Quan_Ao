@@ -17,6 +17,7 @@ export class ShopProductComponent implements OnInit {
   product: Product;
   id:number;
   quantity: number = 1;
+  dealPrice: number;
   size: string;
   constructor(private route: ActivatedRoute, private userService: UserServiceService, private location: Location) { }
 
@@ -59,14 +60,22 @@ export class ShopProductComponent implements OnInit {
     this.accountName = localStorage.getItem("accountName");
     this.id = +this.route.snapshot.paramMap.get('id');
     if(localStorage.getItem("accountName")!=""){
-      this.userService.addProductInWishList(this.accountName, this.id, this.product.price*0.9)
-      .pipe(first()).subscribe(res=>{
-        if(res.success == "true")
-          alert("Cập nhật wishlist !!!");
-      },
-      err=>{
-  
-      });
+      if(this.dealPrice==null)
+      {
+        alert("please choose your dealPrice");
+      }
+      else
+      {
+        this.userService.addProductInWishList(this.accountName, this.id, this.dealPrice)
+        .pipe(first()).subscribe(res=>{
+          if(res.success == "true")
+            alert("Cập nhật wishlist !!!");
+        },
+        err=>{
+    
+        });
+      }
+      
     }else
     alert("Mời bạn đăng nhập để thao tác!");
     

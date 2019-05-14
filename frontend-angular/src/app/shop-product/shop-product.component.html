@@ -69,6 +69,11 @@
           <input class="pro-qty" [(ngModel)]="quantity" name="quantity"  type="number">
         </div>
         <a (click)="addProductInCart()" class="site-btn">ADD TO CART</a>
+        <div class="quantity" style="margin-top: 30px;">
+          <p>Choose your price</p>
+          <input class="pro-qty" [(ngModel)]="dealPrice" name="dealPrice"  type="number">
+        </div>
+        <a (click)="addProductInWishlist()" class="site-btn">ADD TO WISHLIST</a>
         <div id="accordion" class="accordion-area">
           <div class="panel" style="border-bottom: none;">
             <div class="panel-header" id="headingOne">
