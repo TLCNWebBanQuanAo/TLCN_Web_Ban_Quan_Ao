@@ -42,7 +42,7 @@ export class ShopLoginComponent implements OnInit {
           localStorage.setItem("role", res.data.role_id);
           localStorage.setItem("count", "0");
           if (res.data.role_id == 1) {
-            this.router.navigate(["/listuser"]);
+            this.router.navigate(["/listproduct"]);
             // alert("Admin login successful !!!")
           }
           else {

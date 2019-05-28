@@ -75,4 +75,46 @@ export class ShopCheckoutComponent implements OnInit {
         });
   }
 
+  paypalConfig = {
+    env: 'sandbox',
+    client: {
+      sandbox: 'AaA2r4L0yM1IMIR1mXkOXggEQyiyyJpYDrJAjNB2pjrB59sAnvM_u7qc6iBtV-1_WIaod6mdb3h5wwGJ',
+      production: 'EPt6FS3URTzAd9dfRXvIYuvxSch6tB6QUS172ZN4PSfupifsGc7I8YQWgNeM3iN-PBG-PYzxaHtM7dq0'
+    },
+    commit: true,
+    payment: (data, actions) => {
+      return actions.payment.create({
+        payment: {
+          transactions: [
+            { amount: { total: this.tong, currency: 'USD' } }
+          ]
+        }
+      });
+    },
+    onAuthorize: (data, actions) => {
+      return actions.payment.execute().then((payment) => {
+        this.thanhtoan(1);
+      })
+    }
+  };
+ 
+  ngAfterViewChecked(): void {
+    if (!this.addScript) {
+      this.addPaypalScript().then(() => {
+        paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
+        this.paypalLoad = false;
+      })
+    }
+  }
+  
+  addPaypalScript() {
+    this.addScript = true;
+    return new Promise((resolve, reject) => {
+      let scripttagElement = document.createElement('script');    
+      scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
+      scripttagElement.onload = resolve;
+      document.body.appendChild(scripttagElement);
+    })
+  }
+
 }

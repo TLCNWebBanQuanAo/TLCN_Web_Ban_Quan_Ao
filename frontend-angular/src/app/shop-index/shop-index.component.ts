@@ -28,6 +28,8 @@ export class ShopIndexComponent implements OnInit {
   accountName: string;
   id: number;
   typeid: number = 0;
+  isAdmin: boolean = false;
+  role: string;
 
   constructor(private router: Router, private userService: UserServiceService, private route: ActivatedRoute) {
     this.page = 0;
@@ -38,6 +40,9 @@ export class ShopIndexComponent implements OnInit {
 
   ngOnInit() {
     this.onInit();
+    this.role = localStorage.getItem("role");
+    if(this.role == "1")
+      this.isAdmin = true;
   }
   async onInit() {
     this.getAllCategories();

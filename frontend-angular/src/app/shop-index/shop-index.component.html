@@ -1,24 +1,21 @@
 <!-- Header section -->
 <header class="header-section">
   <app-shop-header></app-shop-header>
-  <app-shop-menu></app-shop-menu>
-</header>
-<!-- Header section end -->
-
-
-<!-- letest product section -->
-<section class="top-letest-product-section" style="padding-top: 20px;">
-  <div class="container">
-    <div class="col-xl-4 col-lg-3" style="padding-left: 0px;">
-      <div class="">
-        <div class="" style="margin-top: 10px;">
+  <!-- <app-shop-menu></app-shop-menu> -->
+  <div class="" style="background-color: #282828; padding: 7px 100px 3px 100px;">
+      <div style="display: inline-block; color: aliceblue">Home</div>
+      <ng-container *ngIf="isAdmin">
+          <div style="display: inline-block; color: aliceblue; float: right;" routerLink="/listproduct">Back to Admin</div> 
+        </ng-container>
+      <div class="" style="display: inline-block">
+        <div class="">
           <label class="" for="country" style="margin-right: 10px;">Type</label>
           <select id="country" [(ngModel)]="typeid" name="id" (change)="onChangeProductType()" style="height: 30px;">
             <option *ngFor="let t of type" [value]="t.id">{{t.name}}</option>
           </select>
         </div>
       </div>
-      <div class="search">
+      <div class="search" style="display: inline-block; margin-left: 20px;">
         <ul>
           <input type="text" [(ngModel)]="keyword" name="keyword" class="textbox" value="Search on divisima">
           <button class="btn btn-danger btn-sm" style="margin-left: 10px;" (click)="onFilter()">Search</button>
@@ -26,6 +23,13 @@
         <div id="response"> </div>
       </div>
     </div>
+</header>
+<!-- Header section end -->
+
+
+<!-- letest product section -->
+<section class="top-letest-product-section" style="padding-top: 20px;">
+  <div class="container">
     <div class="section-title" style="margin-bottom: 40px;">
     </div>
     <div class="row">
@@ -50,7 +54,7 @@
       <ul class="pagination justify-content-center pagination-separate pagination-curved">
         <li class="page-item" [className]="current==0?'disabled':'enable'">
           <a class="page-link" aria-label="Previous" (click)="onPrePage()">
-            <span aria-hidden="true"> << </span>
+            <span aria-hidden="true"> &laquo; </span>
           </a> 
         </li> 
         <li class="page-item" [className]="ite === current ? 'active' : 'inactive'" *ngFor="let ite of pageArray">
@@ -58,7 +62,7 @@
         </li>
         <li class="page-item" [className]="current==pageNumber-1?'disabled':'enable'">
           <a class="page-link" aria-label="Next" (click)="onNextPage()">
-            <span aria-hidden="true"> >> </span>
+            <span aria-hidden="true"> &raquo; </span>
           </a>
         </li>
       </ul>
