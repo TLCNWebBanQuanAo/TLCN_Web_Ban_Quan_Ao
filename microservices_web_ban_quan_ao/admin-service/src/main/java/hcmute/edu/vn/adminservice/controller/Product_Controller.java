@@ -8,7 +8,10 @@ import hcmute.edu.vn.adminservice.api.v1.mapper.ProductMapper;
 import hcmute.edu.vn.adminservice.api.v1.mapper.TypeMapper;
 import hcmute.edu.vn.adminservice.model.Product;
 import hcmute.edu.vn.adminservice.model.Type;
+import hcmute.edu.vn.adminservice.model.Wishlist;
 import hcmute.edu.vn.adminservice.repository.Type_Repository;
+import hcmute.edu.vn.adminservice.repository.Wishlist_Repository;
+import hcmute.edu.vn.adminservice.service.ContactService;
 import hcmute.edu.vn.adminservice.service.Product_Service;
 import hcmute.edu.vn.adminservice.service.Type_Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +30,35 @@ public class Product_Controller {
     private  Type_Service type_service;
     @Autowired
     private ProductMapper productMapper;
+    @Autowired
+    private ContactService contactService;
+
+    @Autowired
+    private Wishlist_Repository wishlist_repository;
+
+    private static String adminEmailAddress = "dandm.shop.97@gmail.com";
+
     @PostMapping("/editproduct")
     public Product editProduct(@RequestBody Product product){
+        Double current_price = product.getPrice();
+        List<Wishlist> wishlists = wishlist_repository.findAllByProduct_Id(product.getId());
+        for (Wishlist wishlist: wishlists) {
+            if(wishlist.getDealPrice() >= current_price &&
+                    product.getId() == wishlist.getWishlist_id().getProduct().getId() &&
+                    wishlist.getWishlist_id().getUser().getEmail() != ""){
+                String toAddress = wishlist.getWishlist_id().getUser().getEmail();
+                String subject = "Giá tốt cho bạn";
+                String content = "";
+                content += "Sản phẩm bạn muốn mua đã giảm còn : " + current_price + "$. ";
+                //content += "You can get more detail of product at : http://localhost:4200/productdetail/"+product.getId()+"/1";
+                try{
+                    contactService.send(adminEmailAddress, toAddress, subject, content);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+
         return product_service.editProduct(product);
     }
     @PostMapping("/addproduct/{id}")
