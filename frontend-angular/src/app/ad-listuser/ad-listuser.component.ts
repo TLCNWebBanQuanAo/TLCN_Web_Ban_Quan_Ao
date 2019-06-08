@@ -46,7 +46,7 @@ export class AdListuserComponent implements OnInit {
           user.isActive = "Admin"
         }
         else if(user.status == 2){
-          user.isActive = "Người dùng"
+          user.isActive = "User"
         }
       }
 
