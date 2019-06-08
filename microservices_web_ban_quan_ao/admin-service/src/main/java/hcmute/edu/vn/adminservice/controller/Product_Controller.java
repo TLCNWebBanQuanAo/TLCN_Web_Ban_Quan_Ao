@@ -30,8 +30,8 @@ public class Product_Controller {
     private  Type_Service type_service;
     @Autowired
     private ProductMapper productMapper;
-    @Autowired
-    private ContactService contactService;
+    //@Autowired
+    //private ContactService contactService;
 
     @Autowired
     private Wishlist_Repository wishlist_repository;
@@ -40,24 +40,24 @@ public class Product_Controller {
 
     @PostMapping("/editproduct")
     public Product editProduct(@RequestBody Product product){
-        Double current_price = product.getPrice();
-        List<Wishlist> wishlists = wishlist_repository.findAllByProduct_Id(product.getId());
-        for (Wishlist wishlist: wishlists) {
-            if(wishlist.getDealPrice() >= current_price &&
-                    product.getId() == wishlist.getWishlist_id().getProduct().getId() &&
-                    wishlist.getWishlist_id().getUser().getEmail() != ""){
-                String toAddress = wishlist.getWishlist_id().getUser().getEmail();
-                String subject = "Giá tốt cho bạn";
-                String content = "";
-                content += "Sản phẩm bạn muốn mua đã giảm còn : " + current_price + "$. ";
+        //Double current_price = product.getPrice();
+        //List<Wishlist> wishlists = wishlist_repository.findAllByProduct_Id(product.getId());
+        //for (Wishlist wishlist: wishlists) {
+            //if(wishlist.getDealPrice() >= current_price &&
+                    //product.getId() == wishlist.getWishlist_id().getProduct().getId() &&
+                    //wishlist.getWishlist_id().getUser().getEmail() != ""){
+                //String toAddress = wishlist.getWishlist_id().getUser().getEmail();
+                //String subject = "Giá tốt cho bạn";
+                //String content = "";
+                //content += "Sản phẩm bạn muốn mua đã giảm còn : " + current_price + "$. ";
                 //content += "You can get more detail of product at : http://localhost:4200/productdetail/"+product.getId()+"/1";
-                try{
-                    contactService.send(adminEmailAddress, toAddress, subject, content);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }
+                //try{
+                    //contactService.send(adminEmailAddress, toAddress, subject, content);
+                //}catch (Exception e){
+                  //  e.printStackTrace();
+                //}
+           // }
+        //}
 
         return product_service.editProduct(product);
     }
