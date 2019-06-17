@@ -1,0 +1,65 @@
+<!-- Header section -->
+<header class="header-section">
+  <app-shop-header></app-shop-header>
+  <app-ad-menu></app-ad-menu>
+</header>
+<!-- Header section end -->
+
+
+
+<!-- product section -->
+<section class="cart-section spad">
+  <div class="container" >
+      <div style="margin-bottom: 10px;">
+          <form method="POST" (ngSubmit)="statistics()" style="">
+              <span style="margin: 10px;">Date Start</span>
+              <input type="date" name="dateStart" [(ngModel)]="dateStart" data-date-format="DD MMMM YYYY" style="margin: 10px;">
+              <span style="margin: 10px;">Date End</span>
+              <input type="date" name="dateEnd" [(ngModel)]="dateEnd" data-date-format="DD MMMM YYYY" style="margin: 10px;">
+              <button type="submit" class="btn btn-primary" style="margin: 10px;">Search</button>
+              <span style="float: right; font-size: 30px;">Total: {{total}}$</span>
+          </form>
+          
+        </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="cart-table">
+          <h3>Thống kê bán hàng</h3>
+          <div class="cart-table-warp">
+            <table>
+              <thead>
+                <tr>
+                  <th class="product-th">Product</th>
+                  <th class="quy-th">Price</th>
+                  <th class="quy-th">Quantity</th>
+                  <th class="total-th"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let client of statisticsDTOs">
+                  <td class="product-col">
+                    <img [src]="client.images" alt="" style="object-fit: cover; height: 73px;">
+                    <div class="pc-title">
+                      <h4><a>{{client.name}}</a></h4>
+                    </div>
+                  </td>
+                  <td class="total-col" style="padding-right: 20px;">
+                    <h4>${{client.price}}</h4>
+                  </td>
+                  <td class="total-col" style="padding-right: 20px;">
+                    <h4>{{client.quantity}}</h4>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- product section end -->
+
+
+<app-shop-footer></app-shop-footer>
+

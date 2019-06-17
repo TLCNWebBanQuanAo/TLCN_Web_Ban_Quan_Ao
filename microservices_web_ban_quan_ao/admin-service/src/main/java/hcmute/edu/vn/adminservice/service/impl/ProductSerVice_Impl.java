@@ -16,6 +16,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+
 @Service
 public class ProductSerVice_Impl implements Product_Service {
     @Autowired
@@ -67,6 +72,28 @@ public class ProductSerVice_Impl implements Product_Service {
     public List<Product> findAll() {
         return product_repository.findAll();
     }
+
+    @Override
+    public Product toProduct(Product_Dto productDTO) {
+
+        Product product = new Product();
+
+        if (productDTO.getId() != 0){
+            product = product_repository.findById(productDTO.getId()).get();
+        }else{
+            product.setDateCreate(new Date());
+        }
+        product.setDateUpdate(new Date());
+        product.setStatus(productDTO.getStatus());
+        product.setName(productDTO.getName());
+        product.setUserCreate("admin");
+        product.setUserUpdate("admin");
+        product.setImages(productDTO.getImages());
+        product.setPrice(productDTO.getPrice());
+
+        return product;
+    }
+
 }
 
 
