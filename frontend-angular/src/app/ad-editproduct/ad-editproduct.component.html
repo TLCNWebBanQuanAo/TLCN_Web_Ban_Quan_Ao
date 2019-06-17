@@ -25,31 +25,19 @@
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput1" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Tên sản phẩm</label>
                         <div class="col-md-9">
-                          <input type="text" id="projectinput1" class="form-control" placeholder="Tên sản phẩm" name="fname">
+                          <input type="text" id="projectinput1" class="form-control" [(ngModel)]="product.name" placeholder="Tên sản phẩm" name="name">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput2" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Giá</label>
                         <div class="col-md-9">
-                          <input type="text" id="projectinput2" class="form-control" placeholder="Giá" name="lname">
+                          <input type="text" id="projectinput2" class="form-control" placeholder="Giá" [(ngModel)]="product.price" name="price">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="projectinput3" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Số lượng</label>
                         <div class="col-md-9">
-                          <input type="text" id="projectinput3" class="form-control" placeholder="Số lượng" name="">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                          <label class="col-md-3 label-control" for="projectinput3" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Size</label>
-                          <div class="col-md-9">
-                            <input type="text" id="projectinput3" class="form-control" placeholder="Size" name="">
-                          </div>
-                        </div>
-                      <div class="form-group row">
-                        <label class="col-md-3 label-control" for="projectinput4" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Loại</label>
-                        <div class="col-md-9">
-                          <input type="text" id="projectinput4" class="form-control" placeholder="Loại" name="">
+                          <input type="text" id="projectinput3" class="form-control" placeholder="Số lượng" [(ngModel)]="product.quantity" name="quantity">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -61,7 +49,7 @@
                       <div class="form-group row">
                           <label class="col-md-3 label-control" for="projectinput4" style="padding-top: 0px;padding-right: 0px;padding-left: 15px;">Mô tả</label>
                           <div class="col-md-9">
-                            <input type="text" id="projectinput4" class="form-control" placeholder="Mô tả" name="">
+                            <input type="text" id="projectinput4" class="form-control" placeholder="Mô tả" [(ngModel)]="product.describe" name="describe">
                           </div>
                         </div>
                       <div class="form-group row">
@@ -78,7 +66,7 @@
                       <button type="button" class="btn btn-warning mr-1">
                         <i class="ft-x"></i> Cancel
                       </button>
-                      <button type="submit" class="btn btn-primary">
+                      <button (click)="editproduct()" type="submit" class="btn btn-primary">
                         <i class="fa fa-check-square-o"></i> Save
                       </button>
                     </div>

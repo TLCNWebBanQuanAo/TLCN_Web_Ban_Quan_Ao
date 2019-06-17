@@ -15,4 +15,5 @@ public interface Product_Service {
     Product deleteProduct(int Id);
     Product findProductById(int Id);
     List<Product> findAll();
+    Product toProduct(Product_Dto productDTO);
 }

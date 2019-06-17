@@ -28,6 +28,7 @@ import { AdAddtypeComponent } from './ad-addtype/ad-addtype.component';
 import { AdListtypeComponent } from './ad-listtype/ad-listtype.component';
 import { AdListuserComponent } from './ad-listuser/ad-listuser.component';
 import { ShopWishlistComponent } from './shop-wishlist/shop-wishlist.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ShopWishlistComponent } from './shop-wishlist/shop-wishlist.component';
     AdAddtypeComponent,
     AdListtypeComponent,
     AdListuserComponent,
-    ShopWishlistComponent
+    ShopWishlistComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
