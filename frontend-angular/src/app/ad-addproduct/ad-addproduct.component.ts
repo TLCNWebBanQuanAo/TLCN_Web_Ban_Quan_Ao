@@ -72,10 +72,10 @@ export class AdAddproductComponent implements OnInit {
 
     this.adminservice.createProduct(this.product, this.typeid).pipe(first())
     .subscribe(res=>{
-        alert("Thêm sản phẩm thành công !!!");
+        alert("Add successful products.");
     },
     err=>{
-        alert("Thêm sản phẩm không thành công !!!");
+        alert("Add product failed !!!");
     });
   }
 

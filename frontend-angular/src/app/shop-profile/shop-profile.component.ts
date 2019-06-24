@@ -60,7 +60,7 @@ export class ShopProfileComponent implements OnInit {
     this.userService.changeAvatar(this.user).pipe(first())
     .subscribe(res=>{
       if(res.success == "true"){
-        alert("Update your avatar successfully !!!");
+        alert("Update your avatar successfully.");
         localStorage.setItem("avatar", res.data.avatar);
         window.location.href = "/profile";
       }
@@ -95,7 +95,7 @@ export class ShopProfileComponent implements OnInit {
       if (res.success = "true") {
         this.accountName = this.user.accountName.toString();
         localStorage.setItem("accountName", this.accountName);
-        alert("Update your information successfully !!!");
+        alert("Update your information successfully.");
       }
       else {
         alert("Update your information failed !!!");
@@ -113,7 +113,7 @@ export class ShopProfileComponent implements OnInit {
       this.userService.doiMatKhau(this.accountName, this.password, this.newPassword).pipe(first())
       .subscribe(res =>{
           if(res.success == "true")
-            alert("Change password successfully !!!");
+            alert("Change password successfully.");
             window.location.href = "/profile";
       },
       err =>{

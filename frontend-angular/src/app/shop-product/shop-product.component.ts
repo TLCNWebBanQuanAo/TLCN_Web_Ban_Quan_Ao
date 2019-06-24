@@ -46,13 +46,13 @@ export class ShopProductComponent implements OnInit {
       this.userService.addProductInCart(this.accountName, this.id, this.product.quantity, this.product.size)
       .pipe(first()).subscribe(res=>{
         if(res.success == "true")
-          alert("Cập nhật giỏ hàng !!!");
+          alert("Update shopping cart.");
       },
       err=>{
   
       });
     }else
-    alert("Mời bạn đăng nhập để thao tác!");
+    alert("Please login to operate.");
     
   }
 
@@ -62,14 +62,14 @@ export class ShopProductComponent implements OnInit {
     if(localStorage.getItem("accountName")!=""){
       if(this.dealPrice==null)
       {
-        alert("please choose your dealPrice");
+        alert("please choose your dealPrice.");
       }
       else
       {
         this.userService.addProductInWishList(this.accountName, this.id, this.dealPrice)
         .pipe(first()).subscribe(res=>{
           if(res.success == "true")
-            alert("Cập nhật wishlist !!!");
+            alert("Update wishlist.");
         },
         err=>{
     
@@ -77,7 +77,7 @@ export class ShopProductComponent implements OnInit {
       }
       
     }else
-    alert("Mời bạn đăng nhập để thao tác!");
+    alert("Please login to operate.");
     
   }
 

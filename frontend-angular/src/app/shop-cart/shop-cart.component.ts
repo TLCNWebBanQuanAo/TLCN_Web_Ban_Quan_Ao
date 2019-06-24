@@ -53,7 +53,7 @@ export class ShopCartComponent implements OnInit {
         if (res == true) {
           this.clients = null;
           this.tong= 0;
-          alert("Làm mới giỏ hàng !!!");
+          alert("Refresh the shopping cart !!!");
         }
       },
         err => {
@@ -80,10 +80,10 @@ export class ShopCartComponent implements OnInit {
           });
         }
         else
-          alert("Không bỏ sản phẩm ra khỏi giỏ hàng được !!!");
+          alert("Do not remove the product from the cart !!!");
       },
         err => {
-          alert("Không bỏ sản phẩm ra khỏi giỏ hàng được !!!");
+          alert("Do not remove the product from the cart !!!");
         });
   }
   async thanhtoan(status: number) {
@@ -93,13 +93,13 @@ export class ShopCartComponent implements OnInit {
           this.clients = null;
           this.diaChiGiaoHang = "";
           this.tong = 0;
-           alert("Thanh toán thành công !!!");
+           alert("Payment success.");
         }
         else
-          alert("Thanh toán không thành công ???");
+          alert("Payment failed !!! ");
       },
         err => {
-          alert("Hiện tại không thể thanh toán ???");
+          alert("Currently unable to pay !!!");
         });
   }
   paypalConfig = {

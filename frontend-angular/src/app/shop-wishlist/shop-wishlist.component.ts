@@ -60,10 +60,10 @@ export class ShopWishlistComponent implements OnInit {
           });
         }
         else
-          alert("Không bỏ sản phẩm ra khỏi wishlist được !!!");
+          alert("Do not remove the product from the wishlist !!!");
       },
         err => {
-          alert("Không bỏ sản phẩm ra khỏi wishlist được !!!");
+          alert("Do not remove the product from the wishlist !!!");
         });
   }
 
