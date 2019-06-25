@@ -65,6 +65,10 @@ export class ShopProductComponent implements OnInit {
         alert("please choose your dealPrice.");
       }
       else
+      if(this.dealPrice >= this.product.price){
+      alert("CurrentPrice can't be less than DealPrice!!!");
+      }
+      else
       {
         this.userService.addProductInWishList(this.accountName, this.id, this.dealPrice)
         .pipe(first()).subscribe(res=>{
