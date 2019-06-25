@@ -65,13 +65,13 @@ export class ShopCheckoutComponent implements OnInit {
           this.clients = null;
           this.diaChiGiaoHang = "";
           this.tong = 0;
-           alert("Thanh toán thành công !!!");
+           alert("Payment success.");
         }
         else
-          alert("Thanh toán không thành công !!!");
+          alert("Payment failed !!!");
       },
         err => {
-          alert("Hiện tại không thể thanh toán !!!");
+          alert("Currently unable to pay !!!");
         });
   }
 

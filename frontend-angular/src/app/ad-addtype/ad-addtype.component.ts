@@ -28,10 +28,10 @@ export class AdAddtypeComponent implements OnInit {
         alert("Add successful product type.");
       },
         err => {
-          alert("Add product types failed!!!");
+          alert("Add product types failed !!!");
         })
     } else {
-      alert("Product type has not been entered!!!");
+      alert("Product type has not been entered !!!");
     }
 
   }

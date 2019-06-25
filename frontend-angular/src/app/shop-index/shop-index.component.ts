@@ -63,7 +63,7 @@ export class ShopIndexComponent implements OnInit {
         }
       },
         err => {
-          alert("Không lấy được danh sách sản phẩm ???");
+          alert("Can't get product list !!!");
         });
   }
   getAllCategories() {
@@ -116,14 +116,14 @@ export class ShopIndexComponent implements OnInit {
       this.userService.addProductInCart(this.accountName, id, 1, "32")
         .pipe(first()).subscribe(res => {
           if (res.success == "true")
-            alert("Cập nhật giỏ hàng !!!");
+            alert("Update cart.");
         },
           err => {
 
           });
     }
     else
-      alert("Mời bạn đăng nhập để thao tác");
+      alert("Please login to operate.");
 
   }
   addProductInWishList(id: number, price: number) {
@@ -133,14 +133,14 @@ export class ShopIndexComponent implements OnInit {
       this.userService.addProductInWishList(this.accountName, id, price*0.9)
         .pipe(first()).subscribe(res => {
           if (res.success == "true")
-            alert("Cập nhật wish list !!!");
+            alert("Update wish list.");
         },
           err => {
 
           });
     }
     else
-      alert("Mời bạn đăng nhập để thao tác");
+      alert("Please login to operate.");
 
   }
 }
