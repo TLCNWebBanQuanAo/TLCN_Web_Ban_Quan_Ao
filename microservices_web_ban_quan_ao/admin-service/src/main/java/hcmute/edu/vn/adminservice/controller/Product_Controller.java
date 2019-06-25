@@ -1,4 +1,4 @@
-﻿package hcmute.edu.vn.adminservice.controller;
+package hcmute.edu.vn.adminservice.controller;
 
 
 import hcmute.edu.vn.adminservice.api.v1.dto.Product_Dto;
@@ -55,7 +55,7 @@ public class Product_Controller {
                 content += "Sản phẩm bạn muốn mua đã giảm còn : " + current_price + "$. ";
                 //content += "You can get more detail of product at : http://localhost:4200/productdetail/"+product.getId()+"/1";
                 try{
-                    contactService.send(adminEmailAddress, toAddress, subject, content);
+                    contactService.send(adminEmailAddress,toAddress, subject, content);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
