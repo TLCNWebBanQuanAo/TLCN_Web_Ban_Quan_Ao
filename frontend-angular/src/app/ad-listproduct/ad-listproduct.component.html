@@ -33,7 +33,6 @@
                               <th>Product's name</th>
                               <th>Price</th>
                               <th>Quantity</th>
-                              <th>Size</th>
                               <th>Status</th>
                               <th></th>
                               <th></th>
@@ -44,7 +43,6 @@
                               <td>{{product.name}}</td>
                               <td>{{product.price}} dollar</td>
                               <td>{{product.quantity}}</td>
-                              <td>{{product.size}}</td>
                               <td>{{product.trangthai}}</td>
                               <td><button (click)="onEditStatus(product.id)">{{product.trangthaiBan}}</button></td>
                               <td><button type="button" routerLink="/editproduct/{{product.id}}" class="btn btn-primary">Edit</button></td>

@@ -308,7 +308,11 @@ public class User_Controller {
             Bill_Product_Id bill_product_id = new Bill_Product_Id();
             bill_product_id.setBill(billAdd);
             bill_product_id.setProduct(cart_detail.getId().getProduct());
-
+            Product product = product_service.FindProductById(cart_detail.getId().getProduct().getId());
+            if(product.getQuantity()>=cart_detail.getQuantity()) {
+                product.setQuantity(product.getQuantity() - cart_detail.getQuantity());
+                product_service.editProduct(product);
+            }
             Bill_Detail bill_detail = new Bill_Detail();
             bill_detail.setId(bill_product_id);
             bill_detail.setPrice(cart_detail.getId().getProduct().getPrice());
@@ -333,7 +337,14 @@ public class User_Controller {
 
         Cart_Detail cart_detail = new Cart_Detail();
         cart_detail.setId(cart_product_id);
-        cart_detail.setQuantity(quantity+1);
+        if(product.getQuantity() >=quantity)
+        {
+            cart_detail.setQuantity(quantity+1);
+        }
+        else {
+            cart_detail.setQuantity(quantity);
+        }
+
         cart_detail.setSize(size);
 
         dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));

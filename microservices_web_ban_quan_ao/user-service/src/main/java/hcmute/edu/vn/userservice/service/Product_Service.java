@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import java.util.Optional;
 
 public interface Product_Service {
+    Product editProduct(Product product);
     Product FindProductById(int id);
     Page<Product> findAllProductPaging(Optional<Integer> id ,Optional<String> keyword, Optional<Integer> page, Optional<Integer> size);
 }

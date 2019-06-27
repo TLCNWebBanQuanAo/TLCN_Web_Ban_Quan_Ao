@@ -28,9 +28,6 @@ export class ShopProductComponent implements OnInit {
     .subscribe(res=>{
       if(res.success == "true"){
         this.product = res.data;
-        this.product.quantity = 1;
-        if(this.quantity != 0)
-          this.product.quantity = this.quantity;
       }
     },
     err=>{
@@ -39,20 +36,25 @@ export class ShopProductComponent implements OnInit {
   }
   addProductInCart(){
     this.accountName = localStorage.getItem("accountName");
-    this.product.quantity = this.quantity;
     this.product.size = this.size;
     this.id = +this.route.snapshot.paramMap.get('id');
-    if(localStorage.getItem("accountName")!=""){
-      this.userService.addProductInCart(this.accountName, this.id, this.product.quantity, this.product.size)
-      .pipe(first()).subscribe(res=>{
-        if(res.success == "true")
-          alert("Update shopping cart.");
-      },
-      err=>{
-  
-      });
-    }else
-    alert("Please login to operate.");
+    if(this.product.quantity < this.quantity){
+      alert("Sorry, the current item is not in sufficient quantity");
+    }
+    else{
+      if(localStorage.getItem("accountName")!=""){
+        this.userService.addProductInCart(this.accountName, this.id, this.quantity, this.product.size)
+        .pipe(first()).subscribe(res=>{
+          if(res.success == "true")
+            alert("Update shopping cart.");
+        },
+        err=>{
+    
+        });
+      }else
+      alert("Please login to operate.");
+    }
+    
     
   }
 

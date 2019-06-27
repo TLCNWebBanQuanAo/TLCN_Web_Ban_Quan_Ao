@@ -13,6 +13,9 @@ import java.util.Optional;
 @Transactional
 @Repository
 public interface Product_Repository extends JpaRepository<Product, Integer> {
+
+    //Product editProduct(Product product);
+
     Optional<Product> findById(int id);
     @Query(value = "SELECT p FROM products p WHERE p.status = 1 and p.name LIKE CONCAT('%',:keyword,'%')")
     Page<Product> findAllProductsPaging(@Param("keyword") String keyword, Pageable pageable);
