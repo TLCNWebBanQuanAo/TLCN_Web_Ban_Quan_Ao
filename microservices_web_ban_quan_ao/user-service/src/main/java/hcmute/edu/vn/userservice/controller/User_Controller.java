@@ -308,7 +308,9 @@ public class User_Controller {
             Bill_Product_Id bill_product_id = new Bill_Product_Id();
             bill_product_id.setBill(billAdd);
             bill_product_id.setProduct(cart_detail.getId().getProduct());
-
+            Product product = product_service.FindProductById(cart_detail.getId().getProduct().getId());
+            product.setQuantity(product.getQuantity()-cart_detail.getQuantity());
+            product_service.editProduct(product);
             Bill_Detail bill_detail = new Bill_Detail();
             bill_detail.setId(bill_product_id);
             bill_detail.setPrice(cart_detail.getId().getProduct().getPrice());

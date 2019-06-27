@@ -16,7 +16,12 @@ import java.util.Optional;
 public class ProductService_Impl implements Product_Service {
     @Autowired
     private Product_Repository product_repository;
-
+    @Override
+    public Product editProduct(Product product) {
+        if(product == null)
+            throw new NotFoundException("Sua gia khong thanh cong !!!");
+        return product_repository.save(product);
+    }
     @Override
     public Product FindProductById(int id){
         Optional<Product> product = product_repository.findById(id);
