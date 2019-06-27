@@ -25,14 +25,14 @@
         <div class="contact-form">
           <input [(ngModel)]="user.name" id="nameOfUser" name="nameOfUser" type="text" placeholder="Name">
           <input [(ngModel)]="dateOfBirth" id="dateOfBirth" name="dateOfBirth" type="date" data-date-format="DD MMMM YYYY" placeholder="Ngày sinh">
-          <input [(ngModel)]="user.phone" id="phone" name="phone" type="text" placeholder="Số điện thoại">
+          <input [(ngModel)]="user.phone" id="phone" name="phone" type="text" placeholder="Phone number">
           <input [(ngModel)]="user.email" id="email" name="email" type="email" placeholder="Email">
-          <input [(ngModel)]="user.address" id="address" name="address" type="text" placeholder="Địa chỉ">
+          <input [(ngModel)]="user.address" id="address" name="address" type="text" placeholder="Address">
           <select [(ngModel)]="user.gender" id="gender" name="gender" style="width: 100%; height: 44px;
           border: none; padding: 0 18px; background: #f0f0f0; border-radius: 40px;
-          margin-bottom: 17px; font-size: 14px;" type="text" placeholder="Giới tính">
-            <option value="1">Nam</option>
-            <option value="2">Nữ</option>
+          margin-bottom: 17px; font-size: 14px;" type="text" placeholder="Gender">
+            <option value="1">Male</option>
+            <option value="2">Female</option>
           </select>
         </div>
         <button type="submit" class="site-btn">UPDATE</button>

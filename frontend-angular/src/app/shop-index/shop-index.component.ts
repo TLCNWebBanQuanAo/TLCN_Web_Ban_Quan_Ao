@@ -73,7 +73,7 @@ export class ShopIndexComponent implements OnInit {
           this.type = res.data;
           const typeAll: Type = new Type;
           typeAll.id = 0;
-          typeAll.name = "Tất cả";
+          typeAll.name = "All";
           this.type.unshift(typeAll);
           console.log(this.type);
         }

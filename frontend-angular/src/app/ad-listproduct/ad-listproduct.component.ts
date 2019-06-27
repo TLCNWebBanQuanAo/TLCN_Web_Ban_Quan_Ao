@@ -34,12 +34,12 @@ export class AdListproductComponent implements OnInit {
       for(let product of this.products)
       {
         if(product.status == 1){
-         product.trangthai = "Còn bán";
-         product.trangthaiBan = "Ngừng bán";
+         product.trangthai = "Are selling";
+         product.trangthaiBan = "Out of stock";
         }
         else if(product.status == 0){
-          product.trangthai = "Ngưng bán";
-          product.trangthaiBan = "Mở bán lại";
+          product.trangthai = "Out of stock";
+          product.trangthaiBan = "Back in stock";
         }
       }
 
