@@ -56,4 +56,8 @@ export class AdEditproductComponent implements OnInit {
       })
   }
 
+  cancel() {
+    window.location.href = "/listproduct";
+  }
+
 }

@@ -11,31 +11,24 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="cart-table">
-          <h3>Your Billing</h3>
+        <div class="cart-table" style="padding-bottom: 40px;">
+          <h3>Your Bill</h3>
           <div class="cart-table-warp">
             <table class="table table-striped table-bordered">
               <thead>
                 <tr>
-                  <th class="product-th">Purchase date</th>
-                  <th class="quy-th">Total</th>
-                  <th class="total-th" style="padding-right: 20px;">Address</th>
-                  <th class="total-th">Status</th>
+                  <th style="text-align: center;">Id</th>
+                  <th class="product-th" style="text-align: center;">Purchase date</th>
+                  <th class="quy-th" style="text-align: center;">Total</th>
+                  <th class="total-th" style="text-align: center;">Address</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let client of clients">
-                  <td>{{client.dateCreate | date : "dd/MM/yyyy"}}</td>
-                  <td>{{client.total}}</td>
-                  <td>{{client.address}}</td>
-                  <td>
-                      <div class="lessons-list" *ngIf="client.status else loading">
-                        Paid
-                      </div>
-                      <ng-template #loading>
-                        <div>Unpaid</div>
-                      </ng-template>
-                  </td>
+                  <td (click)="onGotoDetail(client.id)" style="text-align: center;"> {{client.id}} </td>
+                  <td (click)="onGotoDetail(client.id)" style="text-align: center;"> {{client.dateCreate | date : "dd/MM/yyyy"}} </td>
+                  <td (click)="onGotoDetail(client.id)" style="text-align: center;"> ${{client.total}} </td>
+                  <td (click)="onGotoDetail(client.id)" style="text-align: center;"> {{client.address}} </td>
                 </tr>
               </tbody>
             </table>

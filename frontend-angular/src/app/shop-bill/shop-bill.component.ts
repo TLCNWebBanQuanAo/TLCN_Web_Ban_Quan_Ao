@@ -36,10 +36,16 @@ export class ShopBillComponent implements OnInit {
 
       // Now you can use jQuery DataTables :
       const table: any = $('table');
-      this.dataTable = table.DataTable();
+      this.dataTable = table.DataTable({
+        "order" : [[ 0, "desc"]]
+      });
     },
     err=>{
     });
+  }
+
+  onGotoDetail(id) {
+    window.location.href = "/billdetail/" + id;
   }
 
 }

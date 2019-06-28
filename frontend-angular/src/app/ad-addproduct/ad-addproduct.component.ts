@@ -79,4 +79,8 @@ export class AdAddproductComponent implements OnInit {
     });
   }
 
+  cancel() {
+    window.location.href = "/listproduct";
+  }
+
 }

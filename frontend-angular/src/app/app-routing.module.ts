@@ -16,6 +16,9 @@ import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 import { ShopBillComponent } from './shop-bill/shop-bill.component';
 import {ShopWishlistComponent} from './shop-wishlist/shop-wishlist.component';
 import {StatisticsComponent} from './statistics/statistics.component';
+import { ShopBillDetailComponent } from './shop-bill-detail/shop-bill-detail.component';
+import { AdListorderComponent } from './ad-listorder/ad-listorder.component';
+import { AdListorderDetailComponent } from './ad-listorder-detail/ad-listorder-detail.component'
 
 const routes: Routes = [
   { path: '', component: ShopIndexComponent },
@@ -33,7 +36,10 @@ const routes: Routes = [
   { path: 'listuser', component: AdListuserComponent },
   { path: 'bill', component: ShopBillComponent },
   { path: 'wishlist', component: ShopWishlistComponent},
-  { path: 'statistic', component: StatisticsComponent}
+  { path: 'statistic', component: StatisticsComponent},
+  { path: 'order', component: AdListorderComponent},
+  { path: 'billdetail/:id', component: ShopBillDetailComponent},
+  { path: 'orderdetail/:id', component: AdListorderDetailComponent}
 ];
 
 @NgModule({

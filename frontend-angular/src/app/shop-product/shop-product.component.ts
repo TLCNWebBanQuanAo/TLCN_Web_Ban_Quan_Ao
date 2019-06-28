@@ -43,7 +43,7 @@ export class ShopProductComponent implements OnInit {
     }
     else{
       if(localStorage.getItem("accountName")!=""){
-        this.userService.addProductInCart(this.accountName, this.id, this.quantity, this.product.size)
+        this.userService.addProductInCart(this.accountName, this.id, this.quantity, this.product.size, this.product.price)
         .pipe(first()).subscribe(res=>{
           if(res.success == "true")
             alert("Update shopping cart.");

@@ -75,4 +75,9 @@ export class AdListtypeComponent implements OnInit {
     }
   }
 
+  cancle() {
+    this.editTypeName = "";
+    this.type.name = this.editTypeName;
+  }
+
 }

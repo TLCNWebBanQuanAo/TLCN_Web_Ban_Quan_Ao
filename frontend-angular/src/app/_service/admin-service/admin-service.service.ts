@@ -67,4 +67,15 @@ export class AdminServiceService {
     return this.http.get(`${this.context}/api/v1/admin/product/products/${productId}`);
   }
 
+  getAllOrder():Observable<any>{
+    return this.http.get(`${this.context}/api/v1/admin/user/order`);
+  }
+
+  getBillDetailList(bill_id: number): Observable<any>{
+    return this.http.get(`${this.context}/api/v1/admin/user/detailBill/${bill_id}`);
+  }
+
+  setStatus(id: number, userUpdate: String): Observable<any>{
+    return this.http.get(`${this.context}/api/v1/admin/user/order/update/${id}/${userUpdate}`);
+  }
 }

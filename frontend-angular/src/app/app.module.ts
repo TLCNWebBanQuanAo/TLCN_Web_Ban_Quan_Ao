@@ -29,6 +29,9 @@ import { AdListtypeComponent } from './ad-listtype/ad-listtype.component';
 import { AdListuserComponent } from './ad-listuser/ad-listuser.component';
 import { ShopWishlistComponent } from './shop-wishlist/shop-wishlist.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { ShopBillDetailComponent } from './shop-bill-detail/shop-bill-detail.component';
+import { AdListorderComponent } from './ad-listorder/ad-listorder.component';
+import { AdListorderDetailComponent } from './ad-listorder-detail/ad-listorder-detail.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { StatisticsComponent } from './statistics/statistics.component';
     AdListtypeComponent,
     AdListuserComponent,
     ShopWishlistComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    ShopBillDetailComponent,
+    AdListorderComponent,
+    AdListorderDetailComponent
   ],
   imports: [
     BrowserModule,

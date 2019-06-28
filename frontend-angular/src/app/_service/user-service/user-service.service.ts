@@ -41,8 +41,8 @@ export class UserServiceService {
     return this.http.get(`${this.context}api/v1/user/getproductincart/${accountName}`
     );
   }
-  addProductInCart(accountName:string, product_id:Number, quantity:Number, size:string): Observable<any>{
-    return this.http.post(`${this.context}api/v1/user/addproductincart/${accountName}/${product_id}/${quantity}/${size}`,"");
+  addProductInCart(accountName:string, product_id:Number, quantity:Number, size:string, price:Number): Observable<any>{
+    return this.http.post(`${this.context}api/v1/user/addproductincart/${accountName}/${product_id}/${quantity}/${size}/${price}`,"");
   }
 
   getProduct(productId:Number):Observable<any>{
@@ -91,5 +91,8 @@ export class UserServiceService {
   }
   addProductInWishList(accountName:string, product_id:Number, dealPrice:Number): Observable<any>{
     return this.http.post(`${this.context}api/v1/user/addDealPrice/${accountName}/${product_id}/${dealPrice}`,"");
+  }
+  getBillDetailList(bill_id: number): Observable<any>{
+    return this.http.get(`${this.context}/api/v1/user/detailBill/${bill_id}`);
   }
 }

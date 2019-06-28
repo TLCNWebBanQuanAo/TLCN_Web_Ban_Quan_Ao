@@ -1,6 +1,6 @@
-package hcmute.edu.vn.userservice.repository;
+package hcmute.edu.vn.adminservice.repository;
 
-import hcmute.edu.vn.userservice.model.Bill_Detail;
+import hcmute.edu.vn.adminservice.model.Bill_Detail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

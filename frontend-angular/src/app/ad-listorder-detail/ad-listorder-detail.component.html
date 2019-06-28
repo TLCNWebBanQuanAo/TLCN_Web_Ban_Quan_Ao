@@ -1,0 +1,59 @@
+<header class="header-section">
+  <app-shop-header></app-shop-header>
+  <app-ad-menu></app-ad-menu>
+</header>
+
+<!-- cart section end -->
+<section class="cart-section spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="cart-table">
+          <h3>Order Detail</h3>
+          <div class="cart-table-warp">
+            <table>
+              <thead>
+                <tr>
+                  <th class="product-th">Product</th>
+                  <th class="quy-th">Quantity</th>
+                  <th class="size-th" style="padding-right: 0px;">Size</th>
+                  <th class="total-th" style="padding-right: 20px;">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let client of clients">
+                  <td class="product-col">
+                    <img [src]="client.images" alt="" style="object-fit: cover; height: 73px;">
+                    <div class="pc-title">
+                      <h4><a>{{client.name}}</a></h4>
+                      <p>${{client.price}}</p>
+                    </div>
+                  </td>
+                  <td class="total-col">
+                    <div class="quantity">
+                      <h4>{{client.quantity}}</h4>
+                    </div>
+                  </td>
+                  <td class="total-col">
+                    <div class="quantity">
+                      <h4>{{client.size}}</h4>
+                    </div>
+                  </td>
+                  <td class="total-col" style="padding-right: 20px;">
+                    <h4>${{client.price}}</h4>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="total-cost" style="padding-right: 95px;">
+            <h6 style="font-size: 25px;">Total <span style="font-size: 25px;">${{tong}}</span></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- cart section end -->
+
+<app-shop-footer></app-shop-footer>

@@ -160,9 +160,9 @@ public class User_Controller {
         return dataReturnList;
     }
 
-    @PostMapping("/addproductincart/{accountname}/{productid}/{quantity}/{size}")
+    @PostMapping("/addproductincart/{accountname}/{productid}/{quantity}/{size}/{price}")
     public DataReturnRecord<CartDetail_Dto> AddProductInCart (@PathVariable String accountname,
-                                                              @PathVariable int productid, @PathVariable int quantity, @PathVariable String size){
+                                                              @PathVariable int productid, @PathVariable int quantity, @PathVariable String size, @PathVariable Double price){
         DataReturnRecord<CartDetail_Dto> dataReturnRecord = new DataReturnRecord<>();
 
         Cart cart = user_service.FindByAccountName(accountname).getCart();
@@ -176,6 +176,7 @@ public class User_Controller {
         cart_detail.setId(cart_product_id);
         cart_detail.setQuantity(quantity);
         cart_detail.setSize(size);
+        cart_detail.setPrice(price);
 
         dataReturnRecord.setData(cartDetail_mapper.CartDetailToCartDetailDto(cartDetail_service.AddProductInCart(cart_detail)));
         dataReturnRecord.setMessage("Add products successful.");
@@ -317,6 +318,8 @@ public class User_Controller {
             bill_detail.setId(bill_product_id);
             bill_detail.setPrice(cart_detail.getId().getProduct().getPrice());
             bill_detail.setQuantity(cart_detail.getQuantity());
+            bill_detail.setSize(cart_detail.getSize());
+            bill_detail.setTotal(cart_detail.getPrice() * cart_detail.getQuantity());
 
             bill_details.add(billDetail_service.AddBillProduct(bill_detail));
         }
@@ -484,5 +487,21 @@ public class User_Controller {
         return dataReturnRecord;
     }
 
+    @GetMapping("/detailBill/{bill_id}")
+    public DataReturnList<Bill_History> getBillHistory(@PathVariable Long bill_id) {
+        DataReturnList<Bill_History> dataReturnList = new DataReturnList<>();
+        dataReturnList.setSuccess("true");
+        dataReturnList.setMessage("success");
+        dataReturnList.setData(billDetail_service.detailBillById(bill_id));
+        return dataReturnList;
+    }
 
+    @GetMapping("/order")
+    public DataReturnList<Order> getAllOrder() {
+        DataReturnList<Order> dataReturnList = new DataReturnList<>();
+        dataReturnList.setSuccess("true");
+        dataReturnList.setMessage("success");
+        dataReturnList.setData(bill_service.getAllOrder());
+        return dataReturnList;
+    }
 }
