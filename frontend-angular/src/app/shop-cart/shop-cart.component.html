@@ -42,12 +42,12 @@
                       <div class="pro-qty" style="padding: 0px; width: auto !important;">
                         <span>
                           <button class="btn"
-                            (click)="minusProductInCart(client.product_id,client.quantity, client.size)">-</button>
+                            (click)="minusProductInCart(client.product_id,client.quantity, client.size, client.price)">-</button>
                         </span>
                         <span> {{client.quantity}} </span>
                         <span>
                           <button class="btn"
-                            (click)="plusProductInCart(client.product_id,client.quantity, client.size)">+</button>
+                            (click)="plusProductInCart(client.product_id,client.quantity, client.size, client.price)">+</button>
                         </span>
                       </div>
                     </div>
@@ -58,12 +58,12 @@
                       <div class="pro-qty" style="padding: 0px; width: auto !important;">
                         <span>
                           <button class="btn"
-                          (click)="minusSizeInCart(client.product_id,client.quantity, client.size)">-</button>
+                          (click)="minusSizeInCart(client.product_id,client.quantity, client.size, client.price)">-</button>
                         </span>
                         <span> {{client.size}} </span>
                         <span>
                           <button class="btn"
-                          (click)="plusSizeInCart(client.product_id,client.quantity, client.size)">+</button>
+                          (click)="plusSizeInCart(client.product_id,client.quantity, client.size, client.price)">+</button>
                         </span>
                       </div>
                     </div>
