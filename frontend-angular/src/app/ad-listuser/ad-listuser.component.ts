@@ -32,7 +32,7 @@ export class AdListuserComponent implements OnInit {
     if(this.role=="1"){
       this.load();
     }else{
-      this.router.navigate(["/homepage"]);
+      this.router.navigate(["/"]);
     }
   }
 

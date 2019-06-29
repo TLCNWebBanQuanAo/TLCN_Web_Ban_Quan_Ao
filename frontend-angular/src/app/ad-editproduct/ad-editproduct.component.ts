@@ -9,6 +9,7 @@ import { first } from 'rxjs/operators';
 import { Type } from '../../models/type';
 import { UserServiceService } from '../_service/user-service/user-service.service';
 
+
 @Component({
   selector: 'app-ad-editproduct',
   templateUrl: './ad-editproduct.component.html',
@@ -24,22 +25,28 @@ export class AdEditproductComponent implements OnInit {
   image: string = "";
   imageUploaded: string = "";
   id: Number;
-  constructor(private route: ActivatedRoute, private adminservice: AdminServiceService,private userservice: UserServiceService) { }
+  role: string;
+  constructor(private route: ActivatedRoute, private adminservice: AdminServiceService,private userservice: UserServiceService, private router: Router) { }
 
   ngOnInit() {
-    
-    this.route.params.subscribe(param => {
-      this.id = param.id;
-      console.log(this.id);
+    this.role= localStorage.getItem("role");
+    if(this.role=="1"){
+      this.route.params.subscribe(param => {
+        this.id = param.id;
+        console.log(this.id);
+  
+        this.adminservice.getProduct(this.id).pipe(first())
+          .subscribe(res=>{
+            this.product= res;
+          },
+          err=>{
+  
+          })
+      })
+    }else{
+      this.router.navigate(["/"]);
+    }
 
-      this.adminservice.getProduct(this.id).pipe(first())
-        .subscribe(res=>{
-          this.product= res;
-        },
-        err=>{
-
-        })
-    })
     
   }
   editproduct() {

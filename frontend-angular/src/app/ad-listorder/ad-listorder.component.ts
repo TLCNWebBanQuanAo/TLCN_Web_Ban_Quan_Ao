@@ -18,11 +18,17 @@ export class AdListorderComponent implements OnInit {
   passWord: string = "";
   clients: any[];
   dataTable: any;
+  role: string;
 
   constructor(private router: Router, private chRef: ChangeDetectorRef, private http: HttpClient, private adminService: AdminServiceService) { }
 
   ngOnInit() {
-    this.onInit();
+    this.role= localStorage.getItem("role");
+    if(this.role=="1"){
+      this.onInit();
+    }else{
+      this.router.navigate(["/"]);
+    }
   }
 
   onInit() {

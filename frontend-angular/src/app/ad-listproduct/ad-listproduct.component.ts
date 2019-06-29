@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import * as $ from 'jquery';
 import 'datatables.net';
@@ -7,6 +8,7 @@ import 'datatables.net-bs4';
 import { Product } from '../../models/product';
 import { AdminServiceService } from '../_service/admin-service/admin-service.service';
 import { first } from 'rxjs/operators';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-ad-listproduct',
@@ -20,11 +22,17 @@ export class AdListproductComponent implements OnInit {
   dataTable: any;
   trangthai: string;
   trangthaiBan: string;
+  role: string;
 
-  constructor(private http: HttpClient, private chRef: ChangeDetectorRef , private adminservice: AdminServiceService) { }
+  constructor(private http: HttpClient, private chRef: ChangeDetectorRef ,private router: Router, private adminservice: AdminServiceService) { }
 
   ngOnInit() {
-    this.getAllProduct();
+    this.role= localStorage.getItem("role");
+    if(this.role=="1"){
+      this.getAllProduct();
+    }else{
+      this.router.navigate(["/"]);
+    }
   }
 
   getAllProduct() {

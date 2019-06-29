@@ -31,7 +31,7 @@ export class AdListtypeComponent implements OnInit {
     if(this.role=="1"){
       this.getAllType();
     }else{
-      this.router.navigate(["/homepage"]);
+      this.router.navigate(["/"]);
     }
   }
 
