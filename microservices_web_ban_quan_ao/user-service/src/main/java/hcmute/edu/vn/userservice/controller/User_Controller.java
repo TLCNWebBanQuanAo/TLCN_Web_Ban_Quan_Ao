@@ -291,6 +291,7 @@ public class User_Controller {
         bill.setUser(user);
         bill.setStatus(userTemp.getStatus());
         bill.setAddress(userTemp.getAddress());
+        bill.setPhone(userTemp.getPhone());
         bill.setDateCreate(date);
         bill.setDateUpdate(date);
         bill.setUserCreate(userTemp.getAccountName());

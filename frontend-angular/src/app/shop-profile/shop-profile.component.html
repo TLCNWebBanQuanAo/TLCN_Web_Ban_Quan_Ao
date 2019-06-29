@@ -13,7 +13,7 @@
         <h3 style="padding-bottom: 10px;">Update Avatar</h3>
         <img class="avatar" [src]="image" alt="" style="width: 50% !important">
         <form [formGroup]="formImage" method="POST" (ngSubmit)="onSaveImage()" novalidate style="margin-top: 10px;">
-          <label class="hinhanh" id="#bb">
+          <label class="hinhanh" id="#bb" style="background-color: #3399ff; padding: 10px; margin-right: 10px; border-radius: 15%; color: #FFFFFF;"> Select Img
             <input type="file" (change)="onChangedImage($event)" #fileInput id="File" size="60">
           </label>
           <button class="site-btn" type="submit">Update</button>
