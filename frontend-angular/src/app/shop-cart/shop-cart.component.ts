@@ -143,9 +143,9 @@ export class ShopCartComponent implements OnInit {
       document.body.appendChild(scripttagElement);
     })
   }
-  plusProductInCart(id: number, quantity: number, size: string){
+  plusProductInCart(id: number, quantity: number, size: string, price: number){
     this.accountName = localStorage.getItem("accountName");
-      this.userService.plusProductInCart(this.accountName, id, quantity, size)
+      this.userService.plusProductInCart(this.accountName, id, quantity, size, price)
       .pipe(first()).subscribe(res=>{
         if(res.success == "true"){
           this.clients.forEach(product => {
@@ -161,9 +161,9 @@ export class ShopCartComponent implements OnInit {
   
       }); 
   }
-  minusProductInCart(id: number, quantity: number, size:string){
+  minusProductInCart(id: number, quantity: number, size:string, price: number){
     this.accountName = localStorage.getItem("accountName");
-      this.userService.minusProductInCart(this.accountName, id, quantity, size)
+      this.userService.minusProductInCart(this.accountName, id, quantity, size, price)
       .pipe(first()).subscribe(res=>{
         if(res.success == "true"){
           this.clients.forEach(product => {
@@ -180,12 +180,12 @@ export class ShopCartComponent implements OnInit {
       }); 
   }
 
-  plusSizeInCart(id: number, quantity: number, size: string){
+  plusSizeInCart(id: number, quantity: number, size: string, price: number){
     if(+size > 41){
       return;
     }
     this.accountName = localStorage.getItem("accountName");
-      this.userService.plusSizeInCart(this.accountName, id, quantity, size)
+      this.userService.plusSizeInCart(this.accountName, id, quantity, size, price)
       .pipe(first()).subscribe(res=>{
         if(res.success == "true"){
           this.clients.forEach(product => {
@@ -200,12 +200,12 @@ export class ShopCartComponent implements OnInit {
   
       }); 
   }
-  minusSizeInCart(id: number, quantity: number, size:string){
+  minusSizeInCart(id: number, quantity: number, size:string, price: number){
     if(+size < 33){
       return;
     }
     this.accountName = localStorage.getItem("accountName");
-      this.userService.minusSizeInCart(this.accountName, id, quantity, size)
+      this.userService.minusSizeInCart(this.accountName, id, quantity, size, price)
       .pipe(first()).subscribe(res=>{
         if(res.success == "true"){
           this.clients.forEach(product => {
