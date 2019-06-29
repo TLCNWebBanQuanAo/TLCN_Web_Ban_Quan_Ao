@@ -25,7 +25,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let client of clients">
+                <tr *ngFor="let client of clients" style="cursor: pointer;">
                   <td (click)="onGotoDetail(client.bill_id)" style="text-align: center;"> {{client.id}} </td>
                   <td (click)="onGotoDetail(client.bill_id)" style="text-align: center;"> {{client.name}} </td>
                   <td (click)="onGotoDetail(client.bill_id)" style="text-align: center;"> {{client.email}} </td>
