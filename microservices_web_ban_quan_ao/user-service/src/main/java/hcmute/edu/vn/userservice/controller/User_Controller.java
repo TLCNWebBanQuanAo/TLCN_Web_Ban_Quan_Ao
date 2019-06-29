@@ -311,16 +311,15 @@ public class User_Controller {
             bill_product_id.setBill(billAdd);
             bill_product_id.setProduct(cart_detail.getId().getProduct());
             Product product = product_service.FindProductById(cart_detail.getId().getProduct().getId());
-            if(product.getQuantity()>=cart_detail.getQuantity()) {
-                product.setQuantity(product.getQuantity() - cart_detail.getQuantity());
-                product_service.editProduct(product);
-            }
+            product.setQuantity(product.getQuantity() - cart_detail.getQuantity());
+            product_service.editProduct(product);
             Bill_Detail bill_detail = new Bill_Detail();
             bill_detail.setId(bill_product_id);
             bill_detail.setPrice(cart_detail.getId().getProduct().getPrice());
             bill_detail.setQuantity(cart_detail.getQuantity());
             bill_detail.setSize(cart_detail.getSize());
             bill_detail.setTotal(cart_detail.getPrice() * cart_detail.getQuantity());
+            System.out.println(bill_detail.getTotal());
 
             bill_details.add(billDetail_service.AddBillProduct(bill_detail));
         }
