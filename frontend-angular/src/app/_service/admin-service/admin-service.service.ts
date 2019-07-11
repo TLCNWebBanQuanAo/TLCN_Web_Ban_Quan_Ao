@@ -57,7 +57,7 @@ export class AdminServiceService {
   updateStatusProduct(id) : Observable<any> {
     return this.http.post(`${this.context}/api/v1/admin/product/editStatusproduct`, id);
   }
-  private url = "http://localhost:8083//api/v1/admin/product/statictics/figures";
+  private url = "http://localhost:8888//api/v1/admin/product/statictics/figures";
   getProductStatistics(dateStart:string, dateEnd:string) : Observable<any>{
     let statisticsDTO:StatisticsDTO = JSON.parse('{ "dateStart": "' + dateStart + '",' + '"dateEnd": "' + dateEnd + '"}'); 
     return this.http.post(this.url, statisticsDTO);

@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("api/v1/guest")
+@RequestMapping("guest")
 @CrossOrigin(origins = "http://localhost:4200")
 public class Guest_Controller {
     @Autowired

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("api/v1/admin/type/")
+@RequestMapping("admin/type")
 @CrossOrigin(origins = "http://localhost:4200")
 public class Type_Controller {
     @Autowired
