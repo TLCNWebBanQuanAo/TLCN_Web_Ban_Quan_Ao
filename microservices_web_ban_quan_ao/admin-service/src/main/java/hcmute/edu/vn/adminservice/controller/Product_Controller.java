@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 import javax.mail.MessagingException;
 
 @RestController
-@RequestMapping("api/v1/admin/product/")
+@RequestMapping("admin/product")
 @CrossOrigin(origins = "http://localhost:4200")
 public class Product_Controller {
     @Autowired

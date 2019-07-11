@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("api/v1/admin/sale/")
+@RequestMapping("admin/sale")
 @CrossOrigin(origins = "http://localhost:4200")
 public class SaleOff_Controller {
     @Autowired
